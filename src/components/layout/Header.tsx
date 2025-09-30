@@ -1,5 +1,6 @@
 "use client"
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
 export default function Header() {
@@ -20,10 +21,10 @@ export default function Header() {
                     </div>
 
                     <nav className="hidden lg:flex items-center gap-4 xl:gap-6 xl:ml-20">
-                        <a className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="#">Home</a>
-                        <a className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="#">Dashboard</a>
-                        <a className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="#">Jobs</a>
-                        <a className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="#">Message</a>
+                        <Link className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="/">Home</Link>
+                        <Link className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="/">Dashboard</Link>
+                        <Link className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="/operational-logs">Jobs</Link>
+                        <Link className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="/user-management">Message</Link>
                     </nav>
                 </div>
 
@@ -86,10 +87,10 @@ export default function Header() {
             {isMenuOpen && (
                 <div className="lg:hidden absolute top-[78px] left-0 w-full bg-black/95 backdrop-blur-sm border-b border-white/22 z-50">
                     <nav className="flex flex-col px-4 py-6 gap-4">
-                        <a className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="#" onClick={() => setIsMenuOpen(false)}>Home</a>
-                        <a className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="#" onClick={() => setIsMenuOpen(false)}>Dashboard</a>
-                        <a className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="#" onClick={() => setIsMenuOpen(false)}>Jobs</a>
-                        <a className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="#" onClick={() => setIsMenuOpen(false)}>Message</a>
+                        <Link className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+                        <Link className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="/" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
+                        <Link className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="/operational-logs" onClick={() => setIsMenuOpen(false)}>Jobs</Link>
+                        <Link className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="/user-management" onClick={() => setIsMenuOpen(false)}>Message</Link>
                     </nav>
                 </div>
             )}
