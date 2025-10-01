@@ -1,4 +1,4 @@
-import { Stat } from "@/types/stats";
+import { DailyChart, Stat, WeeklyChart } from "@/types/dashboard";
 
 export const statsData: Stat[] = [
     {
@@ -127,5 +127,24 @@ export const statsData: Stat[] = [
             </svg>
         ),
     },
-    // ... rest of the stats
+];
+
+export const chartData: WeeklyChart[] = [
+    { month: 'Jan', empty: 34.95, shortlisted: 34.95, applications: 87.35 },
+    { month: 'Feb', empty: 55.91, shortlisted: 52.42, applications: 70.76 },
+    { month: 'Mar', empty: 20.97, shortlisted: 69.01, applications: 25.34 },
+    { month: 'Apr', empty: 37.56, shortlisted: 69.01, applications: 25.34 },
+    { month: 'May', empty: 54.16, shortlisted: 24.46, applications: 76.87 },
+    { month: 'Jun', empty: 38.44, shortlisted: 52.42, applications: 52.42 },
+    { month: 'July', empty: 48.05, shortlisted: 52.42, applications: 69.88 },
+];
+
+export const dailyChartData: DailyChart[] = [
+    { day: 'Mon', value: 700, x: 140.28, y: 175.19 },
+    { day: 'Tue', value: 850, x: 226.57, y: 158.14 },
+    { day: 'Wed', value: 1150, x: 335.62, y: 120.34 },
+    { day: 'Thu', value: 1400, x: 441.05, y: 97.51 },
+    { day: 'Fri', value: 1300, x: 548.19, y: 108.15 },
+    { day: 'Sat', value: 700, x: 651.61, y: 175.19 },
+    { day: 'Sun', value: 600, x: 726.33, y: 189.44 },
 ];

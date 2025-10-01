@@ -1,3 +1,4 @@
+import { chartData } from '@/data/DashoardData';
 import React, { useState } from 'react';
 
 export default function WeeklyRegistrationsChart() {
@@ -8,23 +9,12 @@ export default function WeeklyRegistrationsChart() {
 
   // Scale factor: new width/old width = 438.5/538.5 ≈ 0.814
   const scale = 0.814;
-
-  const chartData = [
-    { month: 'Jan', empty: 34.95, shortlisted: 34.95, applications: 87.35 },
-    { month: 'Feb', empty: 55.91, shortlisted: 52.42, applications: 70.76 },
-    { month: 'Mar', empty: 20.97, shortlisted: 69.01, applications: 25.34 },
-    { month: 'Apr', empty: 37.56, shortlisted: 69.01, applications: 25.34 },
-    { month: 'May', empty: 54.16, shortlisted: 24.46, applications: 76.87 },
-    { month: 'Jun', empty: 38.44, shortlisted: 52.42, applications: 52.42 },
-    { month: 'July', empty: 48.05, shortlisted: 52.42, applications: 69.88 },
-  ];
-
   return (
-    <div className="flex">
-      <div className="relative flex flex-col items-start bg-[#111827] rounded-[8.7px] p-[17.5px_17.5px_17.5px_29.3px] gap-5 w-[438.5px] h-[329px]">
-        <div className="flex flex-col items-start w-full gap-6">
+    <div className="flex w-full">
+      <div className="relative flex flex-col items-start bg-[#111827] rounded-[8.7px] p-[12px_12px_12px_20px] sm:p-[17.5px_17.5px_17.5px_29.3px] gap-3 sm:gap-5 w-full h-[280px] sm:h-[329px] max-w-[500px]">
+        <div className="flex flex-col items-start w-full gap-4 sm:gap-6">
           <div className="flex flex-row justify-between items-center w-full">
-            <h2 className="font-semibold text-white m-0 text-[15.7px] leading-[23.2px]">
+            <h2 className="font-semibold text-white m-0 text-[14px] sm:text-[15.7px] leading-[20px] sm:leading-[23.2px]">
               Weekly Registrations
             </h2>
             <button 
@@ -57,13 +47,13 @@ export default function WeeklyRegistrationsChart() {
             </button>
           </div>
 
-          <div className="flex flex-col items-start w-full gap-[8.7px]">
-            <div className="relative flex flex-row items-end w-full pl-[38.4px] gap-[33.2px] h-[220.2px]">
+          <div className="flex flex-col items-start w-full gap-[6px] sm:gap-[8.7px]">
+            <div className="relative flex flex-row items-end w-full pl-[30px] sm:pl-[38.4px] gap-[20px] sm:gap-[33.2px] h-[180px] sm:h-[220.2px] overflow-x-auto">
               <div className="absolute text-white font-normal text-[12.2px] leading-[14.7px] -rotate-90 origin-center pointer-events-none w-[75.7px] h-[14.7px] left-[-48.8px] top-1/2 -mt-[30.5px]">
                 Registrations
               </div>
 
-              <div className="absolute flex flex-col items-start gap-[25.3px] right-[-17.5px] bottom-[28.8px] w-[399.3px] h-[156.3px]">
+              <div className="absolute flex flex-col items-start gap-[20px] sm:gap-[25.3px] right-[-12px] sm:right-[-17.5px] bottom-[20px] sm:bottom-[28.8px] w-[calc(100%-40px)] sm:w-[399.3px] h-[120px] sm:h-[156.3px]">
                 {[
                   { label: '200%', labelW: 'w-[28.1px]', gap: 'gap-[16.6px]' },
                   { label: '150%', labelW: 'w-[25.6px]', gap: 'gap-[21px]' },
@@ -71,8 +61,8 @@ export default function WeeklyRegistrationsChart() {
                   { label: '50%', labelW: 'w-[22px]', gap: 'gap-[21px]' },
                   { label: '0%', labelW: 'w-[15.9px]', gap: 'gap-[21px]' },
                 ].map((item, idx) => (
-                  <div key={idx} className={`flex flex-row items-end w-[399.3px] h-[11px] ${item.gap}`}>
-                    <span className={`text-[#8F8F8F] font-medium text-[10.5px] leading-[11px] ${item.labelW} h-[11px]`}>
+                  <div key={idx} className={`flex flex-row items-end w-full h-[11px] ${item.gap}`}>
+                    <span className={`text-[#8F8F8F] font-medium text-[9px] sm:text-[10.5px] leading-[11px] ${item.labelW} h-[11px]`}>
                       {item.label}
                     </span>
                     <div className="border-t border-[rgba(125,125,125,0.22)] flex-grow h-0"></div>
@@ -83,69 +73,69 @@ export default function WeeklyRegistrationsChart() {
               {chartData.map((data, idx) => (
                 <div 
                   key={idx} 
-                  className="flex flex-col items-center gap-[13.1px]"
+                  className="flex flex-col items-center gap-[10px] sm:gap-[13.1px] flex-shrink-0"
                   style={{ 
-                    width: data.month === 'Mar' || data.month === 'July' ? '20.8px' : data.month === 'May' ? '23.2px' : data.month === 'Apr' ? '18.3px' : '19.5px',
+                    width: data.month === 'Mar' || data.month === 'July' ? '16px' : data.month === 'May' ? '18px' : data.month === 'Apr' ? '14px' : '15px',
                     zIndex: idx + 1 
                   }}
                 >
-                  <div className="flex flex-col items-start gap-[6.1px] w-[5.2px]">
+                  <div className="flex flex-col items-start gap-[4px] sm:gap-[6.1px] w-[4px] sm:w-[5.2px]">
                     <div 
-                      className="rounded-[8.7px] w-[5.2px]"
-                      style={{ height: `${data.empty}px` }}
+                      className="rounded-[6px] sm:rounded-[8.7px] w-[4px] sm:w-[5.2px]"
+                      style={{ height: `${data.empty * 0.8}px` }}
                     />
                     {showShortlisted && (
                       <div 
-                        className="bg-[rgba(255,166,0,0.8)] rounded-[8.7px] w-[5.2px]"
-                        style={{ height: `${data.shortlisted}px` }}
+                        className="bg-[rgba(255,166,0,0.8)] rounded-[6px] sm:rounded-[8.7px] w-[4px] sm:w-[5.2px]"
+                        style={{ height: `${data.shortlisted * 0.8}px` }}
                       />
                     )}
                     {showApplications && (
                       <div 
-                        className="bg-[#56CCF2] rounded-[8.7px] w-[5.2px]"
-                        style={{ height: `${data.applications}px` }}
+                        className="bg-[#56CCF2] rounded-[6px] sm:rounded-[8.7px] w-[4px] sm:w-[5.2px]"
+                        style={{ height: `${data.applications * 0.8}px` }}
                       />
                     )}
                   </div>
-                  <span className="text-white font-normal text-center text-[10.5px] leading-[15.9px] h-[15.9px]">
+                  <span className="text-white font-normal text-center text-[9px] sm:text-[10.5px] leading-[12px] sm:leading-[15.9px] h-[12px] sm:h-[15.9px]">
                     {data.month}
                   </span>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-row items-start gap-[13.1px] w-[291.8px] h-[15.9px]">
+            <div className="flex flex-row items-start gap-[10px] sm:gap-[13.1px] w-full sm:w-[291.8px] h-[12px] sm:h-[15.9px]">
               <button 
-                className="flex flex-row items-center gap-[3.5px] w-[88.6px] h-[15.9px] cursor-pointer hover:opacity-80 transition-opacity"
+                className="flex flex-row items-center gap-[2px] sm:gap-[3.5px] w-[70px] sm:w-[88.6px] h-[12px] sm:h-[15.9px] cursor-pointer hover:opacity-80 transition-opacity"
                 onClick={() => setShowApplications(!showApplications)}
               >
-                <div className="flex flex-row justify-end items-center bg-[#56CCF2] p-[0.9px] rounded-[8.7px] w-[19.2px] h-[10.5px] transition-all">
+                <div className="flex flex-row justify-end items-center bg-[#56CCF2] p-[0.6px] sm:p-[0.9px] rounded-[6px] sm:rounded-[8.7px] w-[15px] sm:w-[19.2px] h-[8px] sm:h-[10.5px] transition-all">
                   <div 
-                    className="bg-[#1F2937] rounded-[8.7px] w-[8.7px] h-[8.7px] transition-all"
+                    className="bg-[#1F2937] rounded-[6px] sm:rounded-[8.7px] w-[6px] sm:w-[8.7px] h-[6px] sm:h-[8.7px] transition-all"
                     style={{ 
                       marginRight: showApplications ? '0' : 'auto',
                       marginLeft: showApplications ? 'auto' : '0'
                     }}
                   />
                 </div>
-                <span className="text-white font-normal text-[10.5px] leading-[15.9px] w-[65.9px] h-[15.9px]">
+                <span className="text-white font-normal text-[8px] sm:text-[10.5px] leading-[12px] sm:leading-[15.9px] w-[50px] sm:w-[65.9px] h-[12px] sm:h-[15.9px]">
                   Applications
                 </span>
               </button>
               <button 
-                className="flex flex-row items-center gap-[3.5px] w-[78.9px] h-[15.9px] cursor-pointer hover:opacity-80 transition-opacity"
+                className="flex flex-row items-center gap-[2px] sm:gap-[3.5px] w-[60px] sm:w-[78.9px] h-[12px] sm:h-[15.9px] cursor-pointer hover:opacity-80 transition-opacity"
                 onClick={() => setShowShortlisted(!showShortlisted)}
               >
-                <div className="flex flex-row justify-end items-center bg-[#FFA600] p-[0.9px] rounded-[8.7px] w-[19.2px] h-[10.5px] transition-all">
+                <div className="flex flex-row justify-end items-center bg-[#FFA600] p-[0.6px] sm:p-[0.9px] rounded-[6px] sm:rounded-[8.7px] w-[15px] sm:w-[19.2px] h-[8px] sm:h-[10.5px] transition-all">
                   <div 
-                    className="bg-[#1F2937] rounded-[8.7px] w-[8.7px] h-[8.7px] transition-all"
+                    className="bg-[#1F2937] rounded-[6px] sm:rounded-[8.7px] w-[6px] sm:w-[8.7px] h-[6px] sm:h-[8.7px] transition-all"
                     style={{ 
                       marginRight: showShortlisted ? '0' : 'auto',
                       marginLeft: showShortlisted ? 'auto' : '0'
                     }}
                   />
                 </div>
-                <span className="text-white font-normal text-[10.5px] leading-[15.9px] w-[56.2px] h-[15.9px]">
+                <span className="text-white font-normal text-[8px] sm:text-[10.5px] leading-[12px] sm:leading-[15.9px] w-[40px] sm:w-[56.2px] h-[12px] sm:h-[15.9px]">
                   Shortlisted
                 </span>
               </button>

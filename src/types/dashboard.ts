@@ -16,3 +16,17 @@ export interface StatsRowProps {
   stats: Stat[];
   className?: string;
 }
+
+export interface WeeklyChart {
+  month: string;
+  empty: number;
+  shortlisted: number;
+  applications: number;
+}
+
+export interface DailyChart {
+  day: string;
+  value: number;
+  x: number;
+  y: number;
+}

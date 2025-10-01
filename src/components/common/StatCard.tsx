@@ -1,4 +1,4 @@
-import { StatCardProps } from "@/types/stats";
+import { StatCardProps } from "@/types/dashboard";
 import React from "react";
 
 export default function StatCard({ stat }: StatCardProps) {
@@ -78,15 +78,13 @@ export default function StatCard({ stat }: StatCardProps) {
             </span>
           </div>
 
-          <div className="sm:mt-10">
             <div
-            className="flex items-center justify-center rounded flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-[rgba(0,0,0,0.2)]"
+            className="flex items-center mt-3 justify-center rounded flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-[rgba(0,0,0,0.2)]"
             aria-hidden
           >
             <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex items-center justify-center">
               {stat.icon}
             </div>
-          </div>
           </div>
         </div>
 
