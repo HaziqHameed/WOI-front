@@ -7,13 +7,12 @@ export default function WeeklyRegistrationsChart() {
   const [selectedPeriod, setSelectedPeriod] = useState('Month');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const scale = 0.814;
   return (
     <div className="flex w-full">
-      <div className="relative flex flex-col items-start bg-[#111827] rounded-[8.7px] p-[12px_12px_12px_20px] sm:p-[17.5px_17.5px_17.5px_29.3px] gap-3 sm:gap-5 w-full h-[280px] sm:h-[329px] max-w-[500px]">
+      <div className="relative flex flex-col items-start bg-[#111827] rounded-[8.7px] p-[12px_12px_12px_20px] sm:p-[17.5px_17.5px_17.5px_29.3px] gap-3 sm:gap-5 w-full h-[280px] sm:h-[329px]">
         <div className="flex flex-col items-start w-full gap-4 sm:gap-6">
           <div className="flex flex-row justify-between items-center w-full">
-            <h2 className="font-semibold text-white m-0 text-[14px] sm:text-[15.7px] leading-[20px] sm:leading-[23.2px]">
+            <h2 className="h-[20px] sm:h-[27.5px] left-[5.8%] top-[8%] sm:top-[30.59px] text-white font-semibold text-[14px] sm:text-[18.3px] leading-[20px] sm:leading-[27.5px] z-10">
               Weekly Registrations
             </h2>
             <button 
@@ -47,20 +46,21 @@ export default function WeeklyRegistrationsChart() {
           </div>
 
           <div className="flex flex-col items-start w-full gap-[6px] sm:gap-[8.7px]">
-            <div className="relative flex flex-row items-end w-full pl-[30px] sm:pl-[38.4px] gap-[20px] sm:gap-[33.2px] h-[180px] sm:h-[220.2px] overflow-x-auto">
-              <div className="absolute text-white font-normal text-[12.2px] leading-[14.7px] -rotate-90 origin-center pointer-events-none w-[75.7px] h-[14.7px] left-[-48.8px] top-1/2 -mt-[30.5px]">
+            <div className="absolute text-white font-normal text-[12.2px] leading-[14.7px] -rotate-90 origin-center pointer-events-none w-[75.7px] h-[14.7px] left-[-22px] sm:left-[-24px] top-1/2 -translate-y-1/2  z-0">
                 Registrations
               </div>
+            <div className="relative flex flex-row items-end w-full pl-[30px] sm:pl-[38.4px] gap-[20px] sm:gap-[33.2px] h-[180px] sm:h-[220.2px] overflow-x-auto no-scrollbar">
+              
 
-              <div className="absolute flex flex-col items-start gap-[20px] sm:gap-[25.3px] right-[-12px] sm:right-[-17.5px] bottom-[20px] sm:bottom-[28.8px] w-[calc(100%-40px)] sm:w-[399.3px] h-[120px] sm:h-[156.3px]">
+              <div className="absolute flex flex-col items-start gap-[20px] sm:gap-[25.3px] left-0 bottom-0 right-0 h-full justify-between py-6 z-0">
                 {[
-                  { label: '200%', labelW: 'w-[28.1px]', gap: 'gap-[16.6px]' },
-                  { label: '150%', labelW: 'w-[25.6px]', gap: 'gap-[21px]' },
-                  { label: '100%', labelW: 'w-[25.6px]', gap: 'gap-[21px]' },
-                  { label: '50%', labelW: 'w-[22px]', gap: 'gap-[21px]' },
-                  { label: '0%', labelW: 'w-[15.9px]', gap: 'gap-[21px]' },
+                  { label: '200%', labelW: 'w-[28.1px]' },
+                  { label: '150%', labelW: 'w-[25.6px]' },
+                  { label: '100%', labelW: 'w-[25.6px]' },
+                  { label: '50%', labelW: 'w-[22px]' },
+                  { label: '0%', labelW: 'w-[15.9px]' },
                 ].map((item, idx) => (
-                  <div key={idx} className={`flex flex-row items-end w-full h-[11px] ${item.gap}`}>
+                  <div key={idx} className="flex flex-row items-center w-full gap-[8px] sm:gap-[10px]">
                     <span className={`text-[#8F8F8F] font-medium text-[9px] sm:text-[10.5px] leading-[11px] ${item.labelW} h-[11px]`}>
                       {item.label}
                     </span>
@@ -72,7 +72,7 @@ export default function WeeklyRegistrationsChart() {
               {chartData.map((data, idx) => (
                 <div 
                   key={idx} 
-                  className="flex flex-col items-center gap-[10px] sm:gap-[13.1px] flex-shrink-0"
+                  className="flex flex-col items-center -left-2 gap-[10px] sm:gap-[13.1px] flex-shrink-0 relative"
                   style={{ 
                     width: data.month === 'Mar' || data.month === 'July' ? '16px' : data.month === 'May' ? '18px' : data.month === 'Apr' ? '14px' : '15px',
                     zIndex: idx + 1 

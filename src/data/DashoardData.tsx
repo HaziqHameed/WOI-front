@@ -1,4 +1,4 @@
-import { DailyChart, Stat, WeeklyChart } from "@/types/dashboard";
+import { DailyChart, Skill, Stat, WeeklyChart } from "@/types/dashboard";
 
 export const statsData: Stat[] = [
     {
@@ -148,3 +148,41 @@ export const dailyChartData: DailyChart[] = [
     { day: 'Sat', value: 700, x: 651.61, y: 175.19 },
     { day: 'Sun', value: 600, x: 726.33, y: 189.44 },
 ];
+
+export const skills: Skill[] = [
+    {
+      name: "React.js",
+      location: "San Fransisco, CA",
+      experience: "3-5 years",
+      demand: "High",
+      demandColor: "high"
+    },
+    {
+      name: "Python",
+      location: "New York, NY",
+      experience: "2-4 years",
+      demand: "Medium",
+      demandColor: "medium"
+    },
+    {
+      name: "DevOps",
+      location: "Seattle, WA",
+      experience: "5+ years",
+      demand: "High",
+      demandColor: "high"
+    },
+    {
+      name: "Machine Learning",
+      location: "Austin, TX",
+      experience: "3-6 years",
+      demand: "High",
+      demandColor: "high"
+    },
+    {
+      name: "UI/UX Design",
+      location: "Los Angles, CA",
+      experience: "2-4 years",
+      demand: "Low",
+      demandColor: "low"
+    }
+  ];

@@ -1,50 +1,14 @@
 "use client"
 import React from "react";
 import StatsRow from "../sections/StatsRow";
-import { statsData } from "@/data/DashoardData";
+import { skills, statsData } from "@/data/DashoardData";
 import WeeklyRegistrationsChart from "../charts/WeeklyRegistrationsChart";
 import DailyLoginsChart from "../charts/DailyLoginsChart";
-import SkillGapTable from "../common/SkillGapTable";
+import SkillGapTable from "../common/GapTable";
 
 export default function Dashboard() {
 
-  const skills = [
-    {
-      name: "React.js",
-      location: "San Fransisco, CA",
-      experience: "3-5 years",
-      demand: "High",
-      demandColor: "high"
-    },
-    {
-      name: "Python",
-      location: "New York, NY",
-      experience: "2-4 years",
-      demand: "Medium",
-      demandColor: "medium"
-    },
-    {
-      name: "DevOps",
-      location: "Seattle, WA",
-      experience: "5+ years",
-      demand: "High",
-      demandColor: "high"
-    },
-    {
-      name: "Machine Learning",
-      location: "Austin, TX",
-      experience: "3-6 years",
-      demand: "High",
-      demandColor: "high"
-    },
-    {
-      name: "UI/UX Design",
-      location: "Los Angles, CA",
-      experience: "2-4 years",
-      demand: "Low",
-      demandColor: "low"
-    }
-  ];
+  
 
   const tableColumns = [
     {
