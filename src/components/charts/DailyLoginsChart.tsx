@@ -78,7 +78,7 @@ export default function DailyLoginsChart() {
             Daily Logins
           </div>
 
-          <svg className="absolute left-0 top-0 w-full h-full" viewBox="0 0 788 329" preserveAspectRatio="xMidYMid meet" style={{ pointerEvents: 'none' }}>
+          <svg className="absolute left-1 top-1 w-full h-full" viewBox="0 0 788 329" preserveAspectRatio="xMidYMid meet" >
             <defs>
               <linearGradient id="areaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="rgba(255, 255, 255, 0.3)" />

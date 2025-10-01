@@ -4,6 +4,7 @@ import StatsRow from "../sections/StatsRow";
 import { statsData } from "@/data/DashoardData";
 import WeeklyRegistrationsChart from "../charts/WeeklyRegistrationsChart";
 import DailyLoginsChart from "../charts/DailyLoginsChart";
+import SkillGapTable from "../common/SkillGapTable";
 
 export default function Dashboard() {
 
@@ -45,18 +46,33 @@ export default function Dashboard() {
     }
   ];
 
-  const getDemandStyle = (level: string) => {
-    switch (level) {
-      case "high":
-        return "bg-[#FFBDBA] text-[#9B1F1F]";
-      case "medium":
-        return "bg-[#FF9933] text-[#9A3412]";
-      case "low":
-        return "bg-[#B4FFD1] text-[#166534]";
-      default:
-        return "";
+  const tableColumns = [
+    {
+      key: "name",
+      label: "SKILL NAME",
+      width: "w-[150px] sm:w-[200px] lg:w-[250px]",
+      align: "start" as const
+    },
+    {
+      key: "location",
+      label: "LOCATION",
+      width: "w-[150px] sm:w-[200px] lg:w-[280px]",
+      align: "start" as const
+    },
+    {
+      key: "experience",
+      label: "EXPERIENCE REQUIRED",
+      width: "w-[150px] sm:w-[200px] lg:w-[280px]",
+      align: "start" as const
+    },
+    {
+      key: "demand",
+      label: "DEMAND LEVEL",
+      width: "flex-1",
+      align: "end" as const
     }
-  };
+  ];
+
 
   return (
     <div className="w-full">
@@ -74,103 +90,12 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="flex items-center justify-center mt-10">
-            <div className="w-full">
-              <div className="w-full h-[100px] bg-[#111827] rounded-t-[8px] box-border px-4 flex flex-col justify-center items-start gap-2 mb-2">
-                <div className="flex flex-row items-center gap-1 w-full h-[29px]">
-                  <h1 className="font-semibold text-xl sm:text-2xl leading-[29px] text-center text-white">
-                    Master Skill Gap Analysis
-                  </h1>
-                </div>
-                <div className="flex flex-row justify-center items-center">
-                  <p className="font-medium text-xs leading-[15px] text-center text-white" >
-                    Current skill demands and availability
-                  </p>
-                </div>
-              </div>
-
-              {/* Mobile View */}
-              <div className="block md:hidden">
-                {skills.map((skill, index) => (
-                  <div key={index} className="bg-[#111827] p-4 mb-2 rounded-lg border border-white/10">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-semibold text-lg text-white">{skill.name}</h3>
-                      <div className={`px-2 py-1 rounded-md ${getDemandStyle(skill.demandColor)}`}>
-                        <span className="font-medium text-sm">
-                          {skill.demand}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="space-y-1">
-                      <div className="flex justify-between">
-                        <span className="text-white/70 text-sm">Location:</span>
-                        <span className="text-white text-sm">{skill.location}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-white/70 text-sm">Experience:</span>
-                        <span className="text-white text-sm">{skill.experience}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Desktop/Tablet View - Table Layout */}
-              <div className="hidden md:block overflow-x-auto">
-                <div className="flex flex-row items-center h-[52px] bg-[#111827] px-4 min-w-[700px] lg:min-w-[800px] xl:min-w-[900px]">
-                  <div className="w-[150px] sm:w-[200px] lg:w-[250px] flex justify-start">
-                    <span className="font-bold text-sm leading-[21px] text-white/70">
-                      SKILL NAME
-                    </span>
-                  </div>
-                  <div className="w-[150px] sm:w-[200px] lg:w-[280px] flex justify-start">
-                    <span className="font-bold text-sm leading-[21px] text-white/70">
-                      LOCATION
-                    </span>
-                  </div>
-                  <div className="w-[150px] sm:w-[200px] lg:w-[280px] flex justify-start">
-                    <span className="font-bold text-sm leading-[21px] text-white/70">
-                      EXPERIENCE REQUIRED
-                    </span>
-                  </div>
-                  <div className="flex-1 flex justify-end">
-                    <span className="font-bold text-sm leading-[21px] text-white/70">
-                      DEMAND LEVEL
-                    </span>
-                  </div>
-                </div>
-
-                {skills.map((skill, index) => (
-                  <div key={index} className="flex flex-row items-center h-[52px] bg-[#111827] px-4 border-b border-white/10 min-w-[700px] lg:min-w-[800px] xl:min-w-[900px] mb-2">
-                    <div className="w-[150px] sm:w-[200px] lg:w-[250px] flex justify-start">
-                      <span className="font-normal text-sm sm:text-base leading-[24px] text-white truncate">
-                        {skill.name}
-                      </span>
-                    </div>
-                    <div className="w-[150px] sm:w-[200px] lg:w-[280px] flex justify-start">
-                      <span className="font-normal text-sm sm:text-base leading-[24px] text-white truncate">
-                        {skill.location}
-                      </span>
-                    </div>
-                    <div className="w-[150px] sm:w-[200px] lg:w-[280px] flex justify-start">
-                      <span className="font-normal text-sm sm:text-base leading-[24px] text-white truncate">
-                        {skill.experience}
-                      </span>
-                    </div>
-                    <div className="flex-1 flex justify-end">
-                      <div className="w-[80px] lg:w-[100px] justify-center h-[24px] flex">
-                        <div className={`px-2 pb-1 rounded-md ${getDemandStyle(skill.demandColor)}`}>
-                          <span className="font-medium text-sm sm:text-base leading-[24px]">
-                            {skill.demand}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <SkillGapTable
+            title="Master Skill Gap Analysis"
+            subtitle="Current skill demands and availability"
+            skills={skills}
+            columns={tableColumns}
+          />
         </div>
       </div>
     </div>

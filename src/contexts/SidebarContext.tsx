@@ -15,8 +15,7 @@ export function SidebarProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024); // lg breakpoint
-      // On mobile, always collapse sidebar
+      setIsMobile(window.innerWidth < 1024); 
       if (window.innerWidth < 1024) {
         setIsCollapsed(true);
       }

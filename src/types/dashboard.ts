@@ -30,3 +30,26 @@ export interface DailyChart {
   x: number;
   y: number;
 }
+
+export interface Skill {
+  name: string;
+  location: string;
+  experience: string;
+  demand: string;
+  demandColor: string;
+}
+
+export interface TableColumn {
+  key: string;
+  label: string;
+  width: string;
+  align?: 'start' | 'end' | 'center';
+}
+
+export interface SkillGapTableProps {
+  title: string;
+  subtitle: string;
+  skills: Skill[];
+  columns: TableColumn[];
+  className?: string;
+}

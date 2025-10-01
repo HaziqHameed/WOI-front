@@ -7,7 +7,6 @@ export default function WeeklyRegistrationsChart() {
   const [selectedPeriod, setSelectedPeriod] = useState('Month');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Scale factor: new width/old width = 438.5/538.5 ≈ 0.814
   const scale = 0.814;
   return (
     <div className="flex w-full">
