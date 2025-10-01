@@ -1,10 +1,11 @@
 "use client"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
+import { useSidebar } from "@/contexts/SidebarContext";
 
 export default function Sidebar() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const { isCollapsed, setIsCollapsed, isMobile } = useSidebar();
   const pathname = usePathname();
 
   return (
@@ -16,12 +17,14 @@ export default function Sidebar() {
         aria-label="Sidebar"
       >
         <div className="relative w-full h-full">
-          <div
-            className={`absolute ${
-              isCollapsed ? "left-[20px]" : "left-[30px]" //note: 16px will work better
-            } top-3 w-[31px] h-[31px] cursor-pointer hover:opacity-80 transition-opacity`}
-            onClick={() => setIsCollapsed(!isCollapsed)}
-          >
+          {/* Collapse/Expand Button - Hidden on mobile */}
+          {!isMobile && (
+            <div
+              className={`absolute ${
+                isCollapsed ? "left-[20px]" : "left-[30px]"
+              } top-3 w-[31px] h-[31px] cursor-pointer hover:opacity-80 transition-opacity`}
+              onClick={() => setIsCollapsed(!isCollapsed)}
+            >
             <svg
               width={31}
               height={31}
@@ -61,7 +64,8 @@ export default function Sidebar() {
                 </clipPath>
               </defs>
             </svg>
-          </div>
+            </div>
+          )}
 
           <div
             className={`absolute ${
@@ -281,13 +285,6 @@ export default function Sidebar() {
           </div>
         </div>
       </aside>
-
-      {!isCollapsed && (
-        <div
-          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
-          onClick={() => setIsCollapsed(true)}
-        />
-      )}
     </>
   );
 }
