@@ -7,8 +7,8 @@ export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <header className="absolute top-0 left-0 w-full h-[78px] border-b border-white/22 bg-cover bg-center">
-            <div className="max-w-screen-2xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <header className="fixed bg-gray-900 top-0 left-0 w-full h-[78px] border-b border-white/22 bg-cover bg-center z-50">
+            <div className="w-full max-w-none md:max-w-screen-2xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                 <div className="flex items-center gap-3 sm:gap-6">
                     <div className="w-[80px] sm:w-[105px] h-[40px] sm:h-[50px] flex items-center">
                         <Image 
@@ -85,7 +85,7 @@ export default function Header() {
             </div>
 
             {isMenuOpen && (
-                <div className="lg:hidden absolute top-[78px] left-0 w-full bg-black/95 backdrop-blur-sm border-b border-white/22 z-50">
+                <div className="lg:hidden fixed top-[78px] left-0 w-full bg-black/95 backdrop-blur-sm border-b border-white/22 z-40">
                     <nav className="flex flex-col px-4 py-6 gap-4">
                         <Link className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
                         <Link className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="/" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>

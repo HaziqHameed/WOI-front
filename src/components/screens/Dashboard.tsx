@@ -74,10 +74,8 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Table */}
           <div className="flex items-center justify-center mt-10">
             <div className="w-full">
-              {/* Header Section */}
               <div className="w-full h-[100px] bg-[#111827] rounded-t-[8px] box-border px-4 flex flex-col justify-center items-start gap-2 mb-2">
                 <div className="flex flex-row items-center gap-1 w-full h-[29px]">
                   <h1 className="font-semibold text-xl sm:text-2xl leading-[29px] text-center text-white">
@@ -91,7 +89,7 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              {/* Mobile View - Card Layout */}
+              {/* Mobile View */}
               <div className="block md:hidden">
                 {skills.map((skill, index) => (
                   <div key={index} className="bg-[#111827] p-4 mb-2 rounded-lg border border-white/10">
@@ -119,50 +117,48 @@ export default function Dashboard() {
 
               {/* Desktop/Tablet View - Table Layout */}
               <div className="hidden md:block overflow-x-auto">
-                {/* Table Header */}
-                <div className="flex flex-row items-center h-[52px] bg-[#111827] px-4 min-w-[800px]">
-                  <div className="w-[200px] sm:w-[250px] flex justify-start">
+                <div className="flex flex-row items-center h-[52px] bg-[#111827] px-4 min-w-[700px] lg:min-w-[800px] xl:min-w-[900px]">
+                  <div className="w-[150px] sm:w-[200px] lg:w-[250px] flex justify-start">
                     <span className="font-bold text-sm leading-[21px] text-white/70">
                       SKILL NAME
                     </span>
                   </div>
-                  <div className="w-[200px] sm:w-[280px] flex justify-start">
+                  <div className="w-[150px] sm:w-[200px] lg:w-[280px] flex justify-start">
                     <span className="font-bold text-sm leading-[21px] text-white/70">
                       LOCATION
                     </span>
                   </div>
-                  <div className="w-[200px] sm:w-[280px] flex justify-start">
+                  <div className="w-[150px] sm:w-[200px] lg:w-[280px] flex justify-start">
                     <span className="font-bold text-sm leading-[21px] text-white/70">
                       EXPERIENCE REQUIRED
                     </span>
                   </div>
-                  <div className="w-[120px] flex justify-end">
+                  <div className="flex-1 flex justify-end">
                     <span className="font-bold text-sm leading-[21px] text-white/70">
                       DEMAND LEVEL
                     </span>
                   </div>
                 </div>
 
-                {/* Table Rows */}
                 {skills.map((skill, index) => (
-                  <div key={index} className="flex flex-row items-center h-[52px] bg-[#111827] px-4 border-b border-white/10 min-w-[800px]">
-                    <div className="w-[200px] sm:w-[250px] flex justify-start">
+                  <div key={index} className="flex flex-row items-center h-[52px] bg-[#111827] px-4 border-b border-white/10 min-w-[700px] lg:min-w-[800px] xl:min-w-[900px] mb-2">
+                    <div className="w-[150px] sm:w-[200px] lg:w-[250px] flex justify-start">
                       <span className="font-normal text-sm sm:text-base leading-[24px] text-white truncate">
                         {skill.name}
                       </span>
                     </div>
-                    <div className="w-[200px] sm:w-[280px] flex justify-start">
+                    <div className="w-[150px] sm:w-[200px] lg:w-[280px] flex justify-start">
                       <span className="font-normal text-sm sm:text-base leading-[24px] text-white truncate">
                         {skill.location}
                       </span>
                     </div>
-                    <div className="w-[200px] sm:w-[280px] flex justify-start">
+                    <div className="w-[150px] sm:w-[200px] lg:w-[280px] flex justify-start">
                       <span className="font-normal text-sm sm:text-base leading-[24px] text-white truncate">
                         {skill.experience}
                       </span>
                     </div>
-                    <div className="w-[120px] flex justify-end">
-                      <div className="w-[100px] justify-center h-[24px] flex">
+                    <div className="flex-1 flex justify-end">
+                      <div className="w-[80px] lg:w-[100px] justify-center h-[24px] flex">
                         <div className={`px-2 pb-1 rounded-md ${getDemandStyle(skill.demandColor)}`}>
                           <span className="font-medium text-sm sm:text-base leading-[24px]">
                             {skill.demand}

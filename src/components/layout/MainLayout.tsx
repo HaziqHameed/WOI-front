@@ -12,7 +12,7 @@ function MainLayoutContent({ children }: MainLayoutProps) {
   const { isCollapsed, isMobile } = useSidebar();
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen w-full bg-[#1a202e]">
       <Header />
       <div className="flex">
         <Sidebar />

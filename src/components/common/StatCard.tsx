@@ -11,7 +11,7 @@ export default function StatCard({ stat }: StatCardProps) {
         w-full
         min-h-[80px]
         sm:min-h-[85px]
-        md:min-h-[90px]
+        md:min-h-[88px]
         lg:min-h-[95px]
         xl:min-h-[100px]
         rounded-lg
@@ -61,7 +61,7 @@ export default function StatCard({ stat }: StatCardProps) {
         aria-hidden
       />
 
-      <div className="relative flex flex-col items-start p-2 sm:p-3 md:p-4 gap-1 sm:gap-2 w-full h-full box-border">
+      <div className="relative flex flex-col items-start p-2 sm:p-3 md:p-3 lg:p-4 gap-1 sm:gap-2 w-full h-full box-border">
         <div className="flex flex-row justify-between items-center gap-4 sm:gap-6 w-full">
           <div className="flex flex-col items-start gap-1 flex-1 min-w-0 ">
             <span
@@ -73,16 +73,16 @@ export default function StatCard({ stat }: StatCardProps) {
               <span className="truncate">{stat.title}</span>
             </span>
 
-            <span className="font-poppins font-semibold text-base sm:text-lg md:text-xl leading-[20px] sm:leading-[22px] text-white">
+            <span className="font-poppins font-semibold text-base sm:text-lg md:text-lg lg:text-xl leading-[20px] sm:leading-[22px] text-white">
               {stat.value}
             </span>
           </div>
 
             <div
-            className="flex items-center mt-3 justify-center rounded flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-[rgba(0,0,0,0.2)]"
+            className="flex items-center mt-3 justify-center rounded flex-shrink-0 w-8 h-8 sm:w-9 sm:h-9 md:w-9 md:h-9 lg:w-10 lg:h-10 bg-[rgba(0,0,0,0.2)]"
             aria-hidden
           >
-            <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex items-center justify-center">
+            <div className="w-4 h-4 sm:w-5 sm:h-5 md:w-5 md:h-5 lg:w-6 lg:h-6 flex items-center justify-center">
               {stat.icon}
             </div>
           </div>

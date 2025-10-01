@@ -13,11 +13,11 @@ export default function Sidebar() {
       <aside
         className={`fixed left-0 top-[78px] ${
           isCollapsed ? "w-[80px]" : "w-[294px]"
-        } h-[calc(100vh-78px)] bg-[#1E2839] border-r border-[#1F2937] backdrop-blur-sm transition-all duration-300 z-40 overflow-y-auto`}
+        } h-full bg-[#1E2839] border-r border-[#1F2937] backdrop-blur-sm transition-all duration-300 z-40 overflow-y-auto`}
         aria-label="Sidebar"
       >
         <div className="relative w-full h-full">
-          {/* Collapse/Expand Button - Hidden on mobile */}
+          {/* Hidden on mobile */}
           {!isMobile && (
             <div
               className={`absolute ${
