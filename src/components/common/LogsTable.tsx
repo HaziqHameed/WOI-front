@@ -258,7 +258,7 @@ export default function LogsTable({
       <div className="hidden md:block overflow-x-auto">
         <div className="min-w-[800px] lg:min-w-[1318px] overflow-hidden">
           {/* Column Headers */}
-          <div className="bg-white/10 gap-5 flex-row justify-between px-8 py-3.5 flex items-center">
+          <div className="bg-white/10 px-8 py-3.5 flex items-center">
             {columns.map((column) => (
               <div 
                 key={column.key}
@@ -277,9 +277,12 @@ export default function LogsTable({
             {sortedLogs.map((log, index) => (
               <div key={index} className="bg-[#111827] px-8 py-3.5 flex items-center">
                 {columns.map((column) => (
-                  <React.Fragment key={column.key}>
+                  <div 
+                    key={column.key}
+                    className={`${column.width || ''} ${column.className || ''}`}
+                  >
                     {renderCellValue(column, log, index)}
-                  </React.Fragment>
+                  </div>
                 ))}
               </div>
             ))}

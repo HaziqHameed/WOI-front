@@ -98,7 +98,7 @@ export const logsTableColumns: LogsTableColumn[] = [
     className: 'flex items-center gap-1 ml-[85px]',
     render: (value, row) => (
       <div className="flex items-center w-[68px]">
-        <span className={`${row.levelColor} px-2 py-1 rounded-md text-sm font-medium w-fit ml-[100px]`}>
+        <span className={`${row.levelColor} px-2 py-1 rounded-md text-sm font-medium w-fit`}>
           {String(value)}
         </span>
       </div>
@@ -112,7 +112,7 @@ export const logsTableColumns: LogsTableColumn[] = [
     className: 'flex items-center gap-1 ml-[83px]',
     render: (value) => (
       <div className="flex items-center gap-1">
-        <span className="text-white text-sm font-medium w-[125px] ml-52">{String(value)}</span>
+        <span className="text-white text-sm font-medium w-[125px]">{String(value)}</span>
       </div>
     )
   },
@@ -123,7 +123,7 @@ export const logsTableColumns: LogsTableColumn[] = [
     width: 'w-[83px]',
     className: 'ml-[107px]',
     render: (value) => (
-      <div className="w-88 ml-24">
+      <div className="w-88">
         <span className="text-white text-sm font-medium flex-1">{String(value)}</span>
       </div>
     )
@@ -135,7 +135,7 @@ export const logsTableColumns: LogsTableColumn[] = [
     width: '',
     className: 'flex items-center gap-1 ml-auto mr-[98px]',
     render: (value) => (
-      <div className="flex items-center gap-1 ml-auto mr-46">
+      <div className="flex items-center gap-1 ml-auto mr-12">
         <span className="text-white text-sm font-medium w-[77px]">{String(value)}</span>
       </div>
     )

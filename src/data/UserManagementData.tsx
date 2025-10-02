@@ -43,10 +43,10 @@ export const UserManagementTableColumns: LogsTableColumn[] = [
     label: 'Email',
     sortable: false,
     width: 'w-[250px]',
-    className: 'flex items-center gap-1',
+    className: 'flex items-center gap-1 ml-26',
     render: (value) => (
       <div className="flex items-center w-[235px]">
-        <span className="text-white text-sm font-medium ml-26 ">
+        <span className="text-white text-sm font-medium ">
           {String(value)}
         </span>
       </div>
@@ -57,9 +57,9 @@ export const UserManagementTableColumns: LogsTableColumn[] = [
     label: 'University',
     sortable: false,
     width: 'w-[150px]',
-    className: 'flex items-center gap-1',
+    className: 'flex items-center gap-1 ml-21 ',
     render: (value) => (
-      <div className="flex items-center gap-1 ml-21 w-[70px]">
+      <div className="flex items-center gap-1 w-[70px]">
         <span className="text-white text-sm font-medium">{String(value)}</span>
       </div>
     )
@@ -69,11 +69,11 @@ export const UserManagementTableColumns: LogsTableColumn[] = [
     label: 'Status',
     sortable: false,
     width: 'w-[120px]',
-    className: 'flex items-center',
+    className: 'flex items-center ml-36',
     render: (value) => {
       const isActive = String(value) === 'Active';
       return (
-        <div className="flex flex-row justify-center items-center px-2 py-1 gap-1 w-[67px] h-6 bg-[#B4FFD1] rounded-md ml-36">
+        <div className="flex flex-row justify-center items-center px-2 py-1 gap-1 w-[67px] h-6 bg-[#B4FFD1] rounded-md ">
           <span className={`${poppins.className} font-medium text-base leading-6 text-[#166534]`}>
             {String(value)}
           </span>
@@ -86,9 +86,9 @@ export const UserManagementTableColumns: LogsTableColumn[] = [
     label: 'Joined',
     sortable: false,
     width: 'w-[120px]',
-    className: 'flex items-center gap-1',
+    className: 'flex items-center gap-1 mr-30 ml-auto',
     render: (value) => (
-      <div className="flex items-center gap-1 ml-auto mr-30">
+      <div className="flex items-center gap-1  ">
         <span className="text-white text-sm font-medium">{String(value)}</span>
       </div>
     )
