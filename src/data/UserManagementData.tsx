@@ -45,8 +45,8 @@ export const UserManagementTableColumns: LogsTableColumn[] = [
     width: 'w-[250px]',
     className: 'flex items-center gap-1',
     render: (value) => (
-      <div className="flex items-center ml-26 w-[235px]">
-        <span className="text-white text-sm font-medium">
+      <div className="flex items-center w-[235px]">
+        <span className="text-white text-sm font-medium ml-26 ">
           {String(value)}
         </span>
       </div>

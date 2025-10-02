@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PageHeader from "../common/PageHeader";
 import { Dropdown, OptionsBar, SearchInput } from "../common/ui";
 import { StatusOptions, tabs, UserManagementTableColumns } from "@/data/UserManagementData";
-import UserManagementTable from "../common/UserManagementTable";
+import LogsTable from "../common/LogsTable";
 import { logs, logsTableColumns, userManagementData } from "@/data/OperationalLogsData";
 
 
@@ -43,9 +43,10 @@ export default function UserManagement() {
         </div>
       </div>
 
-      <UserManagementTable
+      <LogsTable
               logs={userManagementData} 
               columns={UserManagementTableColumns}
+              isLive={false} 
               totalEntries={1247} 
             />
     </>
