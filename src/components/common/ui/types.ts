@@ -69,3 +69,34 @@ export interface FilterSectionProps {
   title?: string;
   description?: string;
 }
+
+// DataTable Types
+export interface DataTableColumn<T = any> {
+  key: string;
+  label: string;
+  sortable?: boolean;
+  width?: string;
+  className?: string;
+  render?: (value: any, row: T, index: number) => React.ReactNode;
+  mobileRender?: (row: T, index: number) => React.ReactNode;
+}
+
+export interface DataTableHeaderInfo {
+  title?: string;
+  subtitle?: string;
+  isLive?: boolean;
+  totalEntries?: number;
+  customStatus?: React.ReactNode;
+}
+
+export interface DataTableProps<T = any> {
+  data: T[];
+  columns: DataTableColumn<T>[];
+  headerInfo?: DataTableHeaderInfo;
+  className?: string;
+  onRowClick?: (row: T, index: number) => void;
+  loading?: boolean;
+  emptyMessage?: string;
+  mobileCardClassName?: string;
+  desktopTableClassName?: string;
+}
