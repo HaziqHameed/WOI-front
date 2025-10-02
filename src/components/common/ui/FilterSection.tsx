@@ -25,7 +25,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
             </div>
           )}
           
-          <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 sm:gap-5 flex-1 w-full">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 sm:gap-5 flex-1 w-full justify-between">
             {children}
           </div>
         </div>
