@@ -46,8 +46,8 @@ function DataTable<T extends Record<string, any>>({
     });
   }, [data, sortConfig]);
 
-  const SortIcon = ({ column }: { column: DataTableColumn<T> }) => {
-    if (!column.sortable) return null;
+  const SortIcon = ({ column }: { column?: DataTableColumn<T> }) => {
+    if (!column?.sortable) return null;
 
     return (
       <div 
@@ -68,7 +68,8 @@ function DataTable<T extends Record<string, any>>({
     );
   };
 
-  const renderCellValue = (column: DataTableColumn<T>, row: T, index: number) => {
+  const renderCellValue = (column: DataTableColumn<T> | undefined, row: T, index: number) => {
+    if (!column) return null;
     const value = row[column.key];
     if (column.render) {
       return column.render(value, row, index);
@@ -180,9 +181,7 @@ function DataTable<T extends Record<string, any>>({
               {columns.map((column, index) => (
                 <div 
                   key={column.key} 
-                  className={`flex items-center gap-1 ${column.width || 'flex-1'} ${column.className || ''} ${
-                    index > 0 ? 'ml-[83px]' : ''
-                  }`}
+                  className={`flex items-center gap-1 ${column.width || 'flex-1'} ${column.className || ''}`}
                 >
                   <span className="text-white/70 text-lg font-medium">
                     {column.label.toUpperCase()}
@@ -202,12 +201,10 @@ function DataTable<T extends Record<string, any>>({
                   }`}
                   onClick={() => onRowClick?.(row, index)}
                 >
-                  {columns.map((column, colIndex) => (
+                  {columns.map((column) => (
                     <div 
                       key={column.key} 
-                      className={`flex items-center ${column.width || 'flex-1'} ${column.className || ''} ${
-                        colIndex > 0 ? 'ml-[83px]' : ''
-                      }`}
+                      className={`${column.width || 'flex-1'} ${column.className || ''}`}
                     >
                       {renderCellValue(column, row, index)}
                     </div>
