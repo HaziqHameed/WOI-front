@@ -12,7 +12,7 @@ import {
   DropdownOption
 } from "../common/ui";
 import { LogEntry } from "../../types/operationalLogs";
-import { logLevelOptions, logs } from "@/data/OperationalLogsData";
+import { logLevelOptions, logs, logsTableColumns } from "@/data/OperationalLogsData";
 
 
 
@@ -151,6 +151,7 @@ export default function OperationalLogs() {
 
       <LogsTable 
         logs={logs} 
+        columns={logsTableColumns}
         isLive={true} 
         totalEntries={1247} 
       />

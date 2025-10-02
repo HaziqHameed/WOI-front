@@ -2,7 +2,9 @@
 import React, { useState } from "react";
 import PageHeader from "../common/PageHeader";
 import { Dropdown, OptionsBar, SearchInput } from "../common/ui";
-import { StatusOptions, tabs } from "@/data/UserManagementData";
+import { StatusOptions, tabs, UserManagementTableColumns } from "@/data/UserManagementData";
+import LogsTable from "../common/LogsTable";
+import { logs, logsTableColumns, userManagementData } from "@/data/OperationalLogsData";
 
 
 export default function UserManagement() {
@@ -23,23 +25,30 @@ export default function UserManagement() {
         onTabChange={setActiveTab}
       />
 
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center p-0 gap-4 sm:gap-6 w-full max-w-[659px] mt-7 ml-0 sm:ml-6 px-4 sm:px-0">
-  <div className="w-full sm:w-auto sm:flex-1 sm:max-w-[416px]">
-    <SearchInput
-      value={searchQuery}
-      onChange={setSearchQuery}
-      placeholder="Search students..."
-    />
-  </div>
-  <div className="w-full sm:w-[219px] sm:flex-none">
-    <Dropdown
-      options={StatusOptions}
-      value={logLevel}
-      onChange={setLogLevel}
-      placeholder="All Status"
-    />
-  </div>
-</div>
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center p-0 gap-4 sm:gap-6 w-full max-w-[659px] mt-7 ml-0 sm:ml-6 px-4 sm:px-0 mb-10">
+        <div className="w-full sm:w-auto sm:flex-1 sm:max-w-[416px]">
+          <SearchInput
+            value={searchQuery}
+            onChange={setSearchQuery}
+            placeholder="Search students..."
+          />
+        </div>
+        <div className="w-full sm:w-[219px] sm:flex-none">
+          <Dropdown
+            options={StatusOptions}
+            value={logLevel}
+            onChange={setLogLevel}
+            placeholder="All Status"
+          />
+        </div>
+      </div>
+
+      <LogsTable
+              logs={userManagementData} 
+              columns={UserManagementTableColumns}
+              isLive={false} 
+              totalEntries={1247} 
+            />
     </>
   );
 }
