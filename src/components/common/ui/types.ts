@@ -100,3 +100,16 @@ export interface DataTableProps<T = unknown> {
   mobileCardClassName?: string;
   desktopTableClassName?: string;
 }
+
+export interface OptionsBarTab {
+  id: string;
+  label: string;
+  disabled?: boolean;
+}
+
+export interface OptionsBarProps {
+  tabs: OptionsBarTab[];
+  activeTab: string;
+  onTabChange: (tabId: string) => void;
+  className?: string;
+}
