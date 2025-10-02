@@ -16,7 +16,7 @@ export default function PageHeader({
 }: PageHeaderProps) {
   const baseClasses = compact 
     ? "w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6"
-    : "w-full px-4 sm:px-6 lg:px-8 md:-mt-7 sm:mt-0 sm:py-8 lg:py-10";
+    : "w-full px-4 sm:px-6 lg:px-8 md:-mt-9 sm:mt-0 sm:py-8 lg:py-10";
     
   const titleClasses = compact
     ? "font-inter font-semibold text-xl sm:text-2xl lg:text-3xl leading-tight text-white"
