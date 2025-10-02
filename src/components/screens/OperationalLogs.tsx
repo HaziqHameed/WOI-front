@@ -1,29 +1,104 @@
 "use client"
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import PageHeader from "../common/PageHeader";
+import {
+  DateInput,
+  Dropdown,
+  SearchInput,
+  Button,
+  IconButton,
+  FilterSection,
+  DropdownOption
+} from "../common/ui";
+import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
+
 
 export default function OperationalLogs() {
-const [startDate, setStartDate] = useState('');
+  const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [logLevel, setLogLevel] = useState('All Levels');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
 
-  const logLevels = ['All Levels', 'Info', 'Error', 'Critical'];
+  const logLevelOptions: DropdownOption[] = [
+    { value: 'All Levels', label: 'All Levels' },
+    { value: 'Info', label: 'Info' },
+    { value: 'Error', label: 'Error' },
+    { value: 'Critical', label: 'Critical' }
+  ];
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  const logs = [
+    {
+      timestamp: '2024-01-15 14:32:15',
+      level: 'ERROR',
+      levelColor: 'bg-[#FF6C67] text-[#D00000]',
+      service: 'Authentication',
+      message: 'Failed login attempt from IP 192.168.1.100',
+      userId: 'USR_12847'
+    },
+    {
+      timestamp: '2024-01-15 14:31:42',
+      level: 'INFO',
+      levelColor: 'bg-[#92ABFF] text-[#1E40AF]',
+      service: 'API Gateway',
+      message: 'API request processed successfully - GET /api/jobs',
+      userId: 'USR_15632'
+    },
+    {
+      timestamp: '2024-01-15 14:32:15',
+      level: 'WARNING',
+      levelColor: 'bg-[#FFBDBA] text-[#9B1F1F]',
+      service: 'Database',
+      message: 'High connection pool usage detected - 85% capacity',
+      userId: 'SYSTEM'
+    },
+    {
+      timestamp: '2024-01-15 14:32:15',
+      level: 'INFO',
+      levelColor: 'bg-[#92ABFF] text-[#1E40AF]',
+      service: 'User Service',
+      message: 'New user registration completed successfully',
+      userId: 'USR_18940'
+    },
+    {
+      timestamp: '2024-01-15 14:32:15',
+      level: 'CRITICAL',
+      levelColor: 'bg-[#DFB8FF] text-[#6B21A8]',
+      service: 'Job Service',
+      message: 'Service temporarily unavailable - high load detected',
+      userId: 'SYSTEM'
+    },
+    {
+      timestamp: '2024-01-15 14:32:15',
+      level: 'INFO',
+      levelColor: 'bg-[#92ABFF] text-[#1E40AF]',
+      service: 'Authentication',
+      message: 'User session started - successful login',
+      userId: 'USR_12847'
+    },
+    {
+      timestamp: '2024-01-15 14:32:15',
+      level: 'WARNING',
+      levelColor: 'bg-[#FFBDBA] text-[#9B1F1F]',
+      service: 'API Gateway',
+      message: 'Rate limit exceeded for IP 10.0.0.25',
+      userId: 'USR_19823'
+    },
+    {
+      timestamp: '2024-01-15 14:32:15',
+      level: 'INFO',
+      levelColor: 'bg-[#92ABFF] text-[#1E40AF]',
+      service: 'Database',
+      message: 'Backup process completed successfully',
+      userId: ''
+    }
+  ];
 
   return (
     <>
@@ -33,181 +108,54 @@ const [startDate, setStartDate] = useState('');
         ariaLabel="Operational logs header"
       />
 
-     <div className="w-full">
-      <div className="w-full px-2 sm:px-4 py-6">
-        <div className="flex flex-col lg:flex-row items-start lg:items-end gap-4 lg:gap-5 sm:px-5 py-0 rounded-t-2xl">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 sm:gap-5 flex-1 w-full">
-            <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 sm:gap-5 w-full sm:w-auto">
-              <div className="flex flex-col items-start gap-2 w-full sm:w-auto">
-                <label className="font-inter font-bold text-sm sm:text-base leading-[19px] text-white">
-                  Date Range
-                </label>
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full sm:w-auto">
-                  <div className="relative flex flex-row items-center px-2 py-1 gap-3 w-full sm:w-[143px] h-12 border border-white rounded-lg">
-                    <input
-                      type="date"
-                      value={startDate}
-                      onChange={(e) => setStartDate(e.target.value)}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    />
-                    <span className="font-inter font-medium text-sm sm:text-base leading-[19px] text-white flex-1 pointer-events-none truncate">
-                      {startDate || 'dd-mm-yyyy'}
-                    </span>
-                    <svg
-                      width={15}
-                      height={16}
-                      viewBox="0 0 15 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="pointer-events-none flex-shrink-0"
-                    >
-                      <g clipPath="url(#clip0_1264_52302)">
-                        <path
-                          d="M3.8571 1.32109C3.90666 0.716975 4.03745 0.498456 4.35692 0.507561C4.47 0.511955 4.5792 0.5537 4.67014 0.627291C4.75417 0.709611 4.8156 0.815847 4.84757 0.934129C4.88173 1.0484 4.8709 1.17905 4.88048 1.31153H10.1348C10.1348 1.22959 10.1323 1.14719 10.1348 1.06479C10.1469 0.730632 10.3622 0.495269 10.648 0.502098C10.925 0.508471 11.127 0.74611 11.1332 1.07434C11.1332 1.14764 11.1332 1.22094 11.1332 1.32109H11.3069C11.8276 1.32109 12.3482 1.32109 12.8688 1.32109C14.0684 1.32564 14.9985 2.3363 14.9997 3.64741C15.0022 6.82232 15.0022 9.99738 14.9997 13.1726C14.9997 14.4873 14.0755 15.4989 12.8755 15.4998C9.29347 15.5026 5.71143 15.5026 2.12939 15.4998C0.926906 15.4998 0.0051558 14.4855 0.0051558 13.1703C0.00348973 10.0009 0.00348973 6.83158 0.0051558 3.66244C0.00140715 2.32992 0.929403 1.32109 2.15063 1.32109C2.661 1.32109 3.17123 1.32109 3.68133 1.32109H3.8571ZM1.00105 6.01016V6.19817C1.00105 8.50871 1.00105 10.819 1.00105 13.1289C1.00105 13.9265 1.45921 14.4309 2.18895 14.4309H12.8101C13.539 14.4309 13.9989 13.9274 13.9989 13.1293C13.9989 10.8191 13.9989 8.50887 13.9989 6.19863V6.01016H1.00105ZM1.00479 4.89662H14.0001C14.0001 4.46868 14.0026 4.05395 14.0001 3.63922C13.9947 2.93313 13.5182 2.41551 12.8697 2.41005C12.3386 2.40732 11.8076 2.41005 11.2761 2.41005C11.2319 2.41005 11.1874 2.41733 11.1332 2.42188C11.1332 2.50929 11.1332 2.58259 11.1332 2.65588C11.127 2.98366 10.925 3.22176 10.648 3.22858C10.371 3.23541 10.1482 2.99732 10.1348 2.66499C10.1319 2.58259 10.1348 2.50019 10.1348 2.41961H4.87465C4.86965 2.53615 4.87465 2.6445 4.85882 2.75012C4.84342 2.88688 4.78104 3.01213 4.68431 3.10049C4.58759 3.18886 4.46375 3.23374 4.33788 3.22605C4.21201 3.21835 4.09352 3.15865 4.00641 3.05904C3.91931 2.95942 3.8701 2.82735 3.86876 2.68957C3.86584 2.59852 3.86876 2.51157 3.86876 2.41642C3.22857 2.41642 2.6088 2.39184 1.9911 2.4237C1.46754 2.45102 1.0402 2.93358 1.00979 3.50355C0.985635 3.96153 1.00521 4.42452 1.00521 4.89753L1.00479 4.89662Z"
-                          fill="#E8EAED"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_1264_52302">
-                          <rect width="15" height="15" fill="white" transform="translate(0 0.5)" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-
-                  <div className="relative flex flex-row items-center px-2 py-1 gap-3 w-full sm:w-[143px] h-12 border border-white rounded-lg">
-                    <input
-                      type="date"
-                      value={endDate}
-                      onChange={(e) => setEndDate(e.target.value)}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    />
-                    <span className="font-inter font-medium text-sm sm:text-base leading-[19px] text-white flex-1 pointer-events-none truncate">
-                      {endDate || 'dd-mm-yyyy'}
-                    </span>
-                    <svg
-                      width={15}
-                      height={16}
-                      viewBox="0 0 15 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="pointer-events-none flex-shrink-0"
-                    >
-                      <g clipPath="url(#clip0_1264_52302_2)">
-                        <path
-                          d="M3.8571 1.32109C3.90666 0.716975 4.03745 0.498456 4.35692 0.507561C4.47 0.511955 4.5792 0.5537 4.67014 0.627291C4.75417 0.709611 4.8156 0.815847 4.84757 0.934129C4.88173 1.0484 4.8709 1.17905 4.88048 1.31153H10.1348C10.1348 1.22959 10.1323 1.14719 10.1348 1.06479C10.1469 0.730632 10.3622 0.495269 10.648 0.502098C10.925 0.508471 11.127 0.74611 11.1332 1.07434C11.1332 1.14764 11.1332 1.22094 11.1332 1.32109H11.3069C11.8276 1.32109 12.3482 1.32109 12.8688 1.32109C14.0684 1.32564 14.9985 2.3363 14.9997 3.64741C15.0022 6.82232 15.0022 9.99738 14.9997 13.1726C14.9997 14.4873 14.0755 15.4989 12.8755 15.4998C9.29347 15.5026 5.71143 15.5026 2.12939 15.4998C0.926906 15.4998 0.0051558 14.4855 0.0051558 13.1703C0.00348973 10.0009 0.00348973 6.83158 0.0051558 3.66244C0.00140715 2.32992 0.929403 1.32109 2.15063 1.32109C2.661 1.32109 3.17123 1.32109 3.68133 1.32109H3.8571ZM1.00105 6.01016V6.19817C1.00105 8.50871 1.00105 10.819 1.00105 13.1289C1.00105 13.9265 1.45921 14.4309 2.18895 14.4309H12.8101C13.539 14.4309 13.9989 13.9274 13.9989 13.1293C13.9989 10.8191 13.9989 8.50887 13.9989 6.19863V6.01016H1.00105ZM1.00479 4.89662H14.0001C14.0001 4.46868 14.0026 4.05395 14.0001 3.63922C13.9947 2.93313 13.5182 2.41551 12.8697 2.41005C12.3386 2.40732 11.8076 2.41005 11.2761 2.41005C11.2319 2.41005 11.1874 2.41733 11.1332 2.42188C11.1332 2.50929 11.1332 2.58259 11.1332 2.65588C11.127 2.98366 10.925 3.22176 10.648 3.22858C10.371 3.23541 10.1482 2.99732 10.1348 2.66499C10.1319 2.58259 10.1348 2.50019 10.1348 2.41961H4.87465C4.86965 2.53615 4.87465 2.6445 4.85882 2.75012C4.84342 2.88688 4.78104 3.01213 4.68431 3.10049C4.58759 3.18886 4.46375 3.23374 4.33788 3.22605C4.21201 3.21835 4.09352 3.15865 4.00641 3.05904C3.91931 2.95942 3.8701 2.82735 3.86876 2.68957C3.86584 2.59852 3.86876 2.51157 3.86876 2.41642C3.22857 2.41642 2.6088 2.39184 1.9911 2.4237C1.46754 2.45102 1.0402 2.93358 1.00979 3.50355C0.985635 3.96153 1.00521 4.42452 1.00521 4.89753L1.00479 4.89662Z"
-                          fill="#E8EAED"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_1264_52302_2">
-                          <rect width="15" height="15" fill="white" transform="translate(0 0.5)" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-
-              <div ref={dropdownRef} className="flex flex-col items-start gap-2 w-full sm:w-auto relative">
-                <label className="font-inter font-bold text-sm sm:text-base leading-[19px] text-white">
-                  Log Level
-                </label>
-                <button 
-                  type="button"
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex flex-row items-center justify-between px-4 py-1 w-full sm:w-[152px] h-12 border border-white rounded-lg cursor-pointer hover:bg-white/5 transition-colors"
-                >
-                  <span className="font-inter font-medium text-sm sm:text-base leading-[19px] text-white">
-                    {logLevel}
-                  </span>
-                  <svg
-                    width="17"
-                    height="10"
-                    viewBox="0 0 17 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`w-[17px] h-[10px] flex-shrink-0 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`}
-                  >
-                    <path
-                      d="M1 1.5L8.5 8.5L16 1.5"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-
-                {isDropdownOpen && (
-                  <div className="absolute top-[calc(100%+0.25rem)] left-0 w-full sm:w-[152px] bg-[#1a202e] border border-white rounded-lg shadow-xl z-50">
-                    {logLevels.map((level, index) => (
-                      <button
-                        key={level}
-                        type="button"
-                        onClick={() => {
-                          setLogLevel(level);
-                          setIsDropdownOpen(false);
-                        }}
-                        className={`w-full text-left px-4 py-3 font-inter font-medium text-sm sm:text-base cursor-pointer transition-colors ${
-                          index === 0 ? 'rounded-t-lg' : ''
-                        } ${
-                          index === logLevels.length - 1 ? 'rounded-b-lg' : ''
-                        } ${
-                          logLevel === level 
-                            ? 'bg-gradient-to-r from-[#CE2D52] to-[#F05921] text-white' 
-                            : 'text-white hover:bg-white/10'
-                        }`}
-                      >
-                        {level}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="flex flex-col items-start gap-2 w-full lg:flex-1 lg:max-w-[571px]">
-              <label className="font-inter font-bold text-sm sm:text-base leading-[19px] text-white">
-                Log Messages
-              </label>
-              <div className="relative w-full">
-                <svg
-                  width="17"
-                  height="17"
-                  viewBox="0 0 17 17"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-[15px] h-[15px] text-white flex-shrink-0"
-                >
-                  <path
-                    d="M12.3938 12.3677L16 16M14.3333 7.66667C14.3333 11.3486 11.3486 14.3333 7.66667 14.3333C3.98477 14.3333 1 11.3486 1 7.66667C1 3.98477 3.98477 1 7.66667 1C11.3486 1 14.3333 3.98477 14.3333 7.66667Z"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search in log messages..."
-                  className="w-full h-12 pl-[45px] sm:pl-[50px] pr-4 py-4 bg-transparent border border-white rounded-lg font-inter font-normal text-sm sm:text-base leading-none text-white placeholder:text-white placeholder:text-sm sm:placeholder:text-base focus:outline-none focus:ring-2 focus:ring-white/50"
-                />
-              </div>
-            </div>
-
-            <div className="flex items-end w-full sm:w-auto pt-0 sm:pt-7">
-              <button className="flex flex-row justify-center items-center px-4 py-1 gap-4 w-full sm:w-[117px] h-12 bg-gradient-to-r from-[#CE2D52] to-[#F05921] rounded-lg font-inter font-medium text-sm sm:text-base leading-[19px] text-white hover:opacity-90 transition-opacity">
-                Search
-              </button>
-            </div>
+      <FilterSection>
+        <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 sm:gap-5 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 w-full sm:w-auto">
+            <DateInput
+              value={startDate}
+              onChange={setStartDate}
+              label="Start Date"
+              placeholder="dd-mm-yyyy"
+            />
+            <DateInput
+              value={endDate}
+              onChange={setEndDate}
+              label="End Date"
+              placeholder="dd-mm-yyyy"
+            />
           </div>
 
-          <div className="flex flex-row items-center gap-2 pt-0 lg:pt-7 w-full sm:w-auto justify-end lg:justify-start">
-            <div className="p-[2px] rounded-md bg-gradient-to-r from-[#CE2D52] to-[#F05921]">
-              <button className="flex justify-center items-center w-10 h-10 rounded-md bg-[#1a202e] hover:bg-black/80 transition-colors">
+          <Dropdown
+            options={logLevelOptions}
+            value={logLevel}
+            onChange={setLogLevel}
+            label="Log Level"
+          />
+        </div>
+
+        <SearchInput
+          value={searchQuery}
+          onChange={setSearchQuery}
+          label="Log Messages"
+          placeholder="Search in log messages..."
+        />
+
+        <div className="flex items-end w-full sm:w-auto pt-0 sm:pt-7">
+          <Button
+            onClick={() => {
+              // Handle search logic here
+              console.log('Searching with:', { startDate, endDate, logLevel, searchQuery });
+            }}
+            className="w-full sm:w-[117px]"
+          >
+            Search
+          </Button>
+        </div>
+
+        <div className="flex flex-row items-center gap-2 pt-0 lg:pt-7 w-full sm:w-auto justify-end lg:justify-start">
+          <div className="p-[2px] rounded-md bg-gradient-to-r from-[#CE2D52] to-[#F05921]">
+            <IconButton
+              icon={
                 <svg
                   width="18"
                   height="23"
@@ -229,39 +177,155 @@ const [startDate, setStartDate] = useState('');
                     strokeLinecap="round"
                   />
                 </svg>
-              </button>
+              }
+              variant="secondary"
+              onClick={() => {
+                // Handle refresh logic here
+                console.log('Refreshing logs');
+              }}
+            />
+          </div>
+
+          <IconButton
+            icon={
+              <>
+                <span className="ml-1">
+                  <svg
+                    width={10}
+                    height={11}
+                    viewBox="0 0 10 11"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="mb-1"
+                  >
+                    <path
+                      d="M6.00002 0.970588C6.00002 0.434552 5.55228 0 5.00001 0C4.44775 0 4.00001 0.434552 4.00001 0.970588V7.68615L1.70711 5.46079C1.31659 5.08174 0.683413 5.08174 0.292891 5.46079C-0.0976304 5.83984 -0.0976304 6.45428 0.292891 6.83333L4.29295 10.7157C4.48041 10.8978 4.73481 11 5.00001 11C5.26522 11 5.51962 10.8978 5.70708 10.7157L9.7071 6.83333C10.0976 6.45428 10.0976 5.83984 9.7071 5.46079C9.31656 5.08174 8.68349 5.08174 8.29296 5.46079L6.00002 7.68615V0.970588Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <svg
+                    width={15}
+                    height={2}
+                    viewBox="0 0 20 2"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+
+                  >
+                    <path
+                      d="M1.68421 0C1.03019 0 0.5 0.447733 0.5 1C0.5 1.55227 1.03019 2 1.68421 2H14.3158C14.9698 2 15.5 1.55227 15.5 1C15.5 0.447733 14.9698 0 14.3158 0H1.68421Z"
+                      fill="white"
+                    />
+                  </svg>
+                </span>
+              </>
+            }
+            onClick={() => {
+              // Handle download logic here
+              console.log('Downloading logs');
+            }}
+          />
+        </div>
+      </FilterSection>
+
+
+      <div className="w-full max-w-[1318px] mx-auto overflow-x-auto">
+        <div className="min-w-[1318px] rounded-xl overflow-hidden">
+          {/* Header */}
+          <div className="bg-[#111827] px-7 py-5 rounded-t-xl flex items-center justify-between">
+            <div className="pl-4">
+              <h1 className="text-white/70 text-base font-medium font-['Inter']">
+                Real-time system activity monitoring
+              </h1>
             </div>
-            <button className="flex flex-col justify-center items-center gap-0.5 w-10 h-10 bg-gradient-to-r from-[#CE2D52] to-[#F05921] rounded-md hover:opacity-90 transition-opacity">
-              <svg
-                width={10}
-                height={11}
-                viewBox="0 0 10 11"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-[#22C55E]"></div>
+                <span className="text-white text-lg font-medium">Live</span>
+              </div>
+              <div className="w-px h-7 bg-white"></div>
+              <span className="text-white text-lg font-medium">1,247 entries</span>
+            </div>
+          </div>
+
+          {/* Column Headers */}
+          <div className="bg-white/10 px-8 py-3.5 flex items-center">
+            <div className="flex items-center gap-1 w-[133px]">
+              <span className="text-white/70 text-lg font-medium">TIMESTAMP</span>
+              <div className="relative w-4 h-5 cursor-pointer">
+                <svg width={16} height={20} viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.26545 0.795177C7.66137 0.366578 8.33863 0.366579 8.73455 0.795177L13.3776 5.82145C13.9693 6.46193 13.515 7.5 12.6431 7.5H3.35693C2.485 7.5 2.03073 6.46193 2.62238 5.82145L7.26545 0.795177Z" fill="white"/>
+                  <path d="M8.73455 19.2048C8.33863 19.6334 7.66137 19.6334 7.26545 19.2048L2.62237 14.1786C2.03072 13.5381 2.485 12.5 3.35693 12.5L12.6431 12.5C13.515 12.5 13.9693 13.5381 13.3776 14.1786L8.73455 19.2048Z" fill="white"/>
+                </svg>
+              </div>
+            </div>
+            <div className="flex items-center gap-1 w-[68px] ml-[83px]">
+              <span className="text-white/70 text-lg font-medium">LEVEL</span>
+              <div className="relative w-4 h-5 cursor-pointer">
+                <svg width={16} height={20} viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.26545 0.795177C7.66137 0.366578 8.33863 0.366579 8.73455 0.795177L13.3776 5.82145C13.9693 6.46193 13.515 7.5 12.6431 7.5H3.35693C2.485 7.5 2.03073 6.46193 2.62238 5.82145L7.26545 0.795177Z" fill="white"/>
+                  <path d="M8.73455 19.2048C8.33863 19.6334 7.66137 19.6334 7.26545 19.2048L2.62237 14.1786C2.03072 13.5381 2.485 12.5 3.35693 12.5L12.6431 12.5C13.515 12.5 13.9693 13.5381 13.3776 14.1786L8.73455 19.2048Z" fill="white"/>
+                </svg>
+              </div>
+            </div>
+            <div className="flex items-center gap-1 w-[93px] ml-[83px]">
+              <span className="text-white/70 text-lg font-medium">SERVICE</span>
+              <div className="relative w-4 h-5 cursor-pointer">
+                <svg width={16} height={20} viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.26545 0.795177C7.66137 0.366578 8.33863 0.366579 8.73455 0.795177L13.3776 5.82145C13.9693 6.46193 13.515 7.5 12.6431 7.5H3.35693C2.485 7.5 2.03073 6.46193 2.62238 5.82145L7.26545 0.795177Z" fill="white"/>
+                  <path d="M8.73455 19.2048C8.33863 19.6334 7.66137 19.6334 7.26545 19.2048L2.62237 14.1786C2.03072 13.5381 2.485 12.5 3.35693 12.5L12.6431 12.5C13.515 12.5 13.9693 13.5381 13.3776 14.1786L8.73455 19.2048Z" fill="white"/>
+                </svg>
+              </div>
+            </div>
+            <div className="w-[83px] ml-[107px]">
+              <span className="text-white/70 text-lg font-medium">MESSAGE</span>
+            </div>
+            <div className="flex items-center gap-1 ml-auto mr-[121px]">
+              <span className="text-white/70 text-lg font-medium w-18">User ID</span>
+              <div className="relative w-4 h-5 cursor-pointer">
+                <svg width={16} height={20} viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.26545 0.795177C7.66137 0.366578 8.33863 0.366579 8.73455 0.795177L13.3776 5.82145C13.9693 6.46193 13.515 7.5 12.6431 7.5H3.35693C2.485 7.5 2.03073 6.46193 2.62238 5.82145L7.26545 0.795177Z" fill="white"/>
+                  <path d="M8.73455 19.2048C8.33863 19.6334 7.66137 19.6334 7.26545 19.2048L2.62237 14.1786C2.03072 13.5381 2.485 12.5 3.35693 12.5L12.6431 12.5C13.515 12.5 13.9693 13.5381 13.3776 14.1786L8.73455 19.2048Z" fill="white"/>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <span className="text-white/70 text-lg font-medium">Actions</span>
+            </div>
+          </div>
+
+          {/* Log Rows */}
+          <div className="gap-[2px] flex flex-col">
+            {logs.map((log, index) => (
+              <div 
+                key={index} 
+                className="bg-[#111827] px-8 py-5 flex items-center"
+                style={index === logs.length - 1 ? { borderRadius: '0 0 12px 12px' } : {}}
               >
-                <path
-                  d="M6.00002 0.970588C6.00002 0.434552 5.55228 0 5.00001 0C4.44775 0 4.00001 0.434552 4.00001 0.970588V7.68615L1.70711 5.46079C1.31659 5.08174 0.683413 5.08174 0.292891 5.46079C-0.0976304 5.83984 -0.0976304 6.45428 0.292891 6.83333L4.29295 10.7157C4.48041 10.8978 4.73481 11 5.00001 11C5.26522 11 5.51962 10.8978 5.70708 10.7157L9.7071 6.83333C10.0976 6.45428 10.0976 5.83984 9.7071 5.46079C9.31656 5.08174 8.68349 5.08174 8.29296 5.46079L6.00002 7.68615V0.970588Z"
-                  fill="white"
-                />
-              </svg>
-              <svg
-                width={15}
-                height={2}
-                viewBox="0 0 16 2"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1.68421 0C1.03019 0 0.5 0.447733 0.5 1C0.5 1.55227 1.03019 2 1.68421 2H14.3158C14.9698 2 15.5 1.55227 15.5 1C15.5 0.447733 14.9698 0 14.3158 0H1.68421Z"
-                  fill="white"
-                />
-              </svg>
-            </button>
+                <span className="text-white text-sm font-medium w-[133px]">
+                  {log.timestamp}
+                </span>
+                <span className={`${log.levelColor} px-2 py-1 rounded-md text-sm font-medium w-fit ml-[83px]`}>
+                  {log.level}
+                </span>
+                <span className="text-white text-sm font-medium w-[105px] ml-[83px]">
+                  {log.service}
+                </span>
+                <span className="text-white text-sm font-medium ml-[107px] flex-1">
+                  {log.message}
+                </span>
+                <span className="text-white text-sm font-medium w-[77px] mr-[121px]">
+                  {log.userId}
+                </span>
+                <div className="w-8 h-5 flex items-center justify-center cursor-pointer">
+                  <svg width={32} height={20} viewBox="0 0 32 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 9.98277C0.0426667 10.0681 0.096 10.1854 0.16 10.3347C0.224 10.484 0.384 10.7933 0.64 11.2626C0.896 11.7319 1.17333 12.1798 1.472 12.6064C1.77067 13.0331 2.18667 13.545 2.72 14.1423C3.25333 14.7395 3.808 15.3048 4.384 15.8381C4.96 16.3713 5.67467 16.8939 6.528 17.4059C7.38133 17.9178 8.256 18.3657 9.152 18.7497C10.048 19.1336 11.0933 19.4323 12.288 19.6456C13.4827 19.8589 14.72 19.9762 16 19.9975C17.28 20.0189 18.5173 19.9015 19.712 19.6456C20.9067 19.3896 21.9627 19.0803 22.88 18.7177C23.7973 18.3551 24.6613 17.9178 25.472 17.4059C26.2827 16.8939 26.9973 16.3607 27.616 15.8061C28.2347 15.2515 28.7893 14.7075 29.28 14.1743C29.7707 13.641 30.1867 13.1077 30.528 12.5745C30.8693 12.0412 31.1467 11.6039 31.36 11.2626C31.5733 10.9213 31.7333 10.612 31.84 10.3347L32 9.98277C31.9787 9.89745 31.9253 9.78013 31.84 9.63081C31.7547 9.4815 31.5947 9.18287 31.36 8.73493C31.1253 8.28698 30.848 7.83904 30.528 7.39109C30.208 6.94315 29.792 6.42054 29.28 5.82328C28.768 5.22602 28.2133 4.67142 27.616 4.15949C27.0187 3.64755 26.304 3.12495 25.472 2.59168C24.64 2.05841 23.7653 1.61047 22.848 1.24785C21.9307 0.885225 20.8853 0.586595 19.712 0.351957C18.5387 0.117319 17.3013 0 16 0C14.6987 0 13.4613 0.117319 12.288 0.351957C11.1147 0.586595 10.0587 0.885225 9.12 1.24785C8.18133 1.61047 7.31733 2.05841 6.528 2.59168C5.73867 3.12495 5.024 3.64755 4.384 4.15949C3.744 4.67142 3.18933 5.22602 2.72 5.82328C2.25067 6.42054 1.83467 6.94315 1.472 7.39109C1.10933 7.83904 0.832 8.28698 0.64 8.73493C0.448 9.18287 0.288 9.49217 0.16 9.66281L0 9.98277ZM10.016 9.98277C10.016 8.34031 10.592 6.93248 11.744 5.75929C12.896 4.5861 14.3147 3.99951 16 3.99951C17.6853 3.99951 19.104 4.5861 20.256 5.75929C21.408 6.93248 21.9947 8.34031 22.016 9.98277C22.0373 11.6252 21.4507 13.0437 20.256 14.2382C19.0613 15.4328 17.6427 16.0194 16 15.998C14.3573 15.9767 12.9387 15.3901 11.744 14.2382C10.5493 13.0864 9.97333 11.6679 10.016 9.98277ZM12 9.98277C12 11.092 12.3947 12.0412 13.184 12.8304C13.9733 13.6197 14.912 14.0036 16 13.9823C17.088 13.9609 18.0267 13.577 18.816 12.8304C19.6053 12.0838 20 11.1346 20 9.98277C20 8.83091 19.6053 7.89236 18.816 7.16712C18.0267 6.44187 17.088 6.04726 16 5.98326C14.912 5.91927 13.9733 6.31389 13.184 7.16712L16 9.98277H12Z" fill="#5088FF"/>
+                  </svg>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </div>
-
     </>
   );
 }
