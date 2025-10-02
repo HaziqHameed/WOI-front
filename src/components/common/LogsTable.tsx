@@ -256,7 +256,7 @@ export default function LogsTable({
 
       {/* Desktop/Tablet View */}
       <div className="hidden md:block overflow-x-auto">
-        <div className="min-w-[800px] lg:min-w-[1318px] overflow-hidden">
+        <div className="min-w-[1100px] lg:min-w-[1318px] overflow-hidden">
           {/* Column Headers */}
           <div className="bg-white/10 px-8 py-3.5 flex items-center">
             {columns.map((column) => (
