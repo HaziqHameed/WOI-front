@@ -8,6 +8,7 @@ interface ExampleData {
   email: string;
   status: 'active' | 'inactive';
   createdAt: string;
+  [key: string]: unknown;
 }
 
 const ExampleDataTable = () => {
@@ -35,7 +36,7 @@ const ExampleDataTable = () => {
       sortable: true,
       width: 'w-[200px]',
       render: (value) => (
-        <span className="text-white text-sm font-medium">{value}</span>
+        <span className="text-white text-sm font-medium">{value != null ? String(value) : ''}</span>
       )
     },
     {
@@ -43,7 +44,7 @@ const ExampleDataTable = () => {
       label: 'Email',
       sortable: true,
       render: (value) => (
-        <span className="text-white/70 text-sm">{value}</span>
+        <span className="text-white/70 text-sm">{value != null ? String(value) : ''}</span>
       )
     },
     {
@@ -57,7 +58,7 @@ const ExampleDataTable = () => {
             ? 'bg-green-100 text-green-800' 
             : 'bg-red-100 text-red-800'
         }`}>
-          {value}
+          {value != null ? String(value) : ''}
         </span>
       ),
       mobileRender: (row) => (
@@ -79,7 +80,7 @@ const ExampleDataTable = () => {
       sortable: true,
       width: 'w-[120px]',
       render: (value) => (
-        <span className="text-white/70 text-sm">{value}</span>
+        <span className="text-white/70 text-sm">{value != null ? String(value) : ''}</span>
       )
     }
   ];

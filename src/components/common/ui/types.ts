@@ -71,13 +71,13 @@ export interface FilterSectionProps {
 }
 
 // DataTable Types
-export interface DataTableColumn<T = any> {
+export interface DataTableColumn<T = unknown> {
   key: string;
   label: string;
   sortable?: boolean;
   width?: string;
   className?: string;
-  render?: (value: any, row: T, index: number) => React.ReactNode;
+  render?: (value: unknown, row: T, index: number) => React.ReactNode;
   mobileRender?: (row: T, index: number) => React.ReactNode;
 }
 
@@ -89,7 +89,7 @@ export interface DataTableHeaderInfo {
   customStatus?: React.ReactNode;
 }
 
-export interface DataTableProps<T = any> {
+export interface DataTableProps<T = unknown> {
   data: T[];
   columns: DataTableColumn<T>[];
   headerInfo?: DataTableHeaderInfo;

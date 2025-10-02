@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { DataTableProps, DataTableColumn } from './types';
 
-function DataTable<T extends Record<string, any>>({
+function DataTable<T extends Record<string, unknown>>({
   data,
   columns,
   headerInfo,
@@ -29,22 +29,34 @@ function DataTable<T extends Record<string, any>>({
     setSortConfig({ key: columnKey, direction });
   };
 
-  const sortedData = React.useMemo(() => {
-    if (!sortConfig) return data;
+ const sortedData = React.useMemo(() => {
+  if (!sortConfig) return data;
 
-    return [...data].sort((a, b) => {
-      const aValue = a[sortConfig.key];
-      const bValue = b[sortConfig.key];
+  return [...data].sort((a, b) => {
+    const aValue = a[sortConfig.key];
+    const bValue = b[sortConfig.key];
 
-      if (aValue < bValue) {
-        return sortConfig.direction === 'asc' ? -1 : 1;
-      }
-      if (aValue > bValue) {
-        return sortConfig.direction === 'asc' ? 1 : -1;
-      }
-      return 0;
-    });
-  }, [data, sortConfig]);
+    if (aValue == null && bValue == null) return 0;
+    if (aValue == null) return 1;
+    if (bValue == null) return -1;
+
+    if (typeof aValue === 'string' && typeof bValue === 'string') {
+      const comparison = aValue.localeCompare(bValue);
+      return sortConfig.direction === 'asc' ? comparison : -comparison;
+    }
+
+    if (typeof aValue === 'number' && typeof bValue === 'number') {
+      return sortConfig.direction === 'asc' 
+        ? aValue - bValue 
+        : bValue - aValue;
+    }
+
+    const aStr = String(aValue);
+    const bStr = String(bValue);
+    const comparison = aStr.localeCompare(bStr);
+    return sortConfig.direction === 'asc' ? comparison : -comparison;
+  });
+}, [data, sortConfig]);
 
   const SortIcon = ({ column }: { column?: DataTableColumn<T> }) => {
     if (!column?.sortable) return null;
@@ -68,14 +80,16 @@ function DataTable<T extends Record<string, any>>({
     );
   };
 
-  const renderCellValue = (column: DataTableColumn<T> | undefined, row: T, index: number) => {
-    if (!column) return null;
-    const value = row[column.key];
-    if (column.render) {
-      return column.render(value, row, index);
-    }
-    return value;
-  };
+ const renderCellValue = (column: DataTableColumn<T> | undefined, row: T, index: number) => {
+  if (!column) return null;
+  const value = row[column.key];
+  
+  if (column.render) {
+    return column.render(value, row, index);
+  }
+  
+  return value == null ? null : String(value);
+};
 
   if (loading) {
     return (
@@ -161,7 +175,7 @@ function DataTable<T extends Record<string, any>>({
                     <div className="flex justify-between items-start">
                       <span className="text-white/70 text-xs font-medium">{column.label}:</span>
                       <div className="text-white text-sm ml-2 flex-1 text-right">
-                        {value}
+                        {value != null ? String(value) : ''}
                       </div>
                     </div>
                   </div>
@@ -178,7 +192,7 @@ function DataTable<T extends Record<string, any>>({
           <div className={`min-w-[800px] lg:min-w-[1318px] rounded-xl overflow-hidden ${desktopTableClassName}`}>
             {/* Column Headers */}
             <div className="bg-white/10 px-8 py-3.5 flex items-center">
-              {columns.map((column, index) => (
+              {columns.map((column) => (
                 <div 
                   key={column.key} 
                   className={`flex items-center gap-1 ${column.width || 'flex-1'} ${column.className || ''}`}

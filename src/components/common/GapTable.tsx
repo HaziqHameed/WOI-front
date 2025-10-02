@@ -60,7 +60,7 @@ export default function SkillGapTable({ title, subtitle, skills, columns, classN
         {/* Desktop/Tablet View */}
         <div className="hidden md:block overflow-x-auto">
           <div className="flex flex-row items-center h-[52px] bg-[#111827] px-4 min-w-[700px] lg:min-w-[800px] xl:min-w-[900px]">
-            {columns.map((column, index) => (
+            {columns.map((column) => (
               <div 
                 key={column.key} 
                 className={`${column.width} flex ${column.align === 'end' ? 'justify-end' : column.align === 'center' ? 'justify-center' : 'justify-start'}`}
