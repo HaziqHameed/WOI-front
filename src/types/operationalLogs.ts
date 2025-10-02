@@ -23,7 +23,7 @@ export interface LogEntry {
   message?: string;
   userId?: string;
   actions?: string;
-  name?: (value: unknown) => React.ReactNode;
+  name?: string;
   email?: string;
   university?: string;
   status?: string;

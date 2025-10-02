@@ -159,36 +159,16 @@ export const logsTableColumns: LogsTableColumn[] = [
 
 export const userManagementData: LogEntry[] = [
   {
-    name:() => (
-      <div className={`flex flex-row items-center gap-4 h-6`}>
-      <div className="flex items-center gap-1 w-6 h-6">
-        <div className="w-6 h-6 rounded-full bg-[#D9D9D9] overflow-hidden flex-shrink-0">
-          <Image
-            src={'/images/avatar-1.png'}
-            alt={'User Avatar'}
-            width={24}
-            height={24}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      </div>
-
-      <div className="flex flex-row justify-center items-center gap-1 w-[122px] h-6">
-        <span className="font-poppins font-medium text-base leading-6 text-white">
-         John Smith
-        </span>
-      </div>
-    </div>
-    ),
+    name: 'John Smith',
     email: 'john.smith@university.edu',
     university: 'MIT',
     status: 'Active',
     joined: '2024-01-15',
   },
   {
-    name: () => ('Sarah Johnson'),
-    email: 'sarah.johnson@standford.edu',
-    university: 'Standford',
+    name: 'Sarah Johnson',
+    email: 'sarah.johnson@stanford.edu',
+    university: 'Stanford',
     status: 'Active',
     joined: '2024-02-10',
   },
