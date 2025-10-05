@@ -45,33 +45,22 @@ export default function StudentDashboard() {
 
   return (
     <>
-      <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-6">
-        <div className="col-span-8 md:col-span-8 bg-gray-800 p-4 rounded-lg">
-          <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-6">
-            <div className="col-span-12 md:col-span-8">
-              <h1 className={`
-      w-[230px] 
-      h-[45px]  
-      font-medium 
-      text-[30px] 
-      leading-[45px] 
-      capitalize 
-      text-white
-      ${poppins}
-    `}>
+      <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
+        {/* Main Content Area - Responsive across all screens */}
+        <div className="col-span-1 lg:col-span-8 bg-gray-800 p-3 sm:p-4 rounded-lg">
+          {/* Header Section - Fully responsive */}
+          <div className="w-full grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-6">
+            {/* Welcome Title - Responsive sizing */}
+            <div className="col-span-1 sm:col-span-8">
+              <h1 className={`w-full sm:w-[230px] h-[45px] font-medium text-[24px] sm:text-[30px] leading-[36px] sm:leading-[45px] capitalize text-white ${poppins.className}`}>
                 Welcome, Arun
               </h1>
             </div>
-            <div className="col-span-12 md:col-span-4 flex justify-end">
+            
+            {/* Post Job Button - Responsive positioning and sizing */}
+            <div className="col-span-1 sm:col-span-4 flex justify-start sm:justify-end">
               <button
-                className={`
-        w-[118px] h-[43px]
-        flex items-center justify-center gap-[7.15px]
-        px-[22.8934px] py-[7.1542px]
-        rounded-[5.72336px]
-        bg-gradient-to-r from-[#CE2D52] to-[#F05921]
-        shadow-sm cursor-pointer
-      `}
+                className="w-full sm:w-[118px] h-[43px] flex items-center justify-center gap-[7.15px] px-[22.8934px] py-[7.1542px] rounded-[5.72336px] bg-gradient-to-r from-[#CE2D52] to-[#F05921] shadow-sm cursor-pointer hover:opacity-90 transition-opacity"
                 aria-label="Post Job"
               >
                 <svg
@@ -80,6 +69,7 @@ export default function StudentDashboard() {
                   viewBox="0 0 17 17"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="flex-shrink-0"
                 >
                   <g clipPath="url(#clip0_1264_50474)">
                     <path
@@ -103,35 +93,34 @@ export default function StudentDashboard() {
                   </defs>
                 </svg>
 
-                <span
-                  className={`
-          ${poppins} font-bold text-[11.4467px] leading-[17px] text-white
-          flex-none
-        `}
-                >
+                <span className={`${poppins.className} font-bold text-[11.4467px] leading-[17px] text-white flex-none`}>
                   Post Job
                 </span>
               </button>
-
             </div>
           </div>
 
-          <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-6 mt-5">
-            <StatsRow className="col-span-12 lg:col-span-3 md:col-span-6  sm:col-span-4" stats={statsData} />
+          {/* Stats Row - Fully responsive grid */}
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-4 sm:mt-5">
+            <StatsRow className="col-span-1" stats={statsData} />
           </div>
 
-          <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-6 mt-5">
-            <div className="col-span-8 md:col-span-8 bg-gray-700  rounded-lg">
+          {/* Charts Section - Responsive layout */}
+          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 mt-4 sm:mt-5">
+            <div className="col-span-1 lg:col-span-8 bg-gray-700 rounded-lg p-3 sm:p-4">
               <StatisticsChart />
             </div>
-            <div className="col-span-4 md:col-span-4 bg-gray-700 rounded-lg">
+            <div className="col-span-1 lg:col-span-4 bg-gray-700 rounded-lg p-3 sm:p-4">
               <RecentAddedJobs />
             </div>
           </div>
         </div>
 
-        <div className="col-span-4 md:col-span-4 bg-gray-700 p-4 rounded-lg">
-          Right side content
+        {/* Right Sidebar - Responsive across all screens */}
+        <div className="col-span-1 lg:col-span-4 bg-gray-700 p-3 sm:p-4 rounded-lg">
+          <div className="text-gray-300 text-sm sm:text-base">
+            Right side content
+          </div>
         </div>
       </div>
     </>
