@@ -12,7 +12,7 @@ import {
   DropdownOption
 } from "../common/ui";
 import { LogEntry } from "../../types/operationalLogs";
-import { logLevelOptions, logs, logsTableColumns } from "@/data/OperationalLogsData";
+import { logLevelOptions, logs, logsTableColumns } from "@/data/admin/OperationalLogsData";
 
 
 

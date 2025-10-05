@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import PageHeader from "../common/PageHeader";
 import { Dropdown, OptionsBar, SearchInput } from "../common/ui";
-import { StatusOptions, tabs, UserManagementTableColumns } from "@/data/UserManagementData";
+import { StatusOptions, tabs, UserManagementTableColumns } from "@/data/admin/UserManagementData";
 import LogsTable from "../common/LogsTable";
-import { logs, logsTableColumns, userManagementData } from "@/data/OperationalLogsData";
+import { logs, logsTableColumns, userManagementData } from "@/data/admin/OperationalLogsData";
 
 
 export default function UserManagement() {
