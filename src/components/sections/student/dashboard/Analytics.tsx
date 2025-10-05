@@ -76,10 +76,10 @@ function Analytics() {
       </div>
 
      <div className="grid grid-cols-12 gap-4 mt-5">
-  <div className="col-span-12 md:col-span-6 rounded-lg bg-gray-700">
+  <div className="col-span-12 md:col-span-6 rounded-lg bg-[#111827]">
     <ActivityCard/>
   </div>
-  <div className="col-span-12 md:col-span-6 rounded-lg bg-gray-700">
+  <div className="col-span-12 md:col-span-6 rounded-lg bg-[#111827]">
    <ActivityCard meetingFlag={true}/>
   </div>
 </div>

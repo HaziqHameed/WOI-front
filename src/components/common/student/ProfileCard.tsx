@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ProfileCard() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="flex items-center justify-center min-h-screen  mt-8">
       <div className="relative w-full h-[615.26px] bg-[#111827] border border-[#1F2937] rounded-[7.15px] overflow-hidden -mt-7">
         <div className="absolute w-full h-[59.38px] bg-[#762A45] rounded-[7.15px]">
           <div className="absolute left-[12px] top-[13.5px]">
@@ -18,12 +18,12 @@ export default function ProfileCard() {
 <path d="M8.55556 19.4444H9.66389L17.2667 11.8417L16.1583 10.7333L8.55556 18.3361V19.4444ZM7 21V17.6944L17.2667 7.44722C17.4222 7.30463 17.594 7.19444 17.7819 7.11667C17.9699 7.03889 18.1676 7 18.375 7C18.5824 7 18.7833 7.03889 18.9778 7.11667C19.1722 7.19444 19.3407 7.31111 19.4833 7.46667L20.5528 8.55556C20.7083 8.69815 20.8218 8.86667 20.8931 9.06111C20.9644 9.25556 21 9.45 21 9.64444C21 9.85185 20.9644 10.0495 20.8931 10.2375C20.8218 10.4255 20.7083 10.5972 20.5528 10.7528L10.3056 21H7ZM16.7028 11.2972L16.1583 10.7333L17.2667 11.8417L16.7028 11.2972Z" fill="url(#paint1_linear_1264_50417)"/>
 <defs>
 <linearGradient id="paint0_linear_1264_50417" x1="-5.29284e-07" y1="14.0782" x2="28" y2="13.9218" gradientUnits="userSpaceOnUse">
-<stop stop-color="#CE2D52"/>
-<stop offset="1" stop-color="#F05921"/>
+<stop stopColor="#CE2D52"/>
+<stop offset="1" stopColor="#F05921"/>
 </linearGradient>
 <linearGradient id="paint1_linear_1264_50417" x1="21" y1="13.9179" x2="7" y2="14.0821" gradientUnits="userSpaceOnUse">
-<stop stop-color="#CE2D52"/>
-<stop offset="1" stop-color="#F05921"/>
+<stop stopColor="#CE2D52"/>
+<stop offset="1" stopColor="#F05921"/>
 </linearGradient>
 </defs>
 </svg>
@@ -33,50 +33,50 @@ export default function ProfileCard() {
         </div>
 
         {/* Profile Section */}
-        <div className="absolute left-[31%] top-[15.74px] w-[170.99px]">
-          {/* Profile Image Circle */}
-          <div className="absolute left-[14.31px] top-[11.68px] w-[68.68px] h-[68.68px] bg-[#374151] rounded-full overflow-hidden flex items-center justify-center">
-            <img
-              src="/images/big-building.png"
-              alt="User Avatar"
-              className="w-full h-full object-cover"
-            />
-          </div>
+        <div className="absolute top-[20px] left-1/2 -translate-x-1/2 w-fit">
+  {/* Profile Image Circle */}
+  <div className="w-[68.68px] h-[68.68px] bg-[#374151] rounded-full overflow-hidden flex items-center justify-center mx-auto">
+    <img
+      src="/images/big-building.png"
+      alt="User Avatar"
+      className="w-full h-full object-cover"
+    />
+  </div>
 
-          {/* Company Name */}
-          <div className="relative left-[-5.73px] top-[91.81px] w-[109px] text-center">
-            <p className="text-white font-bold text-[12.88px] leading-[20px] font-['Poppins']">
-              Company Name
-            </p>
+  {/* Company Name */}
+  <div className="mt-[12px] w-[109px] text-center mx-auto">
+    <p className="text-white font-bold text-[12.88px] leading-[20px] font-['Poppins']">
+      Company Name
+    </p>
+  </div>
 
-          </div>
+  {/* Location */}
+  <div className="mt-[10px] flex items-center gap-1.5 justify-center">
+    <svg
+      width="12"
+      height="15"
+      viewBox="0 0 12 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 7.5C6.4125 7.5 6.76563 7.35313 7.05938 7.05938C7.35313 6.76563 7.5 6.4125 7.5 6C7.5 5.5875 7.35313 5.23438 7.05938 4.94063C6.76563 4.64688 6.4125 4.5 6 4.5C5.5875 4.5 5.23438 4.64688 4.94063 4.94063C4.64688 5.23438 4.5 5.5875 4.5 6C4.5 6.4125 4.64688 6.76563 4.94063 7.05938C5.23438 7.35313 5.5875 7.5 6 7.5ZM6 13.0125C7.525 11.6125 8.65625 10.3406 9.39375 9.19688C10.1313 8.05313 10.5 7.0375 10.5 6.15C10.5 4.7875 10.0656 3.67188 9.19688 2.80313C8.32812 1.93438 7.2625 1.5 6 1.5C4.7375 1.5 3.67188 1.93438 2.80313 2.80313C1.93438 3.67188 1.5 4.7875 1.5 6.15C1.5 7.0375 1.86875 8.05313 2.60625 9.19688C3.34375 10.3406 4.475 11.6125 6 13.0125ZM6 15C3.9875 13.2875 2.48438 11.6969 1.49063 10.2281C0.496875 8.75938 0 7.4 0 6.15C0 4.275 0.603125 2.78125 1.80938 1.66875C3.01563 0.55625 4.4125 0 6 0C7.5875 0 8.98438 0.55625 10.1906 1.66875C11.3969 2.78125 12 4.275 12 6.15C12 7.4 11.5031 8.75938 10.5094 10.2281C9.51562 11.6969 8.0125 13.2875 6 15Z"
+        fill="#9CA3AF"
+      />
+    </svg>
+    <p className="text-white text-[8.59px] leading-[14px] font-['Poppins']">
+      Mumbai, India
+    </p>
+  </div>
+</div>
 
-          {/* Location */}
-          <div className="absolute left-[11.45px] top-[116.61px] flex items-center gap-1.5">
-            <svg
-              width="12"
-              height="15"
-              viewBox="0 0 12 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6 7.5C6.4125 7.5 6.76563 7.35313 7.05938 7.05938C7.35313 6.76563 7.5 6.4125 7.5 6C7.5 5.5875 7.35313 5.23438 7.05938 4.94063C6.76563 4.64688 6.4125 4.5 6 4.5C5.5875 4.5 5.23438 4.64688 4.94063 4.94063C4.64688 5.23438 4.5 5.5875 4.5 6C4.5 6.4125 4.64688 6.76563 4.94063 7.05938C5.23438 7.35313 5.5875 7.5 6 7.5ZM6 13.0125C7.525 11.6125 8.65625 10.3406 9.39375 9.19688C10.1313 8.05313 10.5 7.0375 10.5 6.15C10.5 4.7875 10.0656 3.67188 9.19688 2.80313C8.32812 1.93438 7.2625 1.5 6 1.5C4.7375 1.5 3.67188 1.93438 2.80313 2.80313C1.93438 3.67188 1.5 4.7875 1.5 6.15C1.5 7.0375 1.86875 8.05313 2.60625 9.19688C3.34375 10.3406 4.475 11.6125 6 13.0125ZM6 15C3.9875 13.2875 2.48438 11.6969 1.49063 10.2281C0.496875 8.75938 0 7.4 0 6.15C0 4.275 0.603125 2.78125 1.80938 1.66875C3.01563 0.55625 4.4125 0 6 0C7.5875 0 8.98438 0.55625 10.1906 1.66875C11.3969 2.78125 12 4.275 12 6.15C12 7.4 11.5031 8.75938 10.5094 10.2281C9.51562 11.6969 8.0125 13.2875 6 15Z"
-                fill="#9CA3AF"
-              />
-            </svg>
-            <p className="text-white text-[8.59px] leading-[14px] font-['Poppins']">
-              Mumbai, India
-            </p>
-          </div>
-        </div>
 
         {/* Contact Information */}
         <div className="absolute left-1/2 top-[183.15px] space-y-[15px] -translate-x-1/2">
           {/* Website */}
           <div className="flex items-center gap-[14.31px]">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_1264_50470)">
+              <g clipPath="url(#clip0_1264_50470)">
                 <path d="M9.48854 17.0675H8.46037C8.25924 17.0433 8.05724 17.0242 7.85697 16.9944C6.47887 16.7911 5.21107 16.3023 4.07304 15.4991C2.28402 14.2343 1.18665 12.5218 0.813358 10.3574C0.757992 10.0369 0.726849 9.71245 0.683594 9.38977V8.29715C0.69311 8.24049 0.707817 8.18426 0.71171 8.12716C0.825038 6.60849 1.29781 5.21785 2.21092 3.99201C3.27066 2.56892 4.67169 1.61818 6.34521 1.05674C8.23977 0.421324 10.1287 0.461983 11.9856 1.18391C14.0887 2.00142 15.5468 3.50539 16.4478 5.55696C16.9543 6.7097 17.1996 7.92343 17.1234 9.18344C17.0265 10.7917 16.5179 12.2736 15.6264 13.6153C14.3456 15.5458 12.5423 16.6557 10.2507 16.9758C9.99721 17.0113 9.74244 17.0381 9.48854 17.0675ZM1.22082 9.11467C1.30084 10.8635 1.88262 12.3964 2.98518 13.7477C3.03406 13.7044 3.07169 13.6677 3.11105 13.6309C3.584 13.1566 4.11574 12.7447 4.69331 12.4055C4.80404 12.3415 4.82048 12.2783 4.79193 12.1646C4.59876 11.391 4.47985 10.6008 4.43681 9.80459C4.42384 9.57663 4.41129 9.34868 4.39788 9.11251L1.22082 9.11467ZM2.98821 3.93404C1.88262 5.29873 1.29565 6.83212 1.22255 8.57053H4.40351C4.42135 7.48971 4.5627 6.41448 4.82481 5.36578C4.1484 4.97716 3.53013 4.49518 2.98821 3.93404ZM14.8279 3.94572C14.789 3.98163 14.757 4.00844 14.7276 4.03829C14.2536 4.51881 13.7189 4.93541 13.1371 5.27754C13.0212 5.34545 13.0039 5.4099 13.0341 5.53144C13.2211 6.28405 13.3378 7.05237 13.3828 7.82654C13.3979 8.07482 13.4113 8.32354 13.426 8.56966H16.5836C16.6991 7.32046 15.8284 5.02147 14.8279 3.94572ZM13.4464 9.11294C13.4377 9.12245 13.4252 9.12938 13.4239 9.13803C13.4177 9.1748 13.414 9.21194 13.4126 9.24919C13.3935 10.2389 13.2639 11.2235 13.0263 12.1845C12.9991 12.2926 13.0289 12.3436 13.1224 12.3986C13.7082 12.7441 14.2472 13.1637 14.7258 13.6469C14.7583 13.6793 14.795 13.7083 14.8379 13.7464C15.937 12.3886 16.5248 10.8552 16.5979 9.11294H13.4464ZM9.18143 16.5156C9.77748 16.4291 10.2455 16.1449 10.6564 15.7543C11.265 15.1751 11.6733 14.4631 11.9921 13.6971C12.1414 13.3394 12.262 12.97 12.3979 12.6001C11.3989 12.0925 10.3013 11.8086 9.18143 11.7684V16.5156ZM8.63815 5.90776V1.17785C8.60268 1.18088 8.57673 1.18088 8.55164 1.1852C8.00403 1.2795 7.55678 1.55892 7.161 1.93524C6.55543 2.51486 6.14494 3.2264 5.82702 3.99287C5.67866 4.35059 5.55754 4.71955 5.42605 5.07727C6.24443 5.54788 7.82756 5.95534 8.63815 5.90776ZM9.18143 5.91901C10.3182 5.86537 11.3792 5.60152 12.3767 5.09414C12.1712 4.25283 11.6746 3.19093 11.1768 2.52264C10.8342 2.06327 10.4388 1.65755 9.91676 1.40407C9.69054 1.29421 9.44096 1.22889 9.18143 1.13459V5.91901ZM8.63815 11.7684C7.52803 11.8094 6.43987 12.0897 5.44811 12.5902C5.64232 13.4029 6.17868 14.6301 6.80501 15.371C7.14716 15.7763 7.53039 16.1302 8.02436 16.3404C8.21642 16.4221 8.42231 16.4701 8.63815 16.5394V11.7684ZM8.63815 8.57225C8.64161 8.51559 8.64637 8.47407 8.64637 8.43211C8.64637 7.82222 8.64334 7.21233 8.64983 6.60243C8.64983 6.47613 8.61349 6.43979 8.48892 6.4346C7.6543 6.39894 6.83081 6.22969 6.04978 5.93328C5.8015 5.83985 5.55797 5.73388 5.29801 5.6279C5.06983 6.59316 4.94785 7.58048 4.93424 8.57225H8.63815ZM4.95111 9.11553C4.87887 9.56625 5.13278 11.6174 5.31748 12.0612C6.3539 11.5609 7.48285 11.281 8.63296 11.2393V9.11553H4.95111ZM12.878 8.57225C12.916 7.91867 12.6816 6.07386 12.5034 5.62487C11.4663 6.12556 10.3366 6.40542 9.18575 6.44671V8.57225H12.878ZM9.18532 9.1151V11.2402C10.3428 11.2787 11.479 11.5611 12.5198 12.069C12.7483 11.1005 12.8704 10.11 12.884 9.1151H9.18532ZM14.478 14.1482C13.9974 13.6438 13.4493 13.2083 12.8494 12.854C12.4342 14.1404 11.8745 15.3226 10.8852 16.2612C12.2785 15.897 13.4645 15.1911 14.478 14.1482ZM14.4685 3.52572C13.4619 2.49366 12.2763 1.78861 10.8861 1.42397C11.8771 2.3639 12.4351 3.55167 12.849 4.8225C13.314 4.58589 14.1843 3.88992 14.4685 3.52572ZM4.9736 4.82336C5.38539 3.54562 5.94554 2.36563 6.93218 1.42786C5.56453 1.78173 4.32327 2.51144 3.34895 3.53437C3.69629 3.94529 4.56052 4.63045 4.97404 4.82163L4.9736 4.82336ZM4.96841 12.8575C4.36948 13.2127 3.82284 13.6494 3.3442 14.1551C4.3529 15.1933 5.53938 15.8979 6.92959 16.2625C5.94165 15.3217 5.38539 14.137 4.96885 12.8558L4.96841 12.8575Z" fill="#9CA3AF" />
               </g>
               <defs>
@@ -94,7 +94,7 @@ export default function ProfileCard() {
           {/* Phone */}
           <div className="flex items-center gap-[13.88px]">
             <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_1264_50452)">
+              <g clipPath="url(#clip0_1264_50452)">
                 <path d="M11.6241 14.8527C11.2746 14.7776 10.9206 14.7192 10.5757 14.6231C9.86693 14.4257 9.20748 14.1076 8.57249 13.741C6.77376 12.701 5.23504 11.3472 3.87001 9.78852C2.98445 8.77785 2.21072 7.68889 1.61382 6.48147C1.24653 5.73884 0.957164 4.96756 0.858263 4.14001C0.796407 3.61965 0.813182 3.10243 1.06795 2.62645C1.1495 2.47478 1.25158 2.33508 1.37129 2.21128C1.78716 1.78248 2.21806 1.36836 2.63532 0.941302C3.2144 0.348948 4.11359 0.409756 4.66016 0.941302C5.31193 1.57629 5.95321 2.22211 6.59134 2.87038C7.15399 3.44177 7.15818 4.29762 6.59973 4.81869C6.47532 4.93065 6.33139 5.01878 6.17512 5.07869C5.78476 5.23246 5.47618 5.46661 5.30703 5.85976C5.19644 6.11332 5.17718 6.39738 5.25252 6.66355C5.4622 7.44182 5.90253 8.0824 6.43373 8.66811C6.98659 9.27759 7.6125 9.79691 8.35582 10.1593C8.68397 10.319 9.01982 10.4609 9.40004 10.4113C9.91341 10.3442 10.3041 10.0968 10.5075 9.60749C10.633 9.3045 10.7812 9.02702 11.0698 8.84634C11.6104 8.50805 12.2769 8.56956 12.7543 9.03436C13.426 9.68857 14.0891 10.3516 14.7438 11.0236C15.2788 11.575 15.2589 12.4564 14.7162 13.0065C14.2877 13.4422 13.852 13.871 13.4204 14.304C13.1146 14.6109 12.7385 14.7664 12.3153 14.8237C12.2799 14.8305 12.2449 14.8394 12.2105 14.8503L11.6241 14.8527Z" fill="#9CA3AF" />
               </g>
               <defs>
@@ -114,12 +114,12 @@ export default function ProfileCard() {
                 <path d="M4.3559 10.3941H4.91007L8.71146 6.59271L8.15729 6.03854L4.3559 9.83993V10.3941ZM3.57812 11.1719V9.5191L8.71146 4.39549C8.78924 4.32419 8.87512 4.2691 8.9691 4.23021C9.06308 4.19132 9.16192 4.17188 9.26562 4.17188C9.36933 4.17188 9.46979 4.19132 9.56701 4.23021C9.66424 4.2691 9.7485 4.32743 9.81979 4.40521L10.3545 4.94965C10.4323 5.02095 10.489 5.10521 10.5247 5.20243C10.5603 5.29965 10.5781 5.39688 10.5781 5.4941C10.5781 5.5978 10.5603 5.69664 10.5247 5.79063C10.489 5.88461 10.4323 5.97049 10.3545 6.04826L5.2309 11.1719H3.57812ZM8.42951 6.32049L8.15729 6.03854L8.71146 6.59271L8.42951 6.32049Z" fill="url(#paint1_linear_1264_50446)" />
                 <defs>
                   <linearGradient id="paint0_linear_1264_50446" x1="0.0781247" y1="7.71098" x2="14.0781" y2="7.63277" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#CE2D52" />
-                    <stop offset="1" stop-color="#F05921" />
+                    <stop stopColor="#CE2D52" />
+                    <stop offset="1" stopColor="#F05921" />
                   </linearGradient>
                   <linearGradient id="paint1_linear_1264_50446" x1="10.5781" y1="7.63083" x2="3.57812" y2="7.71292" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#CE2D52" />
-                    <stop offset="1" stop-color="#F05921" />
+                    <stop stopColor="#CE2D52" />
+                    <stop offset="1" stopColor="#F05921" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -136,7 +136,7 @@ export default function ProfileCard() {
           {/* Email */}
           <div className="flex items-center gap-[14.31px]">
             <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clip-path="url(#clip0_1264_50461)">
+              <g clipPath="url(#clip0_1264_50461)">
                 <path d="M0.828125 1.45602L0.95179 1.07422L5.59419 5.6766L0.948187 10.2782L0.828125 9.92079V1.45602Z" fill="#9CA3AF" />
                 <path d="M16.197 9.92062C16.1545 10.0511 16.1117 10.1816 16.0721 10.3024L11.4297 5.70004L16.0801 1.09766L16.1966 1.45544L16.197 9.92062Z" fill="#9CA3AF" />
                 <path d="M1.60156 0.391474C1.78926 0.351453 1.94294 0.315834 2.09782 0.28742C2.15749 0.280871 2.21761 0.279533 2.27751 0.283418C6.43406 0.283418 10.5903 0.283418 14.7464 0.283418C14.9713 0.275995 15.1949 0.319929 15.4003 0.411885C15.3579 0.457508 15.3259 0.494326 15.2918 0.528744L8.93576 6.90364C8.65801 7.18379 8.36466 7.18379 8.08692 6.90364L1.73083 0.526744C1.69961 0.495528 1.6676 0.46271 1.60156 0.391474Z" fill="#9CA3AF" />
@@ -159,12 +159,12 @@ export default function ProfileCard() {
                 <path d="M4.3559 10.3941H4.91007L8.71146 6.59271L8.15729 6.03854L4.3559 9.83993V10.3941ZM3.57812 11.1719V9.5191L8.71146 4.39549C8.78924 4.32419 8.87512 4.2691 8.9691 4.23021C9.06308 4.19132 9.16192 4.17188 9.26562 4.17188C9.36933 4.17188 9.46979 4.19132 9.56701 4.23021C9.66424 4.2691 9.7485 4.32743 9.81979 4.40521L10.3545 4.94965C10.4323 5.02095 10.489 5.10521 10.5247 5.20243C10.5603 5.29965 10.5781 5.39688 10.5781 5.4941C10.5781 5.5978 10.5603 5.69664 10.5247 5.79063C10.489 5.88461 10.4323 5.97049 10.3545 6.04826L5.2309 11.1719H3.57812ZM8.42951 6.32049L8.15729 6.03854L8.71146 6.59271L8.42951 6.32049Z" fill="url(#paint1_linear_1264_50446)" />
                 <defs>
                   <linearGradient id="paint0_linear_1264_50446" x1="0.0781247" y1="7.71098" x2="14.0781" y2="7.63277" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#CE2D52" />
-                    <stop offset="1" stop-color="#F05921" />
+                    <stop stopColor="#CE2D52" />
+                    <stop offset="1" stopColor="#F05921" />
                   </linearGradient>
                   <linearGradient id="paint1_linear_1264_50446" x1="10.5781" y1="7.63083" x2="3.57812" y2="7.71292" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#CE2D52" />
-                    <stop offset="1" stop-color="#F05921" />
+                    <stop stopColor="#CE2D52" />
+                    <stop offset="1" stopColor="#F05921" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -182,134 +182,77 @@ export default function ProfileCard() {
       
 
         {/* Profile Completion Card */}
-       <div className="
-  absolute 
-  top-[302.54px] 
-  left-1/2 
-  -translate-x-1/2
-  w-[195px] 
-  h-[253px] 
-  bg-white/12 
-  border border-[#9CA3AF] 
-  rounded-[3.58px] 
-  shadow-[0_0_2.86px_rgba(0,0,0,0.25)]
-">
+       <div className="flex justify-center mt-72 px-4">
+  <div
+    className="
+      w-full max-w-[250px] 
+      bg-white/10 
+      border border-gray-400 
+      rounded-md 
+      shadow-md 
+      p-4
+      mb-5
+    "
+  >
     {/* Header */}
-          <div className="absolute left-[19.41px] top-[12.96px]">
-            <p className="text-white text-[17.17px] leading-[23px] tracking-[0.57px] font-['Poppins']">
-              100%
-            </p>
-          </div>
+    <div className="flex items-center justify-between">
+      <p className="text-white text-lg font-poppins font-bold">100%</p>
+      <p className="text-white text-sm font-poppins text-center">
+        Profile Complete
+      </p>
+    </div>
 
-          <div className="absolute left-[66.62px] top-[15.11px] w-[86px]">
-            <p className="text-white text-[11.36px] leading-[23px] tracking-[-0.57px] font-['Poppins'] text-center">
-              Profile Complete
-            </p>
-          </div>
+    {/* Description */}
+    <p className="text-white text-xs mt-2">
+      Now you have more chances of getting hired!
+    </p>
 
-          {/* Description */}
-          <div className="absolute left-[19.41px] top-[38px] w-[138.08px]">
-            <p className="text-white text-[8px] leading-[10px] tracking-[0.07px] font-['Poppins']">
-              Now you have more chances of getting hired!
-            </p>
-          </div>
+    {/* Progress bar */}
+    <div className="mt-4">
+      <div className="flex justify-between text-[10px] text-white">
+        <span>0%</span>
+        <span>100%</span>
+      </div>
+      <div className="w-full h-2 bg-white rounded-full mt-1">
+        <div className="w-full h-full bg-[#00B900] rounded-full"></div>
+      </div>
+      <div className="text-center text-white text-[10px] mt-1">100%</div>
+    </div>
 
-          {/* Progress Bar Labels */}
-          <div className="absolute left-[7.96px] top-[78.78px]">
-            <p className="text-white text-[7.15px] leading-[10px] tracking-[0.07px] font-['Poppins']">
-              0%
-            </p>
-          </div>
-
-          <div className="absolute right-[2.68px] top-[78.78px]">
-            <p className="text-white text-[7.15px] leading-[10px] tracking-[0.07px] font-['Poppins']">
-              100%
-            </p>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="absolute left-[25.13px] top-[80.21px] w-[141.65px] h-[6.44px] bg-white rounded-[5.72px] overflow-hidden">
-            <div className="w-full h-full bg-[#00B900] rounded-[5.72px]"></div>
-          </div>
-
-          {/* 100% Label above bar */}
-          <div className="absolute left-[95.96px] top-[71.63px]">
-            <p className="text-white text-[5.72px] leading-[23px] tracking-[0.57px] font-['Poppins']">
-              100%
-            </p>
-          </div>
-
-          {/* Completion Checklist */}
-           <div
+    {/* Completion Checklist */}
+    <div
       className="
-        absolute 
-        left-[19px] 
-        top-[127px]
-        w-[160px] 
-        h-[107px] 
-        rounded-[8.58504px]
-        bg-[rgba(17,24,39,0.5)]
-        shadow-[0px_2.86px_4.29px_rgba(0,0,0,0.1),0px_7.15px_10.73px_rgba(0,0,0,0.1)]
-        backdrop-blur-[1.43px]
+        mt-6 
+        rounded-md 
+        bg-[rgba(17,24,39,0.5)] 
+        shadow-md 
+        backdrop-blur-sm
         overflow-hidden
       "
     >
-      {/* Row 1 */}
-      <div
-        className="
-          w-full 
-          h-[35.77px] 
-          bg-[rgba(31,41,55,0.3)] 
-          border border-[#1F2937] 
-          flex items-center justify-between px-[12.88px]
-        "
-      >
-        <span className="text-white font-poppins font-normal text-[10.02px] leading-[14px]">
-          About
-        </span>
-        <span className="text-[#52B447] font-poppins font-normal text-[10.02px] leading-[14px]">
-          Added
-        </span>
-      </div>
-
-      {/* Row 2 */}
-      <div
-        className="
-          w-full 
-          h-[36.49px] 
-          bg-[rgba(31,41,55,0.3)] 
-          border border-[#1F2937] 
-          flex items-center justify-between px-[12.88px]
-        "
-      >
-        <span className="text-white font-poppins font-normal text-[10.02px] leading-[14px]">
-          Social
-        </span>
-        <span className="text-[#52B447] font-poppins font-normal text-[10.02px] leading-[14px] text-right">
-          Added
-        </span>
-      </div>
-
-      {/* Row 3 */}
-      <div
-        className="
-          w-full 
-          h-[35.77px] 
-          bg-[rgba(31,41,55,0.3)] 
-          border border-[#1F2937] 
-          flex items-center justify-between px-[12.88px]
-        "
-      >
-        <span className="text-white font-poppins font-normal text-[10.02px] leading-[14px]">
-          Profile Picture
-        </span>
-        <span className="text-[#52B447] font-poppins font-normal text-[10.02px] leading-[14px]">
-          Added
-        </span>
-      </div>
-    </div>
-  
+      {[
+        { label: "About", status: "Added" },
+        { label: "Social", status: "Added" },
+        { label: "Profile Picture", status: "Added" },
+      ].map((item, idx) => (
+        <div
+          key={idx}
+          className="
+            flex items-center justify-between 
+            px-4 py-2 
+            border-b border-gray-700
+            last:border-b-0
+            bg-[rgba(31,41,55,0.3)]
+          "
+        >
+          <span className="text-white text-sm">{item.label}</span>
+          <span className="text-[#52B447] text-sm">{item.status}</span>
         </div>
+      ))}
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
   );
