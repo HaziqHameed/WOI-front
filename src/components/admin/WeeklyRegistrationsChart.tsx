@@ -1,4 +1,4 @@
-import { chartData } from '@/data/DashoardData';
+import { chartData } from '@/data/admin/DashoardData';
 import React, { useState } from 'react';
 
 export default function WeeklyRegistrationsChart() {

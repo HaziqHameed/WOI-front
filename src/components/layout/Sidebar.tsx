@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import { useSidebar } from "@/contexts/SidebarContext";
 
-export default function Sidebar() {
+export default function Sidebar({student}: {student?: boolean}) {
   const { isCollapsed, setIsCollapsed, isMobile } = useSidebar();
   const pathname = usePathname();
 
@@ -75,15 +75,15 @@ export default function Sidebar() {
             } flex flex-col justify-center gap-1 transition-all duration-300`}
           >
             <Link
-              href="/"
+              href={student ? "/student" : "/admin"}
               className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${
                 isCollapsed ? "px-[8px] justify-center" : "px-[14px]"
               } py-[9px] rounded-lg ${
-                pathname === "/" 
+                (student ? pathname === "/student" : pathname === "/admin" || pathname === "/")
                   ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]" 
                   : "hover:bg-white/5"
               } transition-all`}
-              aria-current={pathname === "/" ? "page" : undefined}
+              aria-current={(student ? pathname === "/student" : pathname === "/admin" || pathname === "/") ? "page" : undefined}
             >
               <svg
                 width={24}
@@ -112,17 +112,17 @@ export default function Sidebar() {
                 <span className={`text-[16px] leading-[24px] font-poppins whitespace-nowrap ${
                   pathname === "/" ? "text-[#CE2D52]" : "text-white"
                 }`}>
-                  Home
+                  {student ? "My Home":"Home"}
                 </span>
               )}
             </Link>
 
             <Link
-              href="/configuration-changes"
+              href="/admin/configuration-changes"
               className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${
                 isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
               } py-[9px] rounded-lg ${
-                pathname === "/configuration-changes" 
+                pathname === "/admin/configuration-changes" 
                   ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]" 
                   : "hover:bg-white/5"
               } transition-all`}
@@ -145,7 +145,7 @@ export default function Sidebar() {
               </svg>
               {!isCollapsed && (
                 <span className={`text-[16px] leading-[24px] font-poppins whitespace-nowrap overflow-hidden text-ellipsis ${
-                  pathname === "/configuration-changes" ? "text-[#CE2D52]" : "text-white"
+                  pathname === "/admin/configuration-changes" ? "text-[#CE2D52]" : "text-white"
                 }`}>
                   Configuration Changes
                 </span>
@@ -153,11 +153,11 @@ export default function Sidebar() {
             </Link>
 
             <Link
-              href="/master-data"
+              href="/admin/master-data"
               className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${
                 isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
               } py-[9px] rounded-lg ${
-                pathname === "/master-data" 
+                pathname === "/admin/master-data" 
                   ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]" 
                   : "hover:bg-white/5"
               } transition-all`}
@@ -190,7 +190,7 @@ export default function Sidebar() {
               </svg>
               {!isCollapsed && (
                 <span className={`text-[16px] leading-[24px] font-poppins whitespace-nowrap ${
-                  pathname === "/master-data" ? "text-[#CE2D52]" : "text-white"
+                  pathname === "/admin/master-data" ? "text-[#CE2D52]" : "text-white"
                 }`}>
                   Master Data
                 </span>
@@ -198,11 +198,11 @@ export default function Sidebar() {
             </Link>
 
             <Link
-              href="/operational-logs"
+              href="/admin/operational-logs"
               className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${
                 isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
               } py-[9px] rounded-lg ${
-                pathname === "/operational-logs" 
+                pathname === "/admin/operational-logs" 
                   ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]" 
                   : "hover:bg-white/5"
               } transition-all`}
@@ -223,7 +223,7 @@ export default function Sidebar() {
               </svg>
               {!isCollapsed && (
                 <span className={`text-[16px] leading-[24px] font-poppins whitespace-nowrap ${
-                  pathname === "/operational-logs" ? "text-[#CE2D52]" : "text-white"
+                  pathname === "/admin/operational-logs" ? "text-[#CE2D52]" : "text-white"
                 }`}>
                   Operational Logs
                 </span>
@@ -231,11 +231,11 @@ export default function Sidebar() {
             </Link>
 
             <Link
-              href="/user-management"
+              href="/admin/user-management"
               className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${
                 isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
               } py-[9px] rounded-lg ${
-                pathname === "/user-management" 
+                pathname === "/admin/user-management" 
                   ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]" 
                   : "hover:bg-white/5"
               } transition-all`}
@@ -276,7 +276,7 @@ export default function Sidebar() {
               </svg>
               {!isCollapsed && (
                 <span className={`text-[16px] leading-[24px] font-poppins whitespace-nowrap ${
-                  pathname === "/user-management" ? "text-[#CE2D52]" : "text-white"
+                  pathname === "/admin/user-management" ? "text-[#CE2D52]" : "text-white"
                 }`}>
                   User Management
                 </span>

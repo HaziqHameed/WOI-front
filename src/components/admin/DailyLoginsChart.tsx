@@ -1,4 +1,4 @@
-import { dailyChartData } from '@/data/DashoardData';
+import { dailyChartData } from '@/data/admin/DashoardData';
 import React from 'react';
 
 export default function DailyLoginsChart() {

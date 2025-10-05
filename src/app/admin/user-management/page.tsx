@@ -1,4 +1,4 @@
-import UserManagement from "@/components/screens/UserManagement";
+import UserManagement from "@/components/admin/UserManagement";
 
 export default function UserManagementPage() {
   return <UserManagement />;

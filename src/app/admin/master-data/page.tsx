@@ -1,4 +1,4 @@
-import MasterData from "@/components/screens/MasterData";
+import MasterData from "@/components/admin/MasterData";
 
 export default function MasterDataPage() {
   return <MasterData />;

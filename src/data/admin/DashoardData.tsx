@@ -6,6 +6,7 @@ export const statsData: Stat[] = [
         value: "12,847",
         percentage: "+8.2%",
         bgColor: "bg-[#35A891]",
+        background: "bg-[rgba(0,0,0,0.2)]",
         gradient: "bg-gradient-to-r from-[rgba(255,255,255,0.2)] to-transparent",
         icon: (
             <svg
@@ -30,6 +31,7 @@ export const statsData: Stat[] = [
         value: "2,156",
         percentage: "+12.5%",
         bgColor: "bg-[#FFA600]",
+        background: "bg-[rgba(0,0,0,0.2)]",
         gradient: "bg-gradient-to-r from-[rgba(255,255,255,0.2)] to-transparent",
         icon: (
             <svg
@@ -78,6 +80,7 @@ export const statsData: Stat[] = [
         percentage: "-2.1%",
         bgColor: "bg-[#FF5630]",
         gradient: "bg-gradient-to-r from-[rgba(255,255,255,0.2)] to-transparent",
+        background: "bg-[rgba(0,0,0,0.2)]",
         icon: (
             <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M13.4922 12.5888C13.4922 12.3204 13.4134 12.0725 13.2844 11.8555H10.6999C10.5709 12.0725 10.4922 12.3204 10.4922 12.5888C10.4922 13.3984 11.1642 14.0555 11.9922 14.0555C12.8202 14.0555 13.4922 13.3984 13.4922 12.5888ZM14.9922 12.5888C14.9922 14.2087 13.6489 15.5221 11.9922 15.5221C10.3354 15.5221 8.99219 14.2087 8.99219 12.5888C8.99219 12.3336 9.03269 12.0894 9.09794 11.8555H-0.0078125V19.9221C-0.0078125 21.5421 1.33544 22.8555 2.99219 22.8555H20.9922C22.6489 22.8555 23.9922 21.5421 23.9922 19.9221V11.8555H14.8864C14.9517 12.0894 14.9922 12.3336 14.9922 12.5888ZM14.9922 3.7888H8.99219V3.05547C8.99219 2.65067 9.32819 2.32214 9.74219 2.32214H14.2422C14.6562 2.32214 14.9922 2.65067 14.9922 3.05547V3.7888ZM20.9922 3.7888H16.4922V2.32214C16.4922 1.51254 15.8202 0.855469 14.9922 0.855469H8.99219C8.16419 0.855469 7.49219 1.51254 7.49219 2.32214V3.7888H2.99219C1.33544 3.7888 -0.0078125 5.1022 -0.0078125 6.72214V10.3888H23.9922V6.72214C23.9922 5.1022 22.6489 3.7888 20.9922 3.7888Z" fill="white" />
@@ -91,6 +94,7 @@ export const statsData: Stat[] = [
         percentage: "+15.3%",
         bgColor: "bg-[#377DFF]",
         gradient: "bg-gradient-to-r from-[rgba(255,255,255,0.2)] to-transparent",
+        background: "bg-[rgba(0,0,0,0.2)]",
         icon: (
             <svg
                 width="21"
@@ -112,6 +116,7 @@ export const statsData: Stat[] = [
         percentage: "+18.7%",
         bgColor: "bg-[#9142CE]",
         gradient: "bg-gradient-to-r from-[rgba(255,255,255,0.2)] to-transparent",
+        background: "bg-[rgba(0,0,0,0.2)]",
         icon: (
             <svg
                 width="25"

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
+import PanelSwitcher from "../common/PanelSwitcher";
 import { SidebarProvider, useSidebar } from "@/contexts/SidebarContext";
 
 interface MainLayoutProps {
@@ -30,11 +31,12 @@ function MainLayoutContent({ children }: MainLayoutProps) {
   }, []);
   return (
     <div className="min-h-screen w-full bg-[#1a202e] relative">
+      {/* <PanelSwitcher /> */}
       <Header />
-      <div className="flex pb-[61px]">
-        <Sidebar />
+      <Sidebar />
+      <div className="pb-[61px]">
         <main 
-          className={`flex-1 mt-[78px] min-h-[calc(100vh-78px-61px)] transition-all duration-300 ${
+          className={`mt-[78px] min-h-[calc(100vh-78px-61px)] transition-all duration-300 ${
             isMobile 
               ? "ml-[80px]" 
               : isCollapsed 

@@ -6,6 +6,9 @@ export interface Stat {
   bgColor: string;
   gradient?: string;
   icon?: React.ReactNode;
+  label?: string;
+  size?: string;
+  background?: string;
 }
 
 export interface StatCardProps {

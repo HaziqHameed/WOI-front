@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import MainLayout from "@/components/layout/MainLayout";
+import ConditionalLayout from "@/components/layout/ConditionalLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WOI Frontend",
-  description: "WOI Frontend Application",
+  title: "WOI Frontend - Admin & Student Portal",
+  description: "WOI Frontend Application - Admin and Student Portal",
 };
 
 export default function RootLayout({
@@ -28,9 +28,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MainLayout>
+        <ConditionalLayout>
           {children}
-        </MainLayout>
+        </ConditionalLayout>
       </body>
     </html>
   );

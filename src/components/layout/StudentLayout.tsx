@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
+import PanelSwitcher from "../common/PanelSwitcher";
 import { SidebarProvider, useSidebar } from "@/contexts/SidebarContext";
 
 interface StudentLayoutProps {
@@ -31,24 +32,17 @@ function StudentLayoutContent({ children }: StudentLayoutProps) {
 
   return (
     <div className="min-h-screen w-full bg-[#1a202e] relative">
+      {/* <PanelSwitcher /> */}
       {/* Student-specific header styling */}
       <div className="relative">
         <Header />
-        {/* Student badge */}
-        <div className="absolute top-4 right-4 z-10">
-          <div className="bg-gradient-to-r from-[#35A891] to-[#377DFF] text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M6 0L7.5 4.5H12L8.25 7.5L9.75 12L6 9L2.25 12L3.75 7.5L0 4.5H4.5L6 0Z" fill="white" />
-            </svg>
-            Student Portal
-          </div>
-        </div>
+       
       </div>
       
-      <div className="flex pb-[61px]">
-        <Sidebar />
+      <Sidebar student/>
+      <div className="pb-[61px]">
         <main 
-          className={`flex-1 mt-[78px] min-h-[calc(100vh-78px-61px)] transition-all duration-300 ${
+          className={`mt-[78px] min-h-[calc(100vh-78px-61px)] transition-all duration-300 ${
             isMobile 
               ? "ml-[80px]" 
               : isCollapsed 
