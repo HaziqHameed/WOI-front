@@ -1,6 +1,11 @@
 import { StatCardProps } from "@/types/dashboard";
+import { Poppins } from "next/font/google";
 import React from "react";
-
+const poppins = Poppins({
+  weight: ['400', '500', '600'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 export default function StatCard({ stat }: StatCardProps) {
   return (
     <article
@@ -65,7 +70,7 @@ export default function StatCard({ stat }: StatCardProps) {
         <div className="flex flex-row justify-between items-center gap-4 sm:gap-6 w-full">
           <div className="flex flex-col items-start gap-1 flex-1 min-w-0 ">
             <span
-              className={`font-poppins flex flex-row ${
+              className={`${poppins.className} flex flex-row ${
                 stat?.titleIcon && "gap-1"
               } font-normal text-[9px] sm:text-[10px] leading-[14px] sm:leading-[15px] text-white truncate w-full`}
             >
@@ -73,7 +78,7 @@ export default function StatCard({ stat }: StatCardProps) {
               <span className="truncate">{stat.title}</span>
             </span>
 
-            <span className="font-poppins font-semibold text-base sm:text-lg md:text-lg lg:text-xl leading-[20px] sm:leading-[22px] text-white">
+            <span className={`${poppins.className} font-semibold text-base sm:text-lg md:text-lg lg:text-xl leading-[20px] sm:leading-[22px] text-white`}>
               {stat.value}
             </span>
           </div>
@@ -104,7 +109,7 @@ export default function StatCard({ stat }: StatCardProps) {
               />
             </svg>
           </div>
-          <span className="font-poppins font-normal text-[8px] sm:text-[8.5px] leading-[12px] sm:leading-[13px] text-white whitespace-nowrap">
+          <span className={`${poppins.className} font-normal text-[8px] sm:text-[8.5px] leading-[12px] sm:leading-[13px] text-white whitespace-nowrap`}>
             {stat.percentage}
           </span>
         </div>

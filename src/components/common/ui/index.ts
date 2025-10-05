@@ -6,5 +6,7 @@ export { default as IconButton } from './IconButton';
 export { default as FilterSection } from './FilterSection';
 export { default as DataTable } from './DataTable';
 export { default as OptionsBar } from './OptionsBar';
+export { default as FormInput } from './FormInput';
+export { default as FormSection } from './FormSection';
 
 export * from './types';

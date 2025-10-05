@@ -113,3 +113,25 @@ export interface OptionsBarProps {
   onTabChange: (tabId: string) => void;
   className?: string;
 }
+
+export interface FormInputProps {
+  label: string;
+  placeholder: string;
+  value?: string;
+  onChange?: (value: string) => void;
+  type?: 'text' | 'email' | 'tel' | 'url';
+  disabled?: boolean;
+  required?: boolean;
+  className?: string;
+  inputClassName?: string;
+  labelClassName?: string;
+  ariaLabel?: string;
+}
+
+export interface FormSectionProps {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+  titleClassName?: string;
+  containerClassName?: string;
+}
