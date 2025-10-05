@@ -13,11 +13,11 @@ export function About() {
   return (
     <>
       <h1
-        className="
+        className={`
         w-full h-[36px]
-        font-poppins font-bold text-[24px] leading-[36px]
+        ${poppins.className} font-bold text-[24px] leading-[36px]
         text-white
-      "
+        `}
       >
         Company Details
       </h1>

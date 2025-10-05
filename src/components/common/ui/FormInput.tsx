@@ -1,25 +1,13 @@
 "use client";
 import { Poppins } from 'next/font/google';
 import React from 'react';
+import { FormInputProps } from '@/types/uiTypes';
+
 const poppins = Poppins({
   weight: ['400', '500', '600'],
   subsets: ['latin'],
   display: 'swap',
 });
-
-export interface FormInputProps {
-  label: string;
-  placeholder: string;
-  value?: string;
-  onChange?: (value: string) => void;
-  type?: 'text' | 'email' | 'tel' | 'url';
-  disabled?: boolean;
-  required?: boolean;
-  className?: string;
-  inputClassName?: string;
-  labelClassName?: string;
-  ariaLabel?: string;
-}
 
 const FormInput: React.FC<FormInputProps> = ({
   label,

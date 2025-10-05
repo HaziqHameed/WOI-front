@@ -2,9 +2,14 @@
 
 import { socialLinksData } from '@/data/student/CompanyDetails';
 import { SocialLink } from '@/types/student/companyDetails';
+import { Poppins } from 'next/font/google';
 import React, { useState } from 'react';
 
-
+const poppins = Poppins({
+  weight: ['400', '500', '600'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function SocialLinksManager() {
   const [links, setLinks] = useState<SocialLink[]>(socialLinksData);
@@ -84,7 +89,7 @@ export default function SocialLinksManager() {
         w-full max-w-[178px] h-[43px]
         bg-gradient-to-r from-[#FFA844] to-[#FF6D68]
         rounded-[8px]
-        font-poppins font-bold
+        ${poppins.className} font-bold
         text-[16px] leading-[120%] text-white
         transition-transform duration-150
         hover:scale-[1.02] active:scale-[0.99]

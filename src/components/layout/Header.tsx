@@ -1,8 +1,14 @@
 "use client"
+import { Poppins } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
+const poppins = Poppins({
+  weight: ['400', '500', '600'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,10 +27,10 @@ export default function Header() {
                     </div>
 
                     <nav className="hidden lg:flex items-center gap-4 xl:gap-6 xl:ml-20">
-                        <Link className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="/">Home</Link>
-                        <Link className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="/">Dashboard</Link>
-                        <Link className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="/operational-logs">Jobs</Link>
-                        <Link className="font-poppins font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity" href="/user-management">Message</Link>
+                        <Link className={`${poppins.className} font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity`} href="/">Home</Link>
+                        <Link className={`${poppins.className} font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity`} href="/">Dashboard</Link>
+                        <Link className={`${poppins.className} font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity`} href="/operational-logs">Jobs</Link>
+                        <Link className={`${poppins.className} font-bold text-[12px] xl:text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity`} href="/user-management">Message</Link>
                     </nav>
                 </div>
 
@@ -72,7 +78,7 @@ export default function Header() {
                                     className="w-8 h-8 sm:w-10 sm:h-10"
                                 />
                             </div>
-                            <span className="text-[12px] sm:text-[14px] font-poppins font-bold leading-[22px] text-[#EBF0F7] hidden sm:block">Profile</span>
+                            <span className={`text-[12px] sm:text-[14px] ${poppins.className} font-bold leading-[22px] text-[#EBF0F7] hidden sm:block`}>Profile</span>
                         </button>
                     </div>
 
@@ -87,10 +93,10 @@ export default function Header() {
             {isMenuOpen && (
                 <div className="lg:hidden fixed top-[78px] left-0 w-full bg-black/95 backdrop-blur-sm border-b border-white/22 z-40">
                     <nav className="flex flex-col px-4 py-6 gap-4">
-                        <Link className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
-                        <Link className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="/" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
-                        <Link className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="/operational-logs" onClick={() => setIsMenuOpen(false)}>Jobs</Link>
-                        <Link className="font-poppins font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2" href="/user-management" onClick={() => setIsMenuOpen(false)}>Message</Link>
+                        <Link className={`${poppins.className} font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2`} href="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
+                        <Link className={`${poppins.className} font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2`} href="/" onClick={() => setIsMenuOpen(false)}>Dashboard</Link>
+                        <Link className={`${poppins.className} font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2`} href="/operational-logs" onClick={() => setIsMenuOpen(false)}>Jobs</Link>
+                        <Link className={`${poppins.className} font-bold text-[14px] leading-[22px] text-white tracking-[-0.4px] hover:opacity-80 transition-opacity py-2`} href="/user-management" onClick={() => setIsMenuOpen(false)}>Message</Link>
                     </nav>
                 </div>
             )}
