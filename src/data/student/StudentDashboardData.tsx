@@ -1,4 +1,5 @@
 import { DailyChart, Skill, Stat, WeeklyChart } from "@/types/dashboard";
+import { Activity, Meeting } from "@/types/student/dashboard";
 
 export const studentStatsData: Stat[] = [
     {
@@ -182,15 +183,15 @@ export const jobs = [
         company: 'Spotify, Singapore',
         timeAgo: '2 Days ago',
         icon: (
-            <div className="relative w-[27.19px] h-[27.19px]">
-                <div className="absolute w-full h-full rounded-full bg-white" />
-                <svg className="absolute left-[2.86px] top-[2.86px] w-[21.46px] h-[21.46px]" viewBox="0 0 21 21" fill="none">
-                    <path d="M10.73 2.68L5.36 2.68L5.36 10.39L10.73 10.39L10.73 2.68Z" fill="#1ABCFE" />
-                    <path d="M5.36 13.25L5.36 18.78L10.73 18.78L10.73 13.25L5.36 13.25Z" fill="#0ACF83" />
-                    <path d="M10.73 2.68L16.1 2.68L16.1 8.05L10.73 8.05L10.73 2.68Z" fill="#FF7262" />
-                    <path d="M5.36 2.68L10.73 2.68L10.73 8.05L5.36 8.05L5.36 2.68Z" fill="#F24E1E" />
-                    <path d="M5.36 8.05L10.73 8.05L10.73 13.42L5.36 13.42L5.36 8.05Z" fill="#A259FF" />
+            <div className="relative w-[27.19px] h-[27.19px] rounded-full bg-white flex items-center justify-center">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.1133 10.8039C11.1133 9.32224 12.3144 8.12109 13.7961 8.12109C15.2778 8.12109 16.4789 9.32224 16.4789 10.8039C16.4789 12.2856 15.2778 13.4867 13.7961 13.4867C12.3144 13.4867 11.1133 12.2856 11.1133 10.8039Z" fill="#1ABCFE" />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.75 16.1692C5.75 14.6875 6.95114 13.4863 8.43283 13.4863H11.1157V16.1692C11.1157 17.6508 9.91451 18.852 8.43283 18.852C6.95114 18.852 5.75 17.6508 5.75 16.1692Z" fill="#0ACF83" />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.1133 2.75586V8.12151H13.7961C15.2778 8.12151 16.4789 6.92037 16.4789 5.43869C16.4789 3.957 15.2778 2.75586 13.7961 2.75586H11.1133Z" fill="#FF7262" />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.75 5.43869C5.75 6.92037 6.95114 8.12151 8.43283 8.12151H11.1157V2.75586H8.43283C6.95114 2.75586 5.75 3.957 5.75 5.43869Z" fill="#F24E1E" />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.75 10.8039C5.75 12.2856 6.95114 13.4867 8.43283 13.4867H11.1157V8.12109H8.43283C6.95114 8.12109 5.75 9.32224 5.75 10.8039Z" fill="#A259FF" />
                 </svg>
+
             </div>
         )
     },
@@ -200,12 +201,13 @@ export const jobs = [
         company: 'Spotify, Singapore',
         timeAgo: '6 hours ago',
         icon: (
-            <div className="relative w-[27.19px] h-[27.19px]">
-                <div className="absolute w-full h-full rounded-full bg-white" />
-                <div className="absolute left-[1.16px] top-[1.16px] w-[16.28px] h-[16.28px] rounded-full bg-[#1ED760]" />
-                <svg className="absolute left-[5.95px] top-[8.5px] w-[10.86px] h-[10.22px]" viewBox="0 0 11 11" fill="none">
-                    <path d="M8.28 4.14C8.28 4.14 6.18 3.01 3.58 3.53C3.58 3.53 3.26 3.59 3.26 3.93C3.26 4.27 3.56 4.31 3.56 4.31C3.56 4.31 6.04 3.88 8.04 4.91C8.04 4.91 8.28 5.05 8.48 4.82C8.68 4.59 8.54 4.27 8.28 4.14ZM8.28 5.79C8.28 5.79 6.48 4.86 4.28 5.26C4.28 5.26 4.04 5.31 4.04 5.57C4.04 5.83 4.26 5.86 4.26 5.86C4.26 5.86 6.26 5.53 7.88 6.34C7.88 6.34 8.08 6.44 8.24 6.27C8.4 6.1 8.3 5.88 8.28 5.79ZM8.08 7.25C8.08 7.25 6.58 6.51 4.78 6.85C4.78 6.85 4.6 6.89 4.6 7.09C4.6 7.29 4.76 7.31 4.76 7.31C4.76 7.31 6.36 7.06 7.7 7.72C7.7 7.72 7.84 7.79 7.96 7.66C8.08 7.53 8.02 7.31 8.08 7.25Z" fill="#1F2937" />
+            <div className="relative w-[27.19px] h-[27.19px] rounded-full bg-white flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10.1262" cy="10.0207" r="8.13791" fill="#1ED760" />
+                    <path d="M13.8255 13.2894C13.6865 13.51 13.3899 13.5718 13.1581 13.4394C11.3322 12.3805 9.04275 12.1422 6.33624 12.7246C6.07671 12.7776 5.81718 12.6276 5.76157 12.3805C5.70595 12.1334 5.86353 11.8863 6.12305 11.8334C9.07983 11.1892 11.6195 11.4628 13.6587 12.654C13.8904 12.7864 13.9645 13.0688 13.8255 13.2894ZM14.7709 11.2774C14.5948 11.551 14.2241 11.6304 13.9367 11.4716C11.8512 10.245 8.672 9.89202 6.20647 10.6068C5.88206 10.695 5.54838 10.5274 5.45569 10.2273C5.36301 9.9185 5.53911 9.60082 5.86353 9.51258C8.68127 8.70074 12.1849 9.08901 14.5855 10.4921C14.8543 10.6509 14.947 11.0039 14.7709 11.2774ZM14.8543 9.17726C12.3517 7.76537 8.22709 7.633 5.83572 8.3213C5.45569 8.43601 5.04786 8.23306 4.92737 7.86243C4.80687 7.50064 5.02933 7.11237 5.40935 6.99765C8.15294 6.20347 12.7132 6.3623 15.5866 7.98598C15.9295 8.18011 16.0408 8.60368 15.8368 8.93018C15.6422 9.2655 15.1973 9.38022 14.8543 9.17726Z" fill="#1F2937" />
                 </svg>
+
+
             </div>
         )
     },
@@ -215,12 +217,12 @@ export const jobs = [
         company: 'San Francisco, CA',
         timeAgo: '2 Days ago',
         icon: (
-            <div className="relative w-[27.19px] h-[27.19px]">
-                <div className="absolute w-full h-full rounded-full bg-white" />
-                <div className="absolute left-[1.7px] top-[1.7px] w-[23.8px] h-[23.8px] rounded-full bg-[#283544]" />
-                <svg className="absolute left-[5.95px] top-[9.35px] w-[8.57px] h-[8.49px]" viewBox="0 0 9 9" fill="none">
-                    <path d="M6.84 4.24C6.83 3.36 7.54 2.94 7.57 2.92C7.15 2.32 6.49 2.24 6.27 2.23C5.71 2.17 5.17 2.56 4.88 2.56C4.59 2.56 4.13 2.24 3.65 2.25C3.03 2.26 2.45 2.61 2.13 3.15C1.47 4.25 1.95 5.88 2.59 6.78C2.91 7.22 3.29 7.71 3.77 7.69C4.24 7.68 4.41 7.41 4.96 7.41C5.51 7.41 5.66 7.69 6.15 7.69C6.65 7.68 6.98 7.24 7.29 6.79C7.65 6.29 7.79 5.8 7.8 5.78C7.79 5.77 6.85 5.43 6.84 4.24Z" fill="#1F2937" />
-                    <path d="M6.04 1.76C6.3 1.44 6.48 1 6.44 0.56C6.06 0.58 5.59 0.81 5.32 1.12C5.08 1.39 4.87 1.84 4.92 2.27C5.34 2.3 5.78 2.07 6.04 1.76Z" fill="#1F2937" />
+            <div className="relative w-[27.19px] h-[27.19px] rounded-full bg-white flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.2641 10.2356C18.2641 14.7277 14.6224 18.3735 10.1262 18.3735C5.62999 18.3735 1.98828 14.7277 1.98828 10.2356C1.98828 5.73937 5.62999 2.09766 10.1262 2.09766C14.6224 2.09766 18.2641 5.73937 18.2641 10.2356Z" fill="#283544" />
+                    <path d="M4.94451 13.0495H5.83333V8.92529H4.94451V13.0495ZM5.38713 8.38447C5.66199 8.38447 5.88331 8.15103 5.88331 7.85922C5.88331 7.55963 5.66199 7.33008 5.38713 7.33008C5.11585 7.33008 4.89453 7.55963 4.89453 7.85922C4.89453 8.15103 5.11585 8.38447 5.38713 8.38447Z" fill="#1F2937" />
+                    <path d="M8.93887 7.34175C7.43608 7.34175 6.49371 8.4584 6.49371 10.2443C6.49371 12.0301 7.43608 13.1429 8.93887 13.1429C10.4381 13.1429 11.3805 12.0301 11.3805 10.2443C11.3805 8.4584 10.4381 7.34175 8.93887 7.34175ZM8.93887 8.19772C9.85626 8.19772 10.4417 8.99143 10.4417 10.2443C10.4417 11.4932 9.85626 12.2869 8.93887 12.2869C8.01792 12.2869 7.43608 11.4932 7.43608 10.2443C7.43608 8.99143 8.01792 8.19772 8.93887 8.19772Z" fill="#1F2937" />
+                    <path d="M11.9052 11.4698C11.9445 12.5048 12.7226 13.1429 13.9077 13.1429C15.1535 13.1429 15.9388 12.4737 15.9388 11.4076C15.9388 10.5711 15.4962 10.1003 14.4503 9.83962L13.8578 9.69177C13.2259 9.52836 12.9654 9.31047 12.9654 8.93696C12.9654 8.47007 13.358 8.15881 13.9399 8.15881C14.5288 8.15881 14.9322 8.47396 14.975 8.99921H15.8532C15.8317 8.01096 15.0821 7.34175 13.947 7.34175C12.8262 7.34175 12.0301 8.01485 12.0301 9.01088C12.0301 9.81238 12.4799 10.3104 13.4294 10.5477L14.0969 10.7189C14.7466 10.8862 15.0107 11.1197 15.0107 11.5243C15.0107 11.9912 14.5788 12.3258 13.9577 12.3258C13.3295 12.3258 12.8547 11.9873 12.7976 11.4698H11.9052Z" fill="#1F2937" />
                 </svg>
             </div>
         )
@@ -231,13 +233,93 @@ export const jobs = [
         company: 'New york, US',
         timeAgo: '2 Days ago',
         icon: (
-            <div className="relative w-[27.19px] h-[27.19px]">
-                <div className="absolute w-full h-full rounded-full bg-white" />
-                <div className="absolute left-[1.7px] top-[1.7px] w-[23.8px] h-[23.8px] rounded-full bg-[#105DFB]" />
-                <svg className="absolute left-[5.84px] top-[8.28px] w-[10.8px] h-[10.6px]" viewBox="0 0 11 11" fill="none">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M6.96 4.14C7.54 4.14 8.02 3.67 8.02 3.07C8.02 2.47 7.54 2 6.96 2C6.38 2 5.9 2.47 5.9 3.07C5.9 3.67 6.38 4.14 6.96 4.14ZM3.84 4.91C4.36 4.91 4.78 4.49 4.78 3.97C4.78 3.45 4.36 3.03 3.84 3.03C3.32 3.03 2.9 3.45 2.9 3.97C2.9 4.49 3.32 4.91 3.84 4.91ZM3.84 5.39C3.15 5.39 1.77 5.73 1.77 6.42V7.12H5.91V6.42C5.91 5.73 4.53 5.39 3.84 5.39ZM6.96 4.62C6.88 4.62 6.79 4.63 6.7 4.64C7.08 4.95 7.32 5.39 7.32 5.9V7.12H9.98V6.42C9.98 5.73 8.6 4.62 6.96 4.62Z" fill="#1F2937" />
+            <div className="relative w-[27.19px] h-[27.19px] rounded-full bg-white flex items-center justify-center">
+                <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10.1262" cy="9.45626" r="8.13791" fill="#105DFB" />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M4.82031 12.9212V5.82031H8.10295C9.15734 5.82031 10.0121 6.67506 10.0121 7.72945C10.0121 8.39947 9.80607 8.81451 9.05065 9.24029C9.95462 9.65217 10.2057 10.223 10.2057 11.0193C10.2057 12.0964 9.24877 12.9212 8.17161 12.9212H4.82031ZM6.20938 6.99575V8.70326H7.83515C7.83515 8.70326 8.62532 8.70326 8.62532 7.8495C8.62532 6.99575 7.83515 6.99575 7.83515 6.99575H6.20938ZM6.20938 11.7186V9.8749H7.95322C8.23478 9.8749 8.82514 10.0202 8.82514 10.8921C8.82514 11.5388 8.24386 11.7126 7.95322 11.7186H6.20938Z" fill="#1F2937" />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.1756 7.77684C12.1766 7.77684 10.6961 8.49436 10.6961 10.4017C10.6961 11.5631 11.3319 13.0538 13.2392 13.0538C14.7651 13.0538 15.4675 11.9336 15.6279 11.3735H14.1929C14.1202 11.6278 13.8387 11.9094 13.2392 11.9094C12.3673 11.9094 12.0585 11.1646 12.0131 10.7922H15.6279V10.4017C15.6279 8.49436 14.1747 7.77684 13.1756 7.77684ZM13.1756 8.86674C12.3619 8.86674 12.0615 9.53884 12.0131 9.8749H14.1929C14.1929 9.53884 13.9894 8.86674 13.1756 8.86674Z" fill="#1F2937" />
+                    <path d="M11.4409 6.22374V7.10474H14.865V6.22374H11.4409Z" fill="#1F2937" />
                 </svg>
+
             </div>
         )
     }
+];
+
+export const activities: Activity[] = [
+    {
+        id: 1,
+        name: 'Marvin McKinney',
+        action: 'applied for the job',
+        jobTitle: 'Product Designer',
+        time: '10 mins ago',
+        status: 'Applying',
+        statusColor: '#377DFF',
+        statusBg: 'rgba(55, 125, 255, 0.2)',
+        avatarBg: 'rgba(56, 203, 137, 0.3)',
+        avatarBorder: 'rgba(56, 203, 137, 0.3)',
+        emoji: <img
+            src="/images/avatar-2.png"
+            alt="User Avatar"
+            className="w-full h-full object-cover"
+        />
+    },
+    {
+        id: 2,
+        name: 'Jone Copper',
+        action: 'Created new Account as a',
+        jobTitle: 'Job Hunt',
+        time: '4 hours ago',
+        status: 'Sign Up',
+        statusColor: '#38CB89',
+        statusBg: 'rgba(56, 203, 137, 0.2)',
+        avatarBg: 'rgba(255, 166, 0, 0.4)',
+        avatarBorder: 'rgba(255, 166, 0, 0.3)',
+        emoji: <img
+            src="/images/avatar-3.png"
+            alt="User Avatar"
+            className="w-full h-full object-cover"
+        />
+    },
+    {
+        id: 3,
+        name: 'Jenny Wilson',
+        action: 'applied for the job',
+        jobTitle: 'Frontend Engineer',
+        time: '10 mins ago',
+        status: 'Applying',
+        statusColor: '#377DFF',
+        statusBg: 'rgba(55, 125, 255, 0.2)',
+        avatarBg: 'rgba(55, 125, 255, 0.3)',
+        avatarBorder: 'rgba(55, 125, 255, 0.3)',
+        emoji: <img
+            src="/images/avatar-4.png"
+            alt="User Avatar"
+            className="w-full h-full object-cover"
+        />
+    }
+];
+
+export const meetingsData: Meeting[] = [
+    {
+        id: 1,
+        day: 'Mon',
+        date: '10',
+        title: 'Interview',
+        time: '9:00 am - 11:30 am',
+    },
+    {
+        id: 2,
+        day: 'Thu',
+        date: '08',
+        title: 'Organizational meeting',
+        time: '9:00 am - 11:30 am',
+    },
+    {
+        id: 3,
+        day: 'Fri',
+        date: '11',
+        title: 'Meeting with the manager',
+        time: '9:00 am - 11:30 am',
+    },
 ];

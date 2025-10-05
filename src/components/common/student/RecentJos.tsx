@@ -11,7 +11,7 @@ const RecentAddedJobs = () => {
 
   return (
     <div className="flex flex-row items-start justify-center p-[14.31px] gap-[7.15px] w-full bg-[#111827] h-full rounded-[7.15px]">
-      <div className="flex flex-col items-start gap-[21.46px] w-[203.89px]">
+      <div className="flex flex-col items-start gap-[21.46px] w-full">
         <h2 className={`font-${poppins.className} font-semibold text-[12.88px] leading-[19px] text-white`}>
           Recent Added Jobs
         </h2>

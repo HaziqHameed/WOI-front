@@ -29,224 +29,70 @@ const StatisticsChart = () => {
   };
 
   return (
-    <div 
-      className="flex flex-col items-start bg-gray-900"
-      style={{ 
-        padding: '14.3084px',
-        gap: '7.15px',
-        width: '561.6px',
-        height: '274.01px',
-        borderRadius: '7.1542px'
-      }}
-    >
-      <div 
-        className="flex flex-col items-start self-stretch"
-        style={{ 
-          padding: '0px',
-          gap: '21.46px',
-          width: '532.99px',
-          height: '226.32px'
-        }}
-      >
-        <div 
-          className="flex flex-row justify-between items-center self-stretch"
-          style={{ 
-            padding: '0px',
-            gap: '46.5px',
-            width: '532.99px',
-            height: '24.45px'
-          }}
-        >
-          <h2 
-            className={`text-white font-semibold ${poppins.className}`}
-            style={{ 
-              // width: '206px',
-              height: '19px',
-              fontSize: '12.8776px',
-              lineHeight: '19px',
-              margin: '0 auto'
-            }}
-          >
-            Statistics of active Applications
-          </h2>
+    <div className="w-full h-auto min-h-[274px] flex flex-col items-start bg-gray-900  sm:p-[14.3084px] gap-[7.15px] rounded-[7.1542px]">
+      <div className="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-[21.46px]">
+        <h2 className={`text-white font-semibold ${poppins.className} text-[10px] sm:text-[12.8776px] leading-[15px] sm:leading-[19px] flex-shrink-0`}>
+          Statistics of active Applications
+        </h2>
 
-          <div 
-            className="flex flex-row items-start"
-            style={{ 
-              padding: '0px',
-              gap: '10.73px',
-              width: '215.27px',
-              height: '13px',
-              margin: '0 auto'
-            }}
-          >
-            <div 
-              className="flex flex-row items-center"
-              style={{ 
-                padding: '0px',
-                gap: '2.86px',
-                width: '72.6px',
-                height: '13px'
-              }}
-            >
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-[10.73px] w-full sm:w-auto">
+          <div className="flex flex-row items-center gap-2 sm:gap-[10.73px] flex-wrap">
+            <div className="flex flex-row items-center gap-[2.86px] min-w-[72.6px] h-[13px]">
               <div
                 onClick={handleToggleApplications}
-                className="flex flex-row items-center bg-cyan-400 cursor-pointer transition-all"
-                style={{ 
-                  padding: '0.71542px',
-                  width: '15.74px',
-                  height: '8.59px',
-                  borderRadius: '7.1542px',
-                  opacity: showApplications ? 1 : 0.5,
-                  justifyContent: showApplications ? 'flex-end' : 'flex-start'
-                }}
+                className={`flex flex-row items-center bg-cyan-400 cursor-pointer transition-all p-[0.71542px] w-[15.74px] h-[8.59px] rounded-[7.1542px] ${
+                  showApplications ? 'opacity-100 justify-end' : 'opacity-50 justify-start'
+                }`}
               >
-                <div 
-                  className="bg-gray-800"
-                  style={{ 
-                    width: '7.15px',
-                    height: '7.15px',
-                    borderRadius: '7.1542px'
-                  }}
-                />
+                <div className="bg-gray-800 w-[7.15px] h-[7.15px] rounded-[7.1542px]" />
               </div>
-              <span 
-                className={`text-white ${poppins.className}`}
-                style={{ 
-                  width: '54px',
-                  height: '13px',
-                  fontWeight: 400,
-                  fontSize: '8.58504px',
-                  lineHeight: '13px'
-                }}
-              >
+              <span className={`text-white ${poppins.className} text-[7px] sm:text-[8.58504px] leading-[10px] sm:leading-[13px] font-normal`}>
                 Applications
               </span>
             </div>
 
-            <div 
-              className="flex flex-row items-center"
-              style={{ 
-                padding: '0px',
-                gap: '2.86px',
-                width: '64.6px',
-                height: '13px'
-              }}
-            >
+            <div className="flex flex-row items-center gap-[2.86px] min-w-[64.6px] h-[13px]">
               <div
                 onClick={handleToggleShortlisted}
-                className="flex flex-row items-center cursor-pointer transition-all"
-                style={{ 
-                  padding: '0.71542px',
-                  width: '15.74px',
-                  height: '8.59px',
-                  background: '#FFA600',
-                  borderRadius: '7.1542px',
-                  opacity: showShortlisted ? 1 : 0.5,
-                  justifyContent: showShortlisted ? 'flex-end' : 'flex-start'
-                }}
+                className={`flex flex-row items-center cursor-pointer transition-all p-[0.71542px] w-[15.74px] h-[8.59px] rounded-[7.1542px] ${
+                  showShortlisted ? 'opacity-100 justify-end' : 'opacity-50 justify-start'
+                }`}
+                style={{ background: '#FFA600' }}
               >
-                <div 
-                  className="bg-gray-800"
-                  style={{ 
-                    width: '7.15px',
-                    height: '7.15px',
-                    borderRadius: '7.1542px'
-                  }}
-                />
+                <div className="bg-gray-800 w-[7.15px] h-[7.15px] rounded-[7.1542px]" />
               </div>
-              <span 
-                className={`text-white ${poppins.className}`}
-                style={{ 
-                  width: '46px',
-                  height: '13px',
-                  fontWeight: 400,
-                  fontSize: '8.58504px',
-                  lineHeight: '13px'
-                }}
-              >
+              <span className={`text-white ${poppins.className} text-[7px] sm:text-[8.58504px] leading-[10px] sm:leading-[13px] font-normal`}>
                 Shortlisted
               </span>
             </div>
 
-            <div 
-              className="flex flex-row items-center"
-              style={{ 
-                padding: '0px',
-                gap: '2.86px',
-                width: '56.6px',
-                height: '13px'
-              }}
-            >
+            <div className="flex flex-row items-center gap-[2.86px] min-w-[56.6px] h-[13px]">
               <div
                 onClick={handleToggleRejected}
-                className="flex flex-row items-center cursor-pointer transition-all"
-                style={{ 
-                  padding: '0.71542px',
-                  width: '15.74px',
-                  height: '8.59px',
-                  background: '#FF5630',
-                  borderRadius: '7.1542px',
-                  opacity: showRejected ? 1 : 0.5,
-                  justifyContent: showRejected ? 'flex-end' : 'flex-start'
-                }}
+                className={`flex flex-row items-center cursor-pointer transition-all p-[0.71542px] w-[15.74px] h-[8.59px] rounded-[7.1542px] ${
+                  showRejected ? 'opacity-100 justify-end' : 'opacity-50 justify-start'
+                }`}
+                style={{ background: '#FF5630' }}
               >
-                <div 
-                  className="bg-gray-800"
-                  style={{ 
-                    width: '7.15px',
-                    height: '7.15px',
-                    borderRadius: '7.1542px'
-                  }}
-                />
+                <div className="bg-gray-800 w-[7.15px] h-[7.15px] rounded-[7.1542px]" />
               </div>
-              <span 
-                className={`text-white ${poppins.className}`}
-                style={{ 
-                  width: '38px',
-                  height: '13px',
-                  fontWeight: 400,
-                  fontSize: '8.58504px',
-                  lineHeight: '13px'
-                }}
-              >
+              <span className={`text-white ${poppins.className} text-[7px] sm:text-[8.58504px] leading-[10px] sm:leading-[13px] font-normal`}>
                 Rejected
               </span>
             </div>
           </div>
 
-          <div className="relative" style={{ margin: '0 auto' }}>
+          <div className="relative flex-shrink-0">
             <div
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="flex flex-row justify-center items-center border border-gray-100 cursor-pointer hover:bg-gray-800 transition-colors"
-              style={{ 
-                padding: '5.72336px 7.1542px',
-                gap: '4.29px',
-                width: '54.47px',
-                height: '24.45px',
-                borderRadius: '7.1542px',
-                borderWidth: '0.71542px'
-              }}
+              className="flex flex-row justify-center items-center border border-gray-100 cursor-pointer hover:bg-gray-800 transition-colors p-[5.72336px_7.1542px] gap-[4.29px] w-[54.47px] h-[24.45px] rounded-[7.1542px]"
+              style={{ borderWidth: '0.71542px' }}
             >
-              <span 
-                className={`text-white ${poppins.className}`}
-                style={{ 
-                  width: '28px',
-                  height: '13px',
-                  fontWeight: 500,
-                  fontSize: '8.58504px',
-                  lineHeight: '13px'
-                }}
-              >
+              <span className={`text-white ${poppins.className} text-[7px] sm:text-[8.58504px] leading-[10px] sm:leading-[13px] font-medium`}>
                 {selectedPeriod}
               </span>
               <svg 
-                className="transition-transform"
-                style={{ 
-                  width: '7.87px',
-                  height: '5.01px',
-                  transform: isDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)'
-                }}
+                className={`transition-transform w-[7.87px] h-[5.01px] ${isDropdownOpen ? 'rotate-180' : 'rotate-0'}`}
                 viewBox="0 0 8 5"
                 fill="none"
               >
@@ -255,16 +101,7 @@ const StatisticsChart = () => {
             </div>
 
             {isDropdownOpen && (
-              <div 
-                className="absolute bg-gray-800 border border-gray-100 z-50 overflow-hidden"
-                style={{
-                  width: '54.47px',
-                  borderRadius: '7.1542px',
-                  borderWidth: '0.71542px',
-                  right: 0,
-                  marginTop: '2px'
-                }}
-              >
+              <div className="absolute bg-gray-800 border border-gray-100 z-50 overflow-hidden w-[54.47px] rounded-[7.1542px] right-0 mt-[2px]" style={{ borderWidth: '0.71542px' }}>
                 {periods.map((period) => (
                   <div
                     key={period}
@@ -272,14 +109,9 @@ const StatisticsChart = () => {
                       setSelectedPeriod(period);
                       setIsDropdownOpen(false);
                     }}
-                    className={`w-full text-white ${poppins.className} hover:bg-gray-700 transition-colors cursor-pointer`}
-                    style={{
-                      padding: '5.72336px 7.1542px',
-                      fontWeight: 500,
-                      fontSize: '8.58504px',
-                      lineHeight: '13px',
-                      backgroundColor: selectedPeriod === period ? '#374151' : 'transparent'
-                    }}
+                    className={`w-full text-white ${poppins.className} hover:bg-gray-700 transition-colors cursor-pointer p-[5.72336px_7.1542px] text-[7px] sm:text-[8.58504px] leading-[10px] sm:leading-[13px] font-medium ${
+                      selectedPeriod === period ? 'bg-gray-600' : 'bg-transparent'
+                    }`}
                   >
                     {period}
                   </div>
@@ -288,137 +120,55 @@ const StatisticsChart = () => {
             )}
           </div>
         </div>
+      </div>
 
-        <div 
-          className="flex flex-col items-start self-stretch"
-          style={{ 
-            padding: '0px',
-            gap: '7.15px',
-            width: '532.99px',
-            height: '180.41px'
-          }}
-        >
-          <div 
-            className="relative flex flex-row items-end self-stretch"
-            style={{ 
-              padding: '0px 0px 0px 55.4785px',
-              gap: '25.19px',
-              width: '532.99px',
-              height: '180.41px',
-              isolation: 'isolate'
-            }}
-          >
-            <div 
-              className="absolute flex flex-col items-start"
-              style={{ 
-                padding: '0px',
-                gap: '20.75px',
-                width: '507.95px',
-                height: '157.74px',
-                right: '0px',
-                bottom: '23.73px',
-                zIndex: 0
-              }}
-            >
-              {gridLines.map((label, index) => (
-                <div 
-                  key={index}
-                  className="flex flex-row items-end self-stretch"
-                  style={{ 
-                    padding: '0px',
-                    gap: index === 0 ? '13.59px' : '17.17px',
-                    width: '507.95px',
-                    height: '9px'
-                  }}
-                >
-                  <span 
-                    className={`${poppins.className}`}
-                    style={{ 
-                      width: index === 0 ? '21px' : '18px',
-                      height: '9px',
-                      fontWeight: 500,
-                      fontSize: '8.58504px',
-                      lineHeight: '9px',
-                      color: '#8F8F8F'
-                    }}
-                  >
-                    {label}
-                  </span>
-                  <div 
-                    className="flex-grow"
-                    style={{ 
-                      height: '0px',
-                      border: '0.71542px solid rgba(125, 125, 125, 0.22)'
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-
-            {months.map((month, index) => (
-              <div 
-                key={index}
-                className="flex flex-col items-center"
-                style={{ 
-                  padding: '0px',
-                  gap: '10.73px',
-                  zIndex: index + 1
-                }}
-              >
-                <div 
-                  className="flex flex-col items-start"
-                  style={{ 
-                    padding: '0px',
-                    gap: '5.01px',
-                    width: '4.29px'
-                  }}
-                >
-                  {showRejected && (
-                    <div 
-                      style={{ 
-                        width: '4.29px',
-                        height: `${month.rejected}px`,
-                        background: 'rgba(255, 86, 48, 0.8)',
-                        borderRadius: '7.1542px'
-                      }}
-                    />
-                  )}
-                  {showShortlisted && (
-                    <div 
-                      style={{ 
-                        width: '4.29px',
-                        height: `${month.shortlisted}px`,
-                        background: 'rgba(255, 166, 0, 0.8)',
-                        borderRadius: '7.1542px'
-                      }}
-                    />
-                  )}
-                  {showApplications && (
-                    <div 
-                      className="bg-cyan-400"
-                      style={{ 
-                        width: '4.29px',
-                        height: `${month.applications}px`,
-                        borderRadius: '7.1542px'
-                      }}
-                    />
-                  )}
-                </div>
-
-                <span 
-                  className={`text-white ${poppins.className} text-center`}
-                  style={{ 
-                    height: '13px',
-                    fontWeight: 400,
-                    fontSize: '8.58504px',
-                    lineHeight: '13px'
-                  }}
-                >
-                  {month.name}
+      <div className="w-full flex flex-col items-start gap-[7.15px] min-h-[180px]">
+        <div className="relative flex flex-row items-end w-full h-[180px] pl-[35px] sm:pl-[55.4785px] gap-[15px] sm:gap-[25.19px] isolate justify-between">
+          <div className="absolute flex flex-col items-start gap-[20.75px] w-full h-[157.74px] right-0 bottom-[23.73px] z-0">
+            {gridLines.map((label, index) => (
+              <div key={index} className="flex flex-row items-end w-full h-[9px] gap-[13.59px] sm:gap-[17.17px]">
+                <span className={`${poppins.className} text-[7px] sm:text-[8.58504px] leading-[9px] font-medium text-[#8F8F8F] w-[18px] sm:w-[21px] flex-shrink-0`}>
+                  {label}
                 </span>
+                <div className="flex-grow h-0 border-t border-[rgba(125,125,125,0.22)]" style={{ borderWidth: '0.71542px' }} />
               </div>
             ))}
           </div>
+
+          {months.map((month, index) => (
+            <div key={index} className="flex flex-col items-center gap-[10.73px] z-10 flex-1 min-w-0">
+              <div className="flex flex-col items-start gap-[5.01px] w-[3px] sm:w-[4.29px]">
+                {showRejected && (
+                  <div 
+                    className="w-full rounded-[7.1542px]"
+                    style={{ 
+                      height: `${month.rejected}px`,
+                      background: 'rgba(255, 86, 48, 0.8)'
+                    }}
+                  />
+                )}
+                {showShortlisted && (
+                  <div 
+                    className="w-full rounded-[7.1542px]"
+                    style={{ 
+                      height: `${month.shortlisted}px`,
+                      background: 'rgba(255, 166, 0, 0.8)'
+                    }}
+                  />
+                )}
+                {showApplications && (
+                  <div 
+                    className="bg-cyan-400 w-full rounded-[7.1542px]"
+                    style={{ height: `${month.applications}px` }}
+                  />
+                )}
+              </div>
+
+              <span className={`text-white ${poppins.className} text-center text-[6px] sm:text-[8.58504px] leading-[9px] sm:leading-[13px] font-normal h-[13px] truncate`}>
+                {month.name}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
