@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ProfileCard() {
   return (
-    <div className="flex items-center justify-center min-h-screen -mt-32">
+    <div className="flex items-center justify-center min-h-screen -mt-32 md:mt-0">
       <div className="relative w-full h-[615.26px] bg-[#111827] border border-[#1F2937] rounded-[7.15px] overflow-hidden -mt-7">
         <div className="absolute w-full h-[59.38px] bg-[#762A45] rounded-[7.15px]">
           <div className="absolute left-[12px] top-[13.5px]">
