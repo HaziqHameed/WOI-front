@@ -121,63 +121,63 @@ export default function Sidebar({ student }: { student?: boolean }) {
                     } transition-all`}
                   aria-current={pathname === "/student/company-details" ? "page" : undefined}
                 >
-                   <svg
-      width="24"
-      height="25"
-      viewBox="0 0 24 25"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M6 22.334V4.33398C6 3.80355 6.21071 3.29484 6.58579 2.91977C6.96086 2.5447 7.46957 2.33398 8 2.33398H16C16.5304 2.33398 17.0391 2.5447 17.4142 2.91977C17.7893 3.29484 18 3.80355 18 4.33398V22.334H6Z"
-        stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M6 12.334H4C3.46957 12.334 2.96086 12.5447 2.58579 12.9198C2.21071 13.2948 2 13.8036 2 14.334V20.334C2 20.8644 2.21071 21.3731 2.58579 21.7482C2.96086 22.1233 3.46957 22.334 4 22.334H6"
-        stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M18 9.33398H20C20.5304 9.33398 21.0391 9.5447 21.4142 9.91977C21.7893 10.2948 22 10.8036 22 11.334V20.334C22 20.8644 21.7893 21.3731 21.4142 21.7482C21.0391 22.1233 20.5304 22.334 20 22.334H18"
-        stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10 6.33398H14"
-        stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10 10.334H14"
-        stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10 14.334H14"
-        stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10 18.334H14"
-        stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+                  <svg
+                    width="24"
+                    height="25"
+                    viewBox="0 0 24 25"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 22.334V4.33398C6 3.80355 6.21071 3.29484 6.58579 2.91977C6.96086 2.5447 7.46957 2.33398 8 2.33398H16C16.5304 2.33398 17.0391 2.5447 17.4142 2.91977C17.7893 3.29484 18 3.80355 18 4.33398V22.334H6Z"
+                      stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M6 12.334H4C3.46957 12.334 2.96086 12.5447 2.58579 12.9198C2.21071 13.2948 2 13.8036 2 14.334V20.334C2 20.8644 2.21071 21.3731 2.58579 21.7482C2.96086 22.1233 3.46957 22.334 4 22.334H6"
+                      stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M18 9.33398H20C20.5304 9.33398 21.0391 9.5447 21.4142 9.91977C21.7893 10.2948 22 10.8036 22 11.334V20.334C22 20.8644 21.7893 21.3731 21.4142 21.7482C21.0391 22.1233 20.5304 22.334 20 22.334H18"
+                      stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M10 6.33398H14"
+                      stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M10 10.334H14"
+                      stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M10 14.334H14"
+                      stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M10 18.334H14"
+                      stroke={pathname === "/student/company-details" ? "#CE2D52" : "#9CA3AF"}
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                   {!isCollapsed && (
                     <span className={`text-[16px] leading-[24px] font-poppins whitespace-nowrap overflow-hidden text-ellipsis ${pathname === "/student/company-details" ? "text-[#CE2D52]" : "text-white"
                       }`}>
@@ -186,6 +186,26 @@ export default function Sidebar({ student }: { student?: boolean }) {
                   )}
                 </Link>
 
+<Link
+                  href="/student/settings"
+                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
+                    } py-[9px] rounded-lg ${pathname === "/student/settings"
+                      ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
+                      : "hover:bg-white/5"
+                    } transition-all`}
+                  aria-current={pathname === "/student/settings" ? "page" : undefined}
+                >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.71642 24L8.23881 20.16C7.9801 20.06 7.73632 19.94 7.50746 19.8C7.27861 19.66 7.05473 19.51 6.83582 19.35L3.28358 20.85L0 15.15L3.07463 12.81C3.05473 12.67 3.04478 12.535 3.04478 12.405V11.595C3.04478 11.465 3.05473 11.33 3.07463 11.19L0 8.85L3.28358 3.15L6.83582 4.65C7.05473 4.49 7.28358 4.34 7.52239 4.2C7.76119 4.06 8 3.94 8.23881 3.84L8.71642 0H15.2836L15.7612 3.84C16.0199 3.94 16.2637 4.06 16.4925 4.2C16.7214 4.34 16.9453 4.49 17.1642 4.65L20.7164 3.15L24 8.85L20.9254 11.19C20.9453 11.33 20.9552 11.465 20.9552 11.595V12.405C20.9552 12.535 20.9353 12.67 20.8955 12.81L23.9701 15.15L20.6866 20.85L17.1642 19.35C16.9453 19.51 16.7164 19.66 16.4776 19.8C16.2388 19.94 16 20.06 15.7612 20.16L15.2836 24H8.71642ZM10.806 21.6H13.1642L13.5821 18.42C14.199 18.26 14.7711 18.025 15.2985 17.715C15.8259 17.405 16.3085 17.03 16.7463 16.59L19.7015 17.82L20.8657 15.78L18.2985 13.83C18.398 13.55 18.4677 13.255 18.5075 12.945C18.5473 12.635 18.5672 12.32 18.5672 12C18.5672 11.68 18.5473 11.365 18.5075 11.055C18.4677 10.745 18.398 10.45 18.2985 10.17L20.8657 8.22L19.7015 6.18L16.7463 7.44C16.3085 6.98 15.8259 6.595 15.2985 6.285C14.7711 5.975 14.199 5.74 13.5821 5.58L13.194 2.4H10.8358L10.4179 5.58C9.80099 5.74 9.22886 5.975 8.70149 6.285C8.17413 6.595 7.69154 6.97 7.25373 7.41L4.29851 6.18L3.13433 8.22L5.70149 10.14C5.60199 10.44 5.53234 10.74 5.49254 11.04C5.45274 11.34 5.43284 11.66 5.43284 12C5.43284 12.32 5.45274 12.63 5.49254 12.93C5.53234 13.23 5.60199 13.53 5.70149 13.83L3.13433 15.78L4.29851 17.82L7.25373 16.56C7.69154 17.02 8.17413 17.405 8.70149 17.715C9.22886 18.025 9.80099 18.26 10.4179 18.42L10.806 21.6ZM12.0597 16.2C13.2139 16.2 14.199 15.79 15.0149 14.97C15.8308 14.15 16.2388 13.16 16.2388 12C16.2388 10.84 15.8308 9.85 15.0149 9.03C14.199 8.21 13.2139 7.8 12.0597 7.8C10.8856 7.8 9.89552 8.21 9.08955 9.03C8.28358 9.85 7.8806 10.84 7.8806 12C7.8806 13.16 8.28358 14.15 9.08955 14.97C9.89552 15.79 10.8856 16.2 12.0597 16.2Z" fill="#9CA3AF"/>
+</svg>
+
+                  {!isCollapsed && (
+                    <span className={`text-[16px] leading-[24px] font-poppins whitespace-nowrap overflow-hidden text-ellipsis ${pathname === "/student/settings" ? "text-[#CE2D52]" : "text-white"
+                      }`}>
+                      Settings
+                    </span>
+                  )}
+                </Link>
                 {/* <Link
                   href="/admin/master-data"
                   className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
