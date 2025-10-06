@@ -1,4 +1,4 @@
-import { AccountInformationData, FormField, RadioGroup, PrivacyDisplayData } from "@/types/uiTypes";
+import { AccountInformationData, FormField, RadioGroup, PrivacyDisplayData, EmailNotificationData, NotificationSection } from "@/types/uiTypes";
 
 export const accountInformationData: AccountInformationData = {
   companyName: "ACME Corp",
@@ -76,5 +76,37 @@ export const privacyDisplayGroups: RadioGroup[] = [
       { value: "only-people-know", label: "Only People You Know" },
       { value: "no-one", label: "No One" },
     ],
+  },
+];
+
+export const emailNotificationData: EmailNotificationData = {
+  summaryEnabled: false,
+  networkActivity: true,
+  linkedinUrl: "X_AE_A-22",
+};
+
+export const emailNotificationSections: NotificationSection[] = [
+  {
+    id: "summary",
+    title: "Notification Summary",
+    description: "Receive an email summary of notifications instead of individual emails",
+    type: "radio",
+    options: [
+      { value: "on", label: "On" },
+      { value: "off", label: "Off" },
+    ],
+  },
+  {
+    id: "network",
+    title: "Network Activity",
+    description: "New Activity on projects and moodboards by my network",
+    type: "checkbox",
+  },
+  {
+    id: "social",
+    title: "Social Media Links",
+    description: "Links for your social media.",
+    type: "social",
+    socialPlatform: "LinkedIn",
   },
 ];

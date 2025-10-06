@@ -11,5 +11,8 @@ export { default as FormSection } from './FormSection';
 export { default as RadioButton } from './RadioButton';
 export { default as DropdownButton } from './DropdownButton';
 export { default as PrivacySection } from '../../sections/student/settings/PrivacySection';
+export { default as Checkbox } from './Checkbox';
+export { default as SocialInput } from './SocialInput';
+export { default as EmailSettingsSection } from './EmailSettingsSection';
 
 export * from './types';

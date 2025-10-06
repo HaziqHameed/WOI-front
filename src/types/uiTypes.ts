@@ -85,3 +85,44 @@ export interface PrivacyDisplayData {
   profileOption: string;
   timezone: string;
 }
+
+export interface CheckboxProps {
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+  label: string;
+  className?: string;
+  labelClassName?: string;
+  disabled?: boolean;
+}
+
+export interface SocialInputProps {
+  platform: string;
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+  className?: string;
+  maxWidth?: string;
+}
+
+export interface EmailSettingsSectionProps {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+  titleClassName?: string;
+  containerClassName?: string;
+}
+
+export interface EmailNotificationData {
+  summaryEnabled: boolean;
+  networkActivity: boolean;
+  linkedinUrl: string;
+}
+
+export interface NotificationSection {
+  id: string;
+  title: string;
+  description: string;
+  type: 'radio' | 'checkbox' | 'social';
+  options?: RadioOption[];
+  socialPlatform?: string;
+}
