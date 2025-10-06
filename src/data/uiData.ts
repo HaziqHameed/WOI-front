@@ -1,4 +1,4 @@
-import { AccountInformationData, FormField, RadioGroup, PrivacyDisplayData, EmailNotificationData, NotificationSection} from "@/types/uiTypes";
+import { AccountInformationData, FormField, RadioGroup, PrivacyDisplayData, EmailNotificationData, NotificationSection } from "@/types/uiTypes";
 
 export const accountInformationData: AccountInformationData = {
   companyName: "ACME Corp",
@@ -110,3 +110,4 @@ export const emailNotificationSections: NotificationSection[] = [
     socialPlatform: "LinkedIn",
   },
 ];
+

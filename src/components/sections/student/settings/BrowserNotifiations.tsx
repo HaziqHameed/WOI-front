@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { BrowserSettingsSection, RadioButton, Checkbox } from "@/components/common/ui";
 import { browserNotificationData, browserNotificationSections } from '@/data/student/SettingsData';
-
+import { Poppins } from 'next/font/google';
+const poppins = Poppins({
+  weight: ['400', '500', '600'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 export default function BrowserNotifications() {
   const [notificationsOn, setNotificationsOn] = useState(browserNotificationData.notificationsOn);
   const [newProjects, setNewProjects] = useState(browserNotificationData.newProjects);
@@ -12,11 +17,11 @@ export default function BrowserNotifications() {
   return (
     <BrowserSettingsSection title="Browser Notifications">
       <div className="mb-10">
-        <h2 className="text-white font-bold text-[13px] leading-[18px] mb-4 font-['Poppins']">
+        <h2 className={`text-white font-bold text-[13px] leading-[18px] mb-4 ${poppins.className}`}>
           {browserSection?.title}
         </h2>
         
-        <p className={`text-white text-[12px] leading-[17px] mb-6 font-['Poppins'] ${browserSection?.maxWidth}`}>
+        <p className={`text-white text-[12px] leading-[17px] mb-6 ${poppins.className} ${browserSection?.maxWidth}`}>
           {browserSection?.description}
         </p>
 
@@ -30,18 +35,18 @@ export default function BrowserNotifications() {
               checked={option.value === 'on' ? notificationsOn : !notificationsOn}
               onChange={(value) => setNotificationsOn(value === 'on')}
               className="flex items-center gap-[18px]"
-              labelClassName="text-[12px] leading-[14px] font-['Poppins']"
+              labelClassName={`text-[12px] leading-[14px] ${poppins.className}`}
             />
           ))}
         </div>
       </div>
 
       <div>
-        <h2 className="text-white font-bold text-[13px] leading-[18px] mb-4 font-['Poppins']">
+        <h2 className={`text-white font-bold text-[13px] leading-[18px] mb-4 ${poppins.className}`}>
           {creativesSection?.title}
         </h2>
         
-        <p className={`text-white text-[13px] leading-[17px] mb-6 font-['Poppins'] ${creativesSection?.maxWidth}`}>
+        <p className={`text-white text-[13px] leading-[17px] mb-6 ${poppins.className} ${creativesSection?.maxWidth}`}>
           {creativesSection?.description}
         </p>
 
@@ -50,7 +55,7 @@ export default function BrowserNotifications() {
           onChange={setNewProjects}
           label="New Projects"
           className="flex items-center gap-6"
-          labelClassName="text-[13px] leading-[14px] font-['Poppins']"
+          labelClassName={`text-[13px] leading-[14px] ${poppins.className}`}
         />
       </div>
     </BrowserSettingsSection>

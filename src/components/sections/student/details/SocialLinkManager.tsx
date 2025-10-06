@@ -77,7 +77,7 @@ export default function SocialLinksManager() {
 
           <div className="ml-[55px]">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-2">
-              <h2 className="text-white font-['Poppins'] font-bold text-2xl leading-9">
+              <h2 className={`text-white ${poppins.className} font-bold text-2xl leading-9`}>
                 Social
               </h2>
               <button
@@ -118,7 +118,7 @@ export default function SocialLinksManager() {
                       </defs>
                     </svg>
 
-                    <span className="text-white font-['Poppins'] text-xs leading-[18px] truncate">
+                    <span className={`text-white ${poppins.className} text-xs leading-[18px] truncate`}>
                       {link.url}
                     </span>
                   </div>
@@ -163,7 +163,7 @@ export default function SocialLinksManager() {
                     value={newUrl}
                     onChange={(e) => setNewUrl(e.target.value)}
                     placeholder="Enter social media URL"
-                    className="flex-1 bg-white/20 text-white placeholder-white/50 px-3 py-2 rounded border border-white/30 focus:outline-none focus:border-[#F05921] font-['Poppins'] text-xs"
+                    className={`flex-1 bg-white/20 text-white placeholder-white/50 px-3 py-2 rounded border border-white/30 focus:outline-none focus:border-[#F05921] ${poppins.className} text-xs`}
                     autoFocus
                   />
                   <div className="flex items-center gap-2">

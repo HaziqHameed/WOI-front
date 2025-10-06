@@ -1,4 +1,4 @@
-import { BrowserNotificationData, BrowserNotificationSection, LinksType } from "@/types/student/settings";
+import { BrowserNotificationData, BrowserNotificationSection, LinksType, NotificationOption, NotificationsData } from "@/types/student/settings";
 
 export const linksData: LinksType[] = [
   { id: 1, label: "Account Info", variant: "accent" },
@@ -35,3 +35,31 @@ export const browserNotificationSections: BrowserNotificationSection[] = [
     maxWidth: "max-w-[619px]",
   },
 ];
+
+export const notificationsData: NotificationsData = {
+  reports: true,
+  sound: true,
+  vibrations: false,
+};
+
+export const notificationOptions: NotificationOption[] = [
+  {
+    id: "reports",
+    title: "Reports",
+    description: "Enable reports notifications",
+    defaultChecked: true,
+  },
+  {
+    id: "sound",
+    title: "Sound",
+    description: "Enable sound notifications",
+    defaultChecked: true,
+  },
+  {
+    id: "vibrations",
+    title: "Vibrations",
+    description: "Enable vibrations effect",
+    defaultChecked: false,
+  },
+];
+

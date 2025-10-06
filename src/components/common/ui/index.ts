@@ -15,5 +15,7 @@ export { default as Checkbox } from './Checkbox';
 export { default as SocialInput } from './SocialInput';
 export { default as EmailSettingsSection } from '../../sections/student/settings/EmailSettingsSection';
 export { default as BrowserSettingsSection } from '../../sections/student/settings/BrowserSettingsSection';
+export { default as ToggleSwitch } from './ToggleSwitch';
+export { default as NotificationsSection } from '../../sections/student/settings/NotificationsSection';
 
 export * from './types';
