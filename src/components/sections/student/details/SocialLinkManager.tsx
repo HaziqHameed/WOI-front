@@ -100,7 +100,7 @@ export default function SocialLinksManager() {
             </div>
 
             <div className="space-y-0">
-              {links.map((link, index) => (
+              {links.map((link) => (
                 <div
                   key={link.id}
                   className="bg-white/10 backdrop-blur-sm px-4 py-3 flex items-center justify-between group hover:bg-white/15 transition-colors"

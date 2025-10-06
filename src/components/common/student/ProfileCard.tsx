@@ -1,4 +1,5 @@
 import { Poppins } from 'next/font/google';
+import Image from 'next/image';
 import React from 'react';
 
 const poppins = Poppins({
@@ -12,10 +13,13 @@ export default function ProfileCard({ company }: { company?: boolean }) {
       <div className={`relative w-full ${company ? 'h-[700px]' : 'h-[615.26px]'} bg-[#111827] border border-[#1F2937] rounded-[7.15px] overflow-hidden -mt-7`}>
         <div className={`absolute w-full ${company ? 'h-[70px]' : 'h-[59.38px]'} bg-[#762A45] rounded-[7.15px]`}>
           <div className="absolute left-[12px] top-[13.5px]">
-            <img
+
+            <Image
               src="/images/building.png"
               alt="User Avatar"
-              className="object-cover w-7 h-7"
+              width={28}
+              height={28}
+              className="object-cover"
             />
           </div>
           {company && (
@@ -56,10 +60,12 @@ export default function ProfileCard({ company }: { company?: boolean }) {
 
         <div className={`absolute ${company ? 'top-[34px]' : 'top-[20px]'} left-1/2 -translate-x-1/2 w-fit `}>
           <div className="w-[68.68px] h-[68.68px] bg-[#374151] rounded-full overflow-hidden flex items-center justify-center mx-auto">
-            <img
+            <Image
               src="/images/big-building.png"
               alt="User Avatar"
-              className="w-full h-full object-cover"
+              width={500}
+              height={300}
+              className="object-cover"
             />
           </div>
 

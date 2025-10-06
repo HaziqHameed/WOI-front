@@ -1,5 +1,6 @@
 import { DailyChart, Skill, Stat, WeeklyChart } from "@/types/dashboard";
 import { Activity, Meeting } from "@/types/student/dashboard";
+import Image from "next/image";
 
 export const studentStatsData: Stat[] = [
     {
@@ -258,10 +259,12 @@ export const activities: Activity[] = [
         statusBg: 'rgba(55, 125, 255, 0.2)',
         avatarBg: 'rgba(56, 203, 137, 0.3)',
         avatarBorder: 'rgba(56, 203, 137, 0.3)',
-        emoji: <img
+        emoji: <Image
             src="/images/avatar-2.png"
             alt="User Avatar"
-            className="w-full h-full object-cover"
+            width={100}
+            height={100}
+            className="object-cover"
         />
     },
     {
@@ -275,10 +278,12 @@ export const activities: Activity[] = [
         statusBg: 'rgba(56, 203, 137, 0.2)',
         avatarBg: 'rgba(255, 166, 0, 0.4)',
         avatarBorder: 'rgba(255, 166, 0, 0.3)',
-        emoji: <img
+        emoji: <Image
             src="/images/avatar-3.png"
             alt="User Avatar"
-            className="w-full h-full object-cover"
+            width={100}
+            height={100}
+            className="object-cover"
         />
     },
     {
@@ -292,10 +297,12 @@ export const activities: Activity[] = [
         statusBg: 'rgba(55, 125, 255, 0.2)',
         avatarBg: 'rgba(55, 125, 255, 0.3)',
         avatarBorder: 'rgba(55, 125, 255, 0.3)',
-        emoji: <img
+        emoji: <Image
             src="/images/avatar-4.png"
             alt="User Avatar"
-            className="w-full h-full object-cover"
+            width={100}
+            height={100}
+            className="object-cover"
         />
     }
 ];

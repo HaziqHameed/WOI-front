@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeleteAccountSection, Button } from "@/components/common/ui";
+import { DeleteAccountSection } from "@/components/common/ui";
 import { deleteAccountContent, deleteAccountData } from '@/data/student/SettingsData';
 import { Poppins } from 'next/font/google';
 const poppins = Poppins({

@@ -1,7 +1,7 @@
 "use client";
+import { BlockedUsersSectionProps } from '@/types/student/settings';
 import { Poppins } from 'next/font/google';
 import React from 'react';
-import { BlockedUsersSectionProps } from '@/types/uiTypes';
 
 const poppins = Poppins({
   weight: ['400', '500', '600'],

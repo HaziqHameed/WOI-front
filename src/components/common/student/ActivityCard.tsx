@@ -7,17 +7,8 @@ const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
 });
 export default function ActivityCard({ meetingFlag }: { meetingFlag?: boolean }) {
-  const [meetings, setMeetings] = useState(meetingsData);
-  const [showCreateMenu, setShowCreateMenu] = useState(false);
+  const meetings = meetingsData;
   const [showMeetingMenu, setShowMeetingMenu] = useState<number | null>(null);
-  const [showCreateModal, setShowCreateModal] = useState(false);
-  const [newMeeting, setNewMeeting] = useState({
-    day: '',
-    date: '',
-    title: '',
-    time: '',
-  });
-
 
   const handleMenuClick = (meetingId: number) => {
     setShowMeetingMenu(showMeetingMenu === meetingId ? null : meetingId);

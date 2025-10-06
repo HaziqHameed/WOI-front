@@ -1,4 +1,4 @@
-import { DailyChart, Skill, Stat, WeeklyChart } from "@/types/dashboard";
+import {  Stat } from "@/types/dashboard";
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
@@ -8,7 +8,7 @@ const poppins = Poppins({
 });
 const donut = ({size, label}: {size: string, label: string}) => {
     return (
-   <div className="relative mx-auto w-12 h-12 flex-shrink-0 top-2">
+   <div className="relative mx-auto w-12 h-12 flex-shrink-0 top-2 ">
       {/* Background circle with 30% opacity */}
       <svg
         className="absolute -rotate-90 w-10 h-10 left-0.5 top-0.5"
@@ -38,7 +38,7 @@ const donut = ({size, label}: {size: string, label: string}) => {
         />
       </svg>
       
-      <div className={`absolute left-[22px] top-[23px] -translate-x-1/2 -translate-y-1/2 text-white font-semibold text-center text-[8px] leading-tight ${poppins.className}`}>
+      <div className={`absolute left-[22px] top-[23px] -translate-x-1/2 -translate-y-1/2 text-white font-semibold text-center text-[8px] leading-tight ${poppins.className} ${size}`}>
         {label}
       </div>
     </div>
@@ -53,7 +53,7 @@ export const statsData: Stat[] = [
         bgColor: "bg-[#35A891]",
         gradient: "bg-gradient-to-r from-[rgba(255,255,255,0.2)] to-transparent",
         icon: <div className="bg-none">
-          {donut({ label: "+74%", size: "w-[45.79px] h-[45.79px]" })}
+          {donut({ label: "+74%", size: "" })}
         </div>,
     },
     {
@@ -63,7 +63,7 @@ export const statsData: Stat[] = [
         bgColor: "bg-[#FFA600]",
         gradient: "bg-gradient-to-r from-[rgba(255,255,255,0.2)] to-transparent",
         icon: <div className="bg-none">
-          {donut({ label: "+74%", size: "w-[45.79px] h-[45.79px]" })}
+          {donut({ label: "+74%", size: "" })}
         </div>,
     },
    {
@@ -73,7 +73,7 @@ export const statsData: Stat[] = [
         bgColor: "bg-[#FF5630]",
         gradient: "bg-gradient-to-r from-[rgba(255,255,255,0.2)] to-transparent",
         icon: <div className="bg-none">
-          {donut({ label: "+74%", size: "w-[45.79px] h-[45.79px]" })}
+          {donut({ label: "+74%", size: "" })}
         </div>,
     },
     {
@@ -83,7 +83,7 @@ export const statsData: Stat[] = [
         bgColor: "bg-[#377DFF]",
         gradient: "bg-gradient-to-r from-[rgba(255,255,255,0.2)] to-transparent",
         icon: <div className="bg-none">
-          {donut({ label: "+74%", size: "w-[45.79px] h-[45.79px]" })}
+          {donut({ label: "+74%", size: "" })}
         </div>,
     },
 ];

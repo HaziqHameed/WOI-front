@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { LogsTableProps, LogEntry } from "../../types/operationalLogs";
 import { Inter } from 'next/font/google'
 import { Poppins } from 'next/font/google';
+import Image from "next/image";
 
 const inter = Inter({ subsets: ['latin'] });
 const poppins = Poppins({
@@ -10,12 +11,12 @@ const poppins = Poppins({
   weight: ['400', '500', '600', '700'],
 });
 
-export default function LogsTable({ 
-  logs, 
+export default function LogsTable({
+  logs,
   columns,
-  isLive = true, 
-  totalEntries = 0, 
-  className = "", 
+  isLive = true,
+  totalEntries = 0,
+  className = "",
 }: LogsTableProps) {
   // Detect if this is UserManagement data based on the presence of 'name' field
   const isUserManagement = logs.length > 0 && logs[0].name !== undefined;
@@ -63,7 +64,7 @@ export default function LogsTable({
     if (!column?.sortable) return null;
 
     return (
-      <div 
+      <div
         className="relative w-4 h-5 cursor-pointer"
         onClick={() => handleSort(columnKey)}
       >
@@ -77,11 +78,11 @@ export default function LogsTable({
 
   const renderCellValue = (column: typeof columns[0], log: LogEntry, index: number) => {
     const value = log[column.key];
-    
+
     if (column.render) {
       return column.render(value, log, index);
     }
-    
+
     return value == null ? null : String(value);
   };
   return (
@@ -89,20 +90,20 @@ export default function LogsTable({
       {/* Header */}
       {isLive && (
         <div className="w-full bg-[#111827] px-4 py-5 rounded-t-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
-        <div className="sm:pl-4">
-          <h1 className={`${inter.className} text-white/70 text-base font-medium`}>
-            Real-time system activity monitoring
-          </h1>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2">
-            <div className={`w-3 h-3 rounded-full ${isLive ? 'bg-[#22C55E]' : 'bg-gray-500'}`}></div>
-            <span className={`${poppins.className} text-white text-lg font-medium`}>{isLive ? 'Live' : 'Offline'}</span>
+          <div className="sm:pl-4">
+            <h1 className={`${inter.className} text-white/70 text-base font-medium`}>
+              Real-time system activity monitoring
+            </h1>
           </div>
-          <div className="w-px h-7 bg-white"></div>
-          <span className="text-white text-lg font-medium">{totalEntries.toLocaleString()} entries</span>
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
+              <div className={`w-3 h-3 rounded-full ${isLive ? 'bg-[#22C55E]' : 'bg-gray-500'}`}></div>
+              <span className={`${poppins.className} text-white text-lg font-medium`}>{isLive ? 'Live' : 'Offline'}</span>
+            </div>
+            <div className="w-px h-7 bg-white"></div>
+            <span className="text-white text-lg font-medium">{totalEntries.toLocaleString()} entries</span>
+          </div>
         </div>
-      </div>
       )}
 
       {/* Mobile View */}
@@ -115,9 +116,11 @@ export default function LogsTable({
                 <div className="flex justify-between items-start mb-3">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-[#D9D9D9] overflow-hidden flex-shrink-0">
-                      <img
+                      <Image
                         src="/images/avatar-1.png"
                         alt="User Avatar"
+                        width={100}
+                        height={100}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -260,7 +263,7 @@ export default function LogsTable({
           {/* Column Headers */}
           <div className="bg-white/10 px-8 py-3.5 flex items-center">
             {columns.map((column) => (
-              <div 
+              <div
                 key={column.key}
                 className={`${column.width || ''} ${column.className || ''}`}
               >
@@ -277,7 +280,7 @@ export default function LogsTable({
             {sortedLogs.map((log, index) => (
               <div key={index} className="bg-[#111827] px-8 py-3.5 flex items-center">
                 {columns.map((column) => (
-                  <div 
+                  <div
                     key={column.key}
                     className={`${column.width || ''} ${column.className || ''}`}
                   >

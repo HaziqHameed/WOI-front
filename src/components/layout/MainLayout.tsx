@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-import PanelSwitcher from "../common/PanelSwitcher";
 import { SidebarProvider, useSidebar } from "@/contexts/SidebarContext";
 
 interface MainLayoutProps {

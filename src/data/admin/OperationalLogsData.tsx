@@ -1,6 +1,5 @@
 import { DropdownOption } from "@/components/common/ui";
 import { LogEntry, LogsTableColumn } from "@/types/operationalLogs";
-import Image from "next/image";
 
 export const logs: LogEntry[] = [
   {

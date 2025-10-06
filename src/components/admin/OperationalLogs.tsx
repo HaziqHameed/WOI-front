@@ -9,9 +9,7 @@ import {
   Button,
   IconButton,
   FilterSection,
-  DropdownOption
 } from "../common/ui";
-import { LogEntry } from "../../types/operationalLogs";
 import { logLevelOptions, logs, logsTableColumns } from "@/data/admin/OperationalLogsData";
 
 

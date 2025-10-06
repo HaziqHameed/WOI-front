@@ -1,6 +1,6 @@
-import {  LinkProps, LinksType } from "@/types/student/settings";
+import {  LinkProps } from "@/types/student/settings";
 import { Poppins } from "next/font/google";
-import React, { useState } from "react";
+import React from "react";
 
 const poppins = Poppins({
   weight: ['400', '500', '600'],

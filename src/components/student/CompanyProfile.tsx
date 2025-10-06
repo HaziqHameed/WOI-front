@@ -1,6 +1,5 @@
 "use client"
 import React from "react";
-import Analytics from "../sections/student/dashboard/Analytics";
 import ProfileCard from "../common/student/ProfileCard";
 import { About } from "../sections/student/details/About";
 

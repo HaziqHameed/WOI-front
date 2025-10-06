@@ -1,5 +1,4 @@
 "use client"
-import { Poppins } from "next/font/google";
 import React from "react";
 import { Header } from "../sections/student/settings/Header";
 import SettingsMenu from "../sections/student/settings/SettingsMenu";
@@ -12,11 +11,6 @@ import NotificationsSettings from "../sections/student/settings/NotificationsSet
 import BlockedUsers from "../sections/student/settings/BlockedUsers";
 import DeleteAccount from "../sections/student/settings/DeleteAccount";
 
-const poppins = Poppins({
-  weight: ['400', '500', '600'],
-  subsets: ['latin'],
-  display: 'swap',
-});
 export default function Setting() {
 
   return (

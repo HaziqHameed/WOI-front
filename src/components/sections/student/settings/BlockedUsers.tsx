@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { BlockedUsersSection, FormInput } from "@/components/common/ui";
-import { blockedUsersContent, blockedUsersData } from '@/data/student/SettingsData';
+import React from 'react';
+import { BlockedUsersSection } from "@/components/common/ui";
+import { blockedUsersContent } from '@/data/student/SettingsData';
 import { Poppins } from 'next/font/google';
 
 
@@ -10,7 +10,6 @@ const poppins = Poppins({
   display: 'swap',
 });
 export default function BlockedUsers() {
-  const [usernameInput, setUsernameInput] = useState(blockedUsersData.usernameInput);
 
   return (
     <BlockedUsersSection title="BLOCKED USERS">

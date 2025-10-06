@@ -63,7 +63,7 @@ export interface NotificationsData {
 }
 
 export interface NotificationOption {
-  id: string;
+   id: keyof NotificationsData;
   title: string;
   description: string;
   defaultChecked: boolean;

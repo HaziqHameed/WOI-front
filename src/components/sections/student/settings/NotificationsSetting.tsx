@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { NotificationsSection, ToggleSwitch } from "@/components/common/ui";
 import { notificationOptions, notificationsData } from '@/data/student/SettingsData';
+import { NotificationsData } from '@/types/student/settings';
 
 export default function NotificationsSettings() {
   const [notifications, setNotifications] = useState(notificationsData);
 
-  const handleToggle = (key: string) => {
-    setNotifications(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
-  };
-
+const handleToggle = (key: keyof NotificationsData) => {
+  setNotifications(prev => ({
+    ...prev,
+    [key]: !prev[key]
+  }));
+};
   return (
     <NotificationsSection 
       title="Notifications" 
