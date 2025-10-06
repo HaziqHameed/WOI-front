@@ -79,13 +79,13 @@ export default function Sidebar({ student }: { student?: boolean }) {
             {student ? (
               <>
                 <Link
-                  href={"/student"}
+                  href={"/student/home"}
                   className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[14px]"
-                    } py-[9px] rounded-lg ${(student ? pathname === "/student" : pathname === "/admin" || pathname === "/")
+                    } py-[9px] rounded-lg ${(student ? pathname === "/student/home" : pathname === "/admin" || pathname === "/")
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
                     } transition-all`}
-                  aria-current={(student ? pathname === "/student" : pathname === "/admin" || pathname === "/") ? "page" : undefined}
+                  aria-current={(student ? pathname === "/student/home" : pathname === "/admin" || pathname === "/") ? "page" : undefined}
                 >
                   <svg
                     width={24}
@@ -97,21 +97,21 @@ export default function Sidebar({ student }: { student?: boolean }) {
                   >
                     <path
                       d="M3 9.3335L12 2.3335L21 9.3335V20.3335C21 20.8639 20.7893 21.3726 20.4142 21.7477C20.0391 22.1228 19.5304 22.3335 19 22.3335H5C4.46957 22.3335 3.96086 22.1228 3.58579 21.7477C3.21071 21.3726 3 20.8639 3 20.3335V9.3335Z"
-                      stroke={pathname === "/student" ? "#CE2D52" : "#9CA3AF"}
+                      stroke={pathname === "/student/home" ? "#CE2D52" : "#9CA3AF"}
                       strokeWidth={2}
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                     <path
                       d="M9 22.3335V12.3335H15V22.3335"
-                      stroke={pathname === "/student" ? "#CE2D52" : "#9CA3AF"}
+                      stroke={pathname === "/student/home" ? "#CE2D52" : "#9CA3AF"}
                       strokeWidth={2}
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                   </svg>
                   {!isCollapsed && (
-                    <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap ${pathname === "/student" ? "text-[#CE2D52]" : "text-white"
+                    <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap ${pathname === "/student/home" ? "text-[#CE2D52]" : "text-white"
                       }`}>
                       My Home
                     </span>
