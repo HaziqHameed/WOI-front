@@ -1,4 +1,4 @@
-import { BrowserNotificationData, BrowserNotificationSection, LinksType, NotificationOption, NotificationsData } from "@/types/student/settings";
+import { BlockedUsersContent, BlockedUsersData, BrowserNotificationData, BrowserNotificationSection, LinksType, NotificationOption, NotificationsData } from "@/types/student/settings";
 
 export const linksData: LinksType[] = [
   { id: 1, label: "Account Info", variant: "accent" },
@@ -63,3 +63,14 @@ export const notificationOptions: NotificationOption[] = [
   },
 ];
 
+export const blockedUsersData: BlockedUsersData = {
+  blockedUsers: [],
+  usernameInput: "",
+};
+
+export const blockedUsersContent: BlockedUsersContent = {
+  title: "Block Users",
+  description: "Blocked users will no longer be allowed to: follow you, see your work in their feed, comment on your work, add your work to a moodboard, and message you.",
+  placeholder: "Enter username",
+  statusMessage: "You haven't blocked any\nusers",
+};

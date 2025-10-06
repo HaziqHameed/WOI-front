@@ -9,6 +9,7 @@ import PrivacyDisplay from "../sections/student/settings/PrivacyDisplay";
 import EmailNotificationsSettings from "../sections/student/settings/EmailNotificationsSetting";
 import BrowserNotifications from "../sections/student/settings/BrowserNotifiations";
 import NotificationsSettings from "../sections/student/settings/NotificationsSetting";
+import BlockedUsers from "../sections/student/settings/BlockedUsers";
 
 const poppins = Poppins({
   weight: ['400', '500', '600'],
@@ -27,6 +28,7 @@ export default function Setting() {
         <EmailNotificationsSettings/>
         <BrowserNotifications/>
         <NotificationsSettings/>
+        <BlockedUsers/>
       </div>
     </>
   );

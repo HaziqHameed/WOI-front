@@ -1,5 +1,11 @@
 import { DailyChart, Skill, Stat, WeeklyChart } from "@/types/dashboard";
+import { Poppins } from "next/font/google";
 
+const poppins = Poppins({
+  weight: ['400', '500', '600'],
+  subsets: ['latin'],
+  display: 'swap',
+});
 const donut = ({size, label}: {size: string, label: string}) => {
     return (
    <div className="relative mx-auto w-12 h-12 flex-shrink-0 top-2">
@@ -32,7 +38,7 @@ const donut = ({size, label}: {size: string, label: string}) => {
         />
       </svg>
       
-      <div className="absolute left-[22px] top-[23px] -translate-x-1/2 -translate-y-1/2 text-white font-semibold text-center text-[8px] leading-tight font-['Poppins']">
+      <div className={`absolute left-[22px] top-[23px] -translate-x-1/2 -translate-y-1/2 text-white font-semibold text-center text-[8px] leading-tight ${poppins.className}`}>
         {label}
       </div>
     </div>

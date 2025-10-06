@@ -17,5 +17,6 @@ export { default as EmailSettingsSection } from '../../sections/student/settings
 export { default as BrowserSettingsSection } from '../../sections/student/settings/BrowserSettingsSection';
 export { default as ToggleSwitch } from './ToggleSwitch';
 export { default as NotificationsSection } from '../../sections/student/settings/NotificationsSection';
+export { default as BlockedUsersSection } from '../../sections/student/settings/BlockedUsersSection';
 
 export * from './types';

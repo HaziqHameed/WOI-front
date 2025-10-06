@@ -1,4 +1,4 @@
-import { AccountInformationData, FormField, RadioGroup, PrivacyDisplayData, EmailNotificationData, NotificationSection } from "@/types/uiTypes";
+import { AccountInformationData, FormField, RadioGroup, PrivacyDisplayData, EmailNotificationData, NotificationSection, BlockedUsersData, BlockedUsersContent } from "@/types/uiTypes";
 
 export const accountInformationData: AccountInformationData = {
   companyName: "ACME Corp",

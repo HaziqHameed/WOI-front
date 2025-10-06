@@ -68,3 +68,25 @@ export interface NotificationOption {
   description: string;
   defaultChecked: boolean;
 }
+
+export interface BlockedUsersSectionProps {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+  titleClassName?: string;
+  containerClassName?: string;
+  contentMaxWidth?: string;
+  contentMarginLeft?: string;
+}
+
+export interface BlockedUsersData {
+  blockedUsers: string[];
+  usernameInput: string;
+}
+
+export interface BlockedUsersContent {
+  title: string;
+  description: string;
+  placeholder: string;
+  statusMessage: string;
+}
