@@ -126,3 +126,4 @@ export interface NotificationSection {
   options?: RadioOption[];
   socialPlatform?: string;
 }
+

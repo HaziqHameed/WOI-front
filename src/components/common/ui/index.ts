@@ -14,5 +14,6 @@ export { default as PrivacySection } from '../../sections/student/settings/Priva
 export { default as Checkbox } from './Checkbox';
 export { default as SocialInput } from './SocialInput';
 export { default as EmailSettingsSection } from '../../sections/student/settings/EmailSettingsSection';
+export { default as BrowserSettingsSection } from '../../sections/student/settings/BrowserSettingsSection';
 
 export * from './types';

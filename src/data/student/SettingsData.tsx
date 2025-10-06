@@ -1,4 +1,4 @@
-import { LinksType } from "@/types/student/settings";
+import { BrowserNotificationData, BrowserNotificationSection, LinksType } from "@/types/student/settings";
 
 export const linksData: LinksType[] = [
   { id: 1, label: "Account Info", variant: "accent" },
@@ -7,4 +7,31 @@ export const linksData: LinksType[] = [
   { id: 4, label: "Browser Notifications" },
   { id: 5, label: "Blocked Users" },
   { id: 6, label: "Delete Account" },
+];
+
+
+export const browserNotificationData: BrowserNotificationData = {
+  notificationsOn: true,
+  newProjects: true,
+};
+
+export const browserNotificationSections: BrowserNotificationSection[] = [
+  {
+    id: "browser",
+    title: "Browser Notifications",
+    description: "Get notifications to stay up to date with Jobs",
+    type: "radio",
+    options: [
+      { value: "on", label: "On" },
+      { value: "off", label: "Off" },
+    ],
+    maxWidth: "max-w-[418px]",
+  },
+  {
+    id: "creatives",
+    title: "Creatives You Follow",
+    description: "When you turn on notifications from people you follow, you'll get a notification directly from your browser when your favorite creators publish new work or Conversation",
+    type: "checkbox",
+    maxWidth: "max-w-[619px]",
+  },
 ];
