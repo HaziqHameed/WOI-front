@@ -13,6 +13,6 @@ export { default as DropdownButton } from './DropdownButton';
 export { default as PrivacySection } from '../../sections/student/settings/PrivacySection';
 export { default as Checkbox } from './Checkbox';
 export { default as SocialInput } from './SocialInput';
-export { default as EmailSettingsSection } from './EmailSettingsSection';
+export { default as EmailSettingsSection } from '../../sections/student/settings/EmailSettingsSection';
 
 export * from './types';

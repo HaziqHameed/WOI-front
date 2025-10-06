@@ -7,6 +7,7 @@ import { linksData } from "@/data/student/SettingsData";
 import AccountInformation from "../sections/student/settings/AccountInformation";
 import PrivacyDisplay from "../sections/student/settings/PrivacyDisplay";
 import EmailNotificationsSettings from "../sections/student/settings/EmailNotificationsSetting";
+import BrowserNotifications from "../sections/student/settings/BrowserNotifiations";
 
 const poppins = Poppins({
   weight: ['400', '500', '600'],
@@ -23,6 +24,7 @@ export default function Setting() {
         <AccountInformation/>
         <PrivacyDisplay/>
         <EmailNotificationsSettings/>
+        <BrowserNotifications/>
       </div>
     </>
   );
