@@ -90,3 +90,24 @@ export interface BlockedUsersContent {
   placeholder: string;
   statusMessage: string;
 }
+
+
+export interface DeleteAccountSectionProps {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+  titleClassName?: string;
+  containerClassName?: string;
+}
+
+export interface DeleteAccountData {
+  username: string;
+  projectCount: number;
+  draftCount: number;
+}
+
+export interface DeleteAccountContent {
+  mainQuestion: string;
+  description: string;
+  deleteButtonText: string;
+}

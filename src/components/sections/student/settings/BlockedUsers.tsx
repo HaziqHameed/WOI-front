@@ -26,7 +26,7 @@ export default function BlockedUsers() {
           <input
             type="text"
             placeholder="Enter username"
-            className="w-full max-w-[506px] h-8 bg-transparent border border-white rounded-lg px-4 text-white font-poppins font-semibold text-base leading-none placeholder:text-white placeholder:font-semibold focus:outline-none focus:ring-2 focus:ring-white/50"
+            className={`w-full max-w-[506px] h-8 bg-transparent border border-white rounded-lg px-4 text-white ${poppins.className} font-semibold text-base leading-none placeholder:text-white placeholder:font-semibold focus:outline-none focus:ring-2 focus:ring-white/50`}
           />
         </div>
 

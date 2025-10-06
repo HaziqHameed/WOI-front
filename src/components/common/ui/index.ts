@@ -18,5 +18,6 @@ export { default as BrowserSettingsSection } from '../../sections/student/settin
 export { default as ToggleSwitch } from './ToggleSwitch';
 export { default as NotificationsSection } from '../../sections/student/settings/NotificationsSection';
 export { default as BlockedUsersSection } from '../../sections/student/settings/BlockedUsersSection';
+export { default as DeleteAccountSection } from '../../sections/student/settings/DeleteAccountSection';
 
 export * from './types';

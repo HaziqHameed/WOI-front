@@ -10,6 +10,7 @@ import EmailNotificationsSettings from "../sections/student/settings/EmailNotifi
 import BrowserNotifications from "../sections/student/settings/BrowserNotifiations";
 import NotificationsSettings from "../sections/student/settings/NotificationsSetting";
 import BlockedUsers from "../sections/student/settings/BlockedUsers";
+import DeleteAccount from "../sections/student/settings/DeleteAccount";
 
 const poppins = Poppins({
   weight: ['400', '500', '600'],
@@ -29,6 +30,7 @@ export default function Setting() {
         <BrowserNotifications/>
         <NotificationsSettings/>
         <BlockedUsers/>
+        <DeleteAccount/>
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import { BlockedUsersContent, BlockedUsersData, BrowserNotificationData, BrowserNotificationSection, LinksType, NotificationOption, NotificationsData } from "@/types/student/settings";
+import { BlockedUsersContent, BlockedUsersData, BrowserNotificationData, BrowserNotificationSection, DeleteAccountContent, DeleteAccountData, LinksType, NotificationOption, NotificationsData } from "@/types/student/settings";
 
 export const linksData: LinksType[] = [
   { id: 1, label: "Account Info", variant: "accent" },
@@ -73,4 +73,16 @@ export const blockedUsersContent: BlockedUsersContent = {
   description: "Blocked users will no longer be allowed to: follow you, see your work in their feed, comment on your work, add your work to a moodboard, and message you.",
   placeholder: "Enter username",
   statusMessage: "You haven't blocked any\nusers",
+};
+
+export const deleteAccountData: DeleteAccountData = {
+  username: "@thegriffster",
+  projectCount: 0,
+  draftCount: 0,
+};
+
+export const deleteAccountContent: DeleteAccountContent = {
+  mainQuestion: "Would you like to delete your Behance account:",
+  description: "This account contains",
+  deleteButtonText: "I want to delete my account",
 };
