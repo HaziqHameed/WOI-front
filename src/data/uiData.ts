@@ -1,4 +1,4 @@
-import { AccountInformationData, FormField } from "@/types/uiTypes";
+import { AccountInformationData, FormField, RadioGroup, PrivacyDisplayData } from "@/types/uiTypes";
 
 export const accountInformationData: AccountInformationData = {
   companyName: "ACME Corp",
@@ -46,5 +46,35 @@ export const accountInformationFields: FormField[] = [
     type: "email",
     ariaLabel: "Email id",
     inputClassName: "font-bold",
+  },
+];
+
+export const privacyDisplayData: PrivacyDisplayData = {
+  messageOption: "anyone",
+  profileOption: "anyone",
+  timezone: "UTC+5",
+};
+
+export const privacyDisplayGroups: RadioGroup[] = [
+  {
+    id: "message",
+    title: "Users who can message you directly",
+    name: "message",
+    fontWeight: "bold",
+    options: [
+      { value: "anyone", label: "Anyone" },
+      { value: "only-people", label: "Only People You" },
+    ],
+  },
+  {
+    id: "profile",
+    title: "Users who can see your Profile",
+    name: "profile",
+    fontWeight: "normal",
+    options: [
+      { value: "anyone", label: "Anyone" },
+      { value: "only-people-know", label: "Only People You Know" },
+      { value: "no-one", label: "No One" },
+    ],
   },
 ];

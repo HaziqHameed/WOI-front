@@ -8,5 +8,8 @@ export { default as DataTable } from './DataTable';
 export { default as OptionsBar } from './OptionsBar';
 export { default as FormInput } from './FormInput';
 export { default as FormSection } from './FormSection';
+export { default as RadioButton } from './RadioButton';
+export { default as DropdownButton } from './DropdownButton';
+export { default as PrivacySection } from '../../sections/student/settings/PrivacySection';
 
 export * from './types';

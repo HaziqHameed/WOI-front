@@ -39,3 +39,49 @@ export interface FormField {
   inputClassName?: string;
   required?: boolean;
 }
+
+export interface RadioButtonProps {
+  name: string;
+  value: string;
+  label: string;
+  checked: boolean;
+  onChange: (value: string) => void;
+  className?: string;
+  labelClassName?: string;
+  fontWeight?: 'normal' | 'medium' | 'bold';
+}
+
+export interface DropdownButtonProps {
+  label: string;
+  onClick?: () => void;
+  className?: string;
+  labelClassName?: string;
+  icon?: React.ReactNode;
+}
+
+export interface PrivacySectionProps {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+  titleClassName?: string;
+  containerClassName?: string;
+}
+
+export interface RadioGroup {
+  id: string;
+  title: string;
+  name: string;
+  options: RadioOption[];
+  fontWeight?: 'normal' | 'medium' | 'bold';
+}
+
+export interface RadioOption {
+  value: string;
+  label: string;
+}
+
+export interface PrivacyDisplayData {
+  messageOption: string;
+  profileOption: string;
+  timezone: string;
+}
