@@ -19,5 +19,6 @@ export { default as ToggleSwitch } from './ToggleSwitch';
 export { default as NotificationsSection } from '../../sections/student/settings/NotificationsSection';
 export { default as BlockedUsersSection } from '../../sections/student/settings/BlockedUsersSection';
 export { default as DeleteAccountSection } from '../../sections/student/settings/DeleteAccountSection';
+export { default as UploadButton } from './UploadButton';
 
 export * from './types';
