@@ -10,6 +10,20 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* Custom Brand Colors */
+  --color-brand-success: #00B900;
+  --color-brand-successAlt: #52B447;
+  --color-background-primary: #111827;
+  --color-background-secondary: #1F2937;
+  --color-background-tertiary: #374151;
+  --color-accent-purple: #762A45;
+  --color-accent-blue: #5088FF;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9CA3AF;
+  --color-border-primary: #1F2937;
+  --color-border-secondary: #374151;
+  --color-overlay-light: rgba(255, 255, 255, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {

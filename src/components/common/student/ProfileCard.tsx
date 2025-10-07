@@ -10,8 +10,8 @@ const poppins = Poppins({
 export default function ProfileCard({ company, home }: { company?: boolean, home?: boolean }) {
   return (
     <div className={`flex  ${(company || home) ? 'mt-0' : 'mt-12'}`}>
-      <div className={`relative w-full ${company ? 'h-[700px]' : home ? 'h-[700px]' : 'h-[615.26px]'} bg-[#111827] border border-[#1F2937] rounded-[7.15px] overflow-hidden -mt-5`}>
-        <div className={`absolute w-full ${(home || company) ? 'h-[70px]' : 'h-[59.38px]'} bg-[#762A45] rounded-[7.15px]`}>
+      <div className={`relative w-full ${company ? 'h-[700px]' : home ? 'h-[700px]' : 'h-[650px]'} bg-background-primary border border-border-primary rounded-[7.15px] overflow-hidden -mt-5`}>
+        <div className={`absolute w-full ${(home || company) ? 'h-[70px]' : 'h-[59.38px]'} bg-accent-purple rounded-[7.15px]`}>
           <div className="absolute left-[12px] top-[13.5px]">
 
             {!home ? (
@@ -75,7 +75,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
         </div>
 
         <div className={`absolute ${(home || company) ? 'top-[34px]' : 'top-[20px]'} left-1/2 -translate-x-1/2 w-fit `}>
-          <div className="w-[68.68px] h-[68.68px] bg-[#374151] rounded-full overflow-hidden flex items-center justify-center mx-auto">
+          <div className="w-[68.68px] h-[68.68px] bg-background-tertiary rounded-full overflow-hidden flex items-center justify-center mx-auto">
             <Image
               src={home ? "/images/avatar-5.png" : "/images/big-building.png"}
               alt="User Avatar"
@@ -213,7 +213,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
               )}
 
 
-              <div className="w-[15px] h-[15px] rounded-full bg-[#00B900] flex items-center justify-center">
+              <div className="w-[15px] h-[15px] rounded-full bg-brand-success flex items-center justify-center">
                 <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
                   <path d="M1 3.5L3.5 6L8 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -241,7 +241,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
                 example12@gm...
               </p>
             </div>
-            <div className="flex gap-[8px] ml-[4px]">
+            <div className="flex gap-[8px] ml-[1px]">
               {company ? (
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className='mt-[1px]'>
                   <path d="M12.6237 0C13.211 0.000178442 13.7769 0.225756 14.2095 0.632141C14.4561 0.862558 14.691 1.10666 14.9237 1.35294C15.8562 2.3381 15.875 3.7704 14.9719 4.78566C14.9184 4.84915 14.8568 4.9099 14.7974 4.9701C11.7229 8.11603 8.64858 11.2627 5.57442 14.4101C5.40954 14.583 5.2016 14.7066 4.97307 14.7675C3.58205 15.155 2.19691 15.5518 0.809631 15.9475C0.624518 16.0022 0.444219 16.0378 0.263921 15.931C0.0408226 15.7991 -0.0511976 15.5611 0.0279838 15.2661C0.354874 14.0439 0.717075 12.8311 1.00384 11.5991C1.17558 10.8619 1.52601 10.297 2.05139 9.76671C4.98752 6.80085 7.8969 3.80817 10.8106 0.819868C11.3097 0.305946 11.8945 0.0109462 12.6237 0ZM10.3622 2.91277L2.62866 10.823L5.05386 13.304L12.7874 5.39317L10.3622 2.91277ZM11.1027 2.02066L13.6488 4.62858C13.8007 4.46439 13.9639 4.29035 14.1249 4.11411C14.1923 4.04206 14.2558 3.96643 14.3154 3.88753C14.6471 3.43381 14.6583 2.72997 14.3004 2.2965C14.0291 1.96293 13.7286 1.65534 13.4027 1.37757C12.9918 1.03222 12.4932 0.97585 12.0368 1.24567C11.6885 1.45091 11.4028 1.76507 11.1016 2.02066H11.1027ZM2.04871 11.8678L1.29007 14.6761L4.03199 13.8967L2.04871 11.8678Z" fill="white" />
@@ -264,7 +264,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
               )}
 
 
-              <div className="w-[14.31px] h-[14.31px] rounded-full bg-[#00B900] flex items-center justify-center">
+              <div className="w-[14.31px] h-[14.31px] rounded-full bg-brand-success flex items-center justify-center">
                 <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
                   <path d="M1 3.5L3.5 6L8 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -304,7 +304,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
                 <span>100%</span>
               </div>
               <div className="w-full h-2 bg-white rounded-full mt-1">
-                <div className="w-full h-full bg-[#00B900] rounded-full"></div>
+                <div className="w-full h-full bg-brand-success rounded-full"></div>
               </div>
               <div className="text-center text-white text-[10px] -mt-3">100%</div>
             </div>
@@ -313,7 +313,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
               className=
               {` mt-6 
         rounded-md 
-       ${!home && 'bg-[rgba(17,24,39,0.5)] shadow-md '}
+       ${!home && 'bg-background-secondary shadow-md '}
         
         backdrop-blur-sm
         overflow-hidden
@@ -334,11 +334,11 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
             px-4 py-2 
             ${!home && 'border-b border-gray-700'}
             last:border-b-0
-            ${!home && 'bg-[rgba(31,41,55,0.3)]'}
+            ${!home && 'bg-background-cardHover'}
           `}
                     >
                       <span className="text-white text-sm">{item.label}</span>
-                      <span className="text-[#52B447] text-sm">{item.status}</span>
+                      <span className="text-brand-successAlt text-sm">{item.status}</span>
                     </div>
                   ))}
                 </>
@@ -357,11 +357,11 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
             px-4 py-2 
             ${!home && 'border-b border-gray-700'}
             last:border-b-0
-            ${!home && 'bg-[rgba(31,41,55,0.3)]'}
+            ${!home && 'bg-background-cardHover'}
           `}
                     >
                       <span className="text-white text-sm">{item.label}</span>
-                      <span className="text-[#52B447] text-sm">{item.status}</span>
+                      <span className="text-brand-successAlt text-sm">{item.status}</span>
                     </div>
                   ))}
                 </>
