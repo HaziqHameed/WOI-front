@@ -1,38 +1,15 @@
 // Example usage of the DataTable component
 import React from 'react';
 import { DataTable, DataTableColumn, DataTableHeaderInfo } from './';
-
-interface ExampleData {
-  id: string;
-  name: string;
-  email: string;
-  status: 'active' | 'inactive';
-  createdAt: string;
-  [key: string]: unknown;
-}
+import { dataTableExampleData, ExampleData } from '@/data/common/DataTableExampleData';
 
 const ExampleDataTable = () => {
-  const data: ExampleData[] = [
-    {
-      id: '1',
-      name: 'John Doe',
-      email: 'john@example.com',
-      status: 'active',
-      createdAt: '2024-01-15'
-    },
-    {
-      id: '2',
-      name: 'Jane Smith',
-      email: 'jane@example.com',
-      status: 'inactive',
-      createdAt: '2024-01-14'
-    }
-  ];
+  const data: ExampleData[] = dataTableExampleData.sampleData;
 
   const columns: DataTableColumn<ExampleData>[] = [
     {
       key: 'name',
-      label: 'Name',
+      label: dataTableExampleData.columnLabels.name,
       sortable: true,
       width: 'w-[200px]',
       render: (value) => (
@@ -41,7 +18,7 @@ const ExampleDataTable = () => {
     },
     {
       key: 'email',
-      label: 'Email',
+      label: dataTableExampleData.columnLabels.email,
       sortable: true,
       render: (value) => (
         <span className="text-white/70 text-sm">{value != null ? String(value) : ''}</span>
@@ -49,7 +26,7 @@ const ExampleDataTable = () => {
     },
     {
       key: 'status',
-      label: 'Status',
+      label: dataTableExampleData.columnLabels.status,
       sortable: true,
       width: 'w-[100px]',
       render: (value) => (
@@ -76,7 +53,7 @@ const ExampleDataTable = () => {
     },
     {
       key: 'createdAt',
-      label: 'Created',
+      label: dataTableExampleData.columnLabels.created,
       sortable: true,
       width: 'w-[120px]',
       render: (value) => (
@@ -86,8 +63,8 @@ const ExampleDataTable = () => {
   ];
 
   const headerInfo: DataTableHeaderInfo = {
-    title: 'User Management',
-    subtitle: 'Manage system users and their permissions',
+    title: dataTableExampleData.headerInfo.title,
+    subtitle: dataTableExampleData.headerInfo.description,
     totalEntries: data.length
   };
 

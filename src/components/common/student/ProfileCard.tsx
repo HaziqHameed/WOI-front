@@ -1,6 +1,7 @@
 import { Poppins } from 'next/font/google';
 import Image from 'next/image';
 import React from 'react';
+import { profileCardData } from '@/data/student/ProfileCardData';
 
 const poppins = Poppins({
   weight: ['400', '500', '600'],
@@ -34,7 +35,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
         ${poppins.className}
       `}
               >
-                <span className="w-[51px] h-[15px] flex-none">Preview</span>
+                <span className="w-[51px] h-[15px] flex-none">{profileCardData.labels.preview}</span>
               </button>
             )}
           </div>
@@ -51,7 +52,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
         ${poppins.className}
       `}
             >
-              <span className="w-[51px] h-[15px] flex-none">Preview</span>
+              <span className="w-[51px] h-[15px] flex-none">{profileCardData.labels.preview}</span>
             </button>
           )}
           <div className={`absolute  w-7 h-7  rounded-full flex items-center justify-center cursor-pointer ${(!home && !company) ? 'top-[13.5px] right-[12px]' : 'top-2 right-[5px]'}`}>
@@ -87,7 +88,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
 
           <div className="mt-[12px] w-[109px] text-center mx-auto">
             <p className={`text-white font-bold text-[12.88px] leading-[20px] ${poppins.className}`}>
-              {home ? "Name" : "Company Name"}
+              {home ? profileCardData.labels.name : profileCardData.labels.companyName}
             </p>
             {!home && (
               <div className='absolute -right-10 -translate-x-1/2 top-19'>
@@ -111,10 +112,10 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
           {home && (
             <>
               <div className="absolute w-full left-1/2 -translate-x-1/2 text-center font-poppins font-normal text-[14px] leading-[20px] text-gray-400">
-                College Name
+                {profileCardData.labels.collegeName}
               </div>
               <div className="absolute w-full mt-5 left-1/2 -translate-x-1/2 text-center font-poppins font-normal text-[14px] leading-[20px] text-gray-400">
-                CGPA
+                {profileCardData.labels.cgpa}
               </div>
             </>
           )}
@@ -133,7 +134,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
               />
             </svg>
             <p className={`text-white text-[8.59px] leading-[14px] ${poppins.className}`}>
-              Mumbai, India
+              {profileCardData.contactInfo.location}
             </p>
           </div>
         </div>
@@ -168,7 +169,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
            
 
             <p className={`text-white text-[10.02px] leading-[14px] ${poppins.className}`}>
-              {company ? 'https://www.softsuittech.com':home ? 'Fresher' : 'Website'}
+              {company ? profileCardData.contactInfo.website : home ? profileCardData.labels.fresher : profileCardData.labels.website}
             </p>
           </div>
 
@@ -186,7 +187,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
               </svg>
 
               <p className={`text-white text-[10.02px] leading-[14px] ${poppins.className}`}>
-               +9187794802021
+               {profileCardData.contactInfo.phone}
               </p>
             </div>
             <div className="flex gap-[8px] ml-[8px] ">
@@ -238,7 +239,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
               </svg>
 
               <p className={`text-white text-[10.02px] leading-[14px] ${poppins.className}`}>
-                example12@gm...
+                {profileCardData.contactInfo.email}
               </p>
             </div>
             <div className="flex gap-[8px] ml-[1px]">
@@ -288,25 +289,25 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
     `}
           >
             <div className="flex items-center justify-between">
-              <p className={`text-white text-lg font-bold ${poppins.className}`}>100%</p>
+              <p className={`text-white text-lg font-bold ${poppins.className}`}>{profileCardData.progress.percentage}</p>
               <p className={`text-white text-sm text-center ${poppins.className}`}>
-                Profile Complete
+                {profileCardData.labels.profileComplete}
               </p>
             </div>
 
             <p className={`text-white text-xs mt-2 ${poppins.className}`}>
-              Now you have more chances of getting hired!
+              {profileCardData.labels.nowYouHaveMoreChances}
             </p>
 
             <div className="mt-4">
               <div className="flex justify-between text-[10px] text-white">
-                <span>0%</span>
-                <span>100%</span>
+                <span>{profileCardData.progress.minLabel}</span>
+                <span>{profileCardData.progress.maxLabel}</span>
               </div>
               <div className="w-full h-2 bg-white rounded-full mt-1">
                 <div className="w-full h-full bg-brand-success rounded-full"></div>
               </div>
-              <div className="text-center text-white text-[10px] -mt-3">100%</div>
+              <div className="text-center text-white text-[10px] -mt-3">{profileCardData.progress.percentage}</div>
             </div>
 
             <div
@@ -321,12 +322,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
             >
               {home ? (
                 <>
-                  {[
-                    { label: "Certifications", status: "Added" },
-                    { label: "Projects", status: "Added" },
-                    { label: "Achievements", status: "Added" },
-                    { label: "Profile Picture", status: "Added" },
-                  ].map((item, idx) => (
+                  {profileCardData.profileItems.home.map((item, idx) => (
                     <div
                       key={idx}
                       className={`
@@ -344,12 +340,7 @@ export default function ProfileCard({ company, home }: { company?: boolean, home
                 </>
               ) : (
                 <>
-                  {[
-                    { label: "About", status: "Added" },
-                    { label: "Social", status: "Added" },
-                    ...(company ? [{ label: "Certificates", status: "Added" }] : []),
-                    { label: "Profile Picture", status: "Added" },
-                  ].map((item, idx) => (
+                  {(company ? profileCardData.profileItems.company : profileCardData.profileItems.general).map((item, idx) => (
                     <div
                       key={idx}
                       className={`

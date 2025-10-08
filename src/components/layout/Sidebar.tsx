@@ -14,20 +14,27 @@ export default function Sidebar({ student }: { student?: boolean }) {
   const { isCollapsed, setIsCollapsed } = useSidebar();
   const pathname = usePathname();
 
+  console.log('Sidebar isCollapsed state:', isCollapsed);
+
+
   return (
     <>
       <aside
-        className={`fixed left-0 top-[78px] w-[80px] lg:w-[294px] ${
-          isCollapsed ? "lg:w-[80px]" : ""
-        } h-full bg-[#1E2839] border-r border-[#1F2937] backdrop-blur-sm transition-all duration-300 z-40 overflow-y-auto`}
+        className={`fixed left-0 top-[78px] h-full bg-[#1E2839] border-r border-[#1F2937] backdrop-blur-sm transition-all duration-300 z-40 overflow-y-auto w-[80px] ${
+          isCollapsed ? "lg:w-[80px]" : "lg:w-[294px]"
+        }`}
         aria-label="Sidebar"
       >
         <div className="relative w-full h-full">
           {/* Hidden on mobile, visible on desktop */}
           <div
             className={`absolute ${isCollapsed ? "left-[20px]" : "left-[30px]"
-              } top-3 w-[31px] h-[31px] cursor-pointer hover:opacity-80 transition-opacity hidden lg:block`}
-            onClick={() => setIsCollapsed(!isCollapsed)}
+              } top-3 w-[31px] h-[31px] cursor-pointer hover:opacity-80 transition-opacity block`}
+            onClick={() => {
+              console.log('Toggle clicked! Current state:', isCollapsed, 'New state:', !isCollapsed);
+              setIsCollapsed(!isCollapsed);
+            }}
+            title="Toggle Sidebar"
           >
               <svg
                 width={31}
@@ -71,22 +78,21 @@ export default function Sidebar({ student }: { student?: boolean }) {
             </div>
 
           <div
-            className={`absolute left-[16px] lg:left-[16px] ${
-              isCollapsed ? "lg:left-[20px]" : ""
-            } top-[60px] w-[48px] lg:w-[261.33px] ${
-              isCollapsed ? "lg:w-[40px]" : ""
-            } flex flex-col justify-center gap-1 transition-all duration-300`}
+            className={`absolute left-[16px] top-[60px] flex flex-col justify-center gap-1 transition-all duration-300 w-[48px] ${
+              isCollapsed ? "lg:w-[48px]" : "lg:w-[261.33px]"
+            }`}
           >
             {student ? (
               <>
                 <Link
                   href={"/student/home"}
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[14px] ${
+                  className={`flex cursor-pointer items-center w-full h-[43px] py-[9px] rounded-lg transition-all px-[8px] lg:px-[14px] ${
                     isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
-                  } py-[9px] rounded-lg ${(student ? pathname === "/student/home" : pathname === "/admin" || pathname === "/")
+                  } ${
+                    (student ? pathname === "/student/home" : pathname === "/admin" || pathname === "/")
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
-                    } transition-all`}
+                    }`}
                   aria-current={(student ? pathname === "/student/home" : pathname === "/admin" || pathname === "/") ? "page" : undefined}
                 >
                   <svg
@@ -113,7 +119,7 @@ export default function Sidebar({ student }: { student?: boolean }) {
                     />
                   </svg>
                   <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap hidden lg:block ${
-                    isCollapsed ? "lg:hidden" : ""
+                    isCollapsed ? "lg:hidden" : "ml-3"
                   } ${pathname === "/student/home" ? "text-[#CE2D52]" : "text-white"}`}>
                     My Home
                   </span>
@@ -121,12 +127,12 @@ export default function Sidebar({ student }: { student?: boolean }) {
 
                 <Link
                   href="/student/company-details"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[12px] ${
+                  className={`flex cursor-pointer items-center w-full h-[43px] py-[9px] rounded-lg transition-all px-[8px] lg:px-[12px] ${
                     isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
-                  } py-[9px] rounded-lg ${pathname === "/student/company-details"
+                  } ${pathname === "/student/company-details"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
-                    } transition-all`}
+                    }`}
                   aria-current={pathname === "/student/company-details" ? "page" : undefined}
                 >
                   <svg
@@ -187,7 +193,7 @@ export default function Sidebar({ student }: { student?: boolean }) {
                     />
                   </svg>
                   <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap overflow-hidden text-ellipsis hidden lg:block ${
-                    isCollapsed ? "lg:hidden" : ""
+                    isCollapsed ? "lg:hidden" : "ml-3"
                   } ${pathname === "/student/company-details" ? "text-[#CE2D52]" : "text-white"}`}>
                     Company Profile
                   </span>
@@ -195,12 +201,12 @@ export default function Sidebar({ student }: { student?: boolean }) {
 
                 <Link
                   href="/student/settings"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[12px] ${
+                  className={`flex cursor-pointer items-center w-full h-[43px] py-[9px] rounded-lg transition-all px-[8px] lg:px-[12px] ${
                     isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
-                  } py-[9px] rounded-lg ${pathname === "/student/settings"
+                  } ${pathname === "/student/settings"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
-                    } transition-all`}
+                    }`}
                   aria-current={pathname === "/student/settings" ? "page" : undefined}
                 >
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -208,18 +214,19 @@ export default function Sidebar({ student }: { student?: boolean }) {
                   </svg>
 
                   <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap overflow-hidden text-ellipsis hidden lg:block ${
-                    isCollapsed ? "lg:hidden" : ""
+                    isCollapsed ? "lg:hidden" : "ml-3"
                   } ${pathname === "/student/settings" ? "text-[#CE2D52]" : "text-white"}`}>
                     Settings
                   </span>
                 </Link>
-                {/* <Link
+                {/*                 <Link
                   href="/admin/master-data"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
-                    } py-[9px] rounded-lg ${pathname === "/admin/master-data"
+                  className={`flex cursor-pointer items-center w-full h-[43px] py-[9px] rounded-lg transition-all px-[8px] lg:px-[12px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } ${pathname === "/admin/master-data"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
-                    } transition-all`}
+                    }`}
                   aria-current={pathname === "/master-data" ? "page" : undefined}
                 >
                   <svg
@@ -257,11 +264,12 @@ export default function Sidebar({ student }: { student?: boolean }) {
 
                 <Link
                   href="/admin/operational-logs"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
-                    } py-[9px] rounded-lg ${pathname === "/admin/operational-logs"
+                  className={`flex cursor-pointer items-center w-full h-[43px] py-[9px] rounded-lg transition-all px-[8px] lg:px-[12px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } ${pathname === "/admin/operational-logs"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
-                    } transition-all`}
+                    }`}
                   aria-current={pathname === "/operational-logs" ? "page" : undefined}
                 >
                   <svg
@@ -287,11 +295,12 @@ export default function Sidebar({ student }: { student?: boolean }) {
 
                 <Link
                   href="/admin/user-management"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
-                    } py-[9px] rounded-lg ${pathname === "/admin/user-management"
+                  className={`flex cursor-pointer items-center w-full h-[43px] py-[9px] rounded-lg transition-all px-[8px] lg:px-[12px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } ${pathname === "/admin/user-management"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
-                    } transition-all`}
+                    }`}
                   aria-current={pathname === "/user-management" ? "page" : undefined}
                 >
                   <svg
@@ -339,12 +348,12 @@ export default function Sidebar({ student }: { student?: boolean }) {
               <>
                 <Link
                   href={"/admin"}
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[14px] ${
+                  className={`flex cursor-pointer items-center w-full h-[43px] py-[9px] rounded-lg transition-all px-[8px] lg:px-[14px] ${
                     isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
-                  } py-[9px] rounded-lg ${(student ? pathname === "/student" : pathname === "/admin" || pathname === "/")
+                  } ${(student ? pathname === "/student" : pathname === "/admin" || pathname === "/")
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
-                    } transition-all`}
+                    }`}
                   aria-current={(student ? pathname === "/student" : pathname === "/admin" || pathname === "/") ? "page" : undefined}
                 >
                   <svg

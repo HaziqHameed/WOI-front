@@ -4,6 +4,7 @@ import { socialLinksData } from '@/data/student/CompanyDetails';
 import { SocialLink } from '@/types/student/companyDetails';
 import { Poppins } from 'next/font/google';
 import React, { useState } from 'react';
+import { aboutContent } from '@/data/student/AboutContent';
 
 const poppins = Poppins({
   weight: ['400', '500', '600'],
@@ -78,7 +79,7 @@ export default function SocialLinksManager() {
           <div className="ml-[55px]">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-2">
               <h2 className={`text-white ${poppins.className} font-bold text-2xl leading-9`}>
-                Social
+                {aboutContent.social.title}
               </h2>
               <button
                 type="button"
@@ -95,7 +96,7 @@ export default function SocialLinksManager() {
         hover:scale-[1.02] active:scale-[0.99]
       `}
               >
-                <span className="flex-none">Add</span>
+                <span className="flex-none">{aboutContent.social.addButtonText}</span>
               </button>
             </div>
 

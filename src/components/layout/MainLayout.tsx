@@ -13,6 +13,7 @@ function MainLayoutContent({ children }: MainLayoutProps) {
   const { isCollapsed } = useSidebar();
   const [isAtBottom, setIsAtBottom] = useState(false);
 
+
   useEffect(() => {
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
@@ -35,8 +36,8 @@ function MainLayoutContent({ children }: MainLayoutProps) {
       <Sidebar />
       <div className="pb-[61px]">
         <main 
-          className={`mt-[78px] min-h-[calc(100vh-78px-61px)] transition-all duration-300 ml-[80px] lg:ml-[294px] ${
-            isCollapsed ? "lg:ml-[80px]" : ""
+          className={`mt-[78px] min-h-[calc(100vh-78px-61px)] transition-all duration-300 ml-[80px] ${
+            isCollapsed ? "lg:ml-[80px]" : "lg:ml-[294px]"
           }`}
         >
           <div className="p-3 sm:p-4 md:p-6 lg:p-8 bg-[#1a202e]">

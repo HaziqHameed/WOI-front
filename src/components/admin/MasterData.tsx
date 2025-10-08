@@ -1,13 +1,14 @@
 "use client"
 import React from "react";
+import { masterDataContent } from '@/data/admin/MasterDataContent';
 
 export default function MasterData() {
   return (
     <div className="space-y-6">
       <div className="bg-white rounded-lg shadow-sm p-6">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">Master Data</h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">{masterDataContent.title}</h1>
         <p className="text-gray-600">
-          View and manage master data across your system.
+          {masterDataContent.description}
         </p>
       </div>
       
@@ -15,18 +16,12 @@ export default function MasterData() {
         <div className="bg-white rounded-lg shadow-sm p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Data Categories</h3>
           <div className="space-y-2">
-            <div className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
-              <span className="text-gray-700">Users</span>
-              <span className="text-sm text-gray-500">1,234 records</span>
-            </div>
-            <div className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
-              <span className="text-gray-700">Products</span>
-              <span className="text-sm text-gray-500">5,678 records</span>
-            </div>
-            <div className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
-              <span className="text-gray-700">Categories</span>
-              <span className="text-sm text-gray-500">89 records</span>
-            </div>
+            {masterDataContent.dataCategories.map((category, index) => (
+              <div key={index} className="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                <span className="text-gray-700">{category.name}</span>
+                <span className="text-sm text-gray-500">{category.recordCount}</span>
+              </div>
+            ))}
           </div>
         </div>
         

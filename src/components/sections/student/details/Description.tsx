@@ -2,6 +2,7 @@
 import { DescriptionProps } from "@/types/student/companyDetails";
 import { Poppins } from "next/font/google";
 import React from "react";
+import { aboutContent } from '@/data/student/AboutContent';
 
 
 
@@ -64,7 +65,7 @@ export default function Description({
           flex-none
         `}
         >
-          Read More
+          {aboutContent.description.readMoreText}
         </span>
 
         <svg width="18" height="9" viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg" className="mt-1.5 ml-2">
