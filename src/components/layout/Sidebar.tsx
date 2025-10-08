@@ -11,24 +11,24 @@ const poppins = Poppins({
   display: 'swap',
 });
 export default function Sidebar({ student }: { student?: boolean }) {
-  const { isCollapsed, setIsCollapsed, isMobile } = useSidebar();
+  const { isCollapsed, setIsCollapsed } = useSidebar();
   const pathname = usePathname();
 
   return (
     <>
       <aside
-        className={`fixed left-0 top-[78px] ${isCollapsed ? "w-[80px]" : "w-[294px]"
-          } h-full bg-[#1E2839] border-r border-[#1F2937] backdrop-blur-sm transition-all duration-300 z-40 overflow-y-auto`}
+        className={`fixed left-0 top-[78px] w-[80px] lg:w-[294px] ${
+          isCollapsed ? "lg:w-[80px]" : ""
+        } h-full bg-[#1E2839] border-r border-[#1F2937] backdrop-blur-sm transition-all duration-300 z-40 overflow-y-auto`}
         aria-label="Sidebar"
       >
         <div className="relative w-full h-full">
-          {/* Hidden on mobile */}
-          {!isMobile && (
-            <div
-              className={`absolute ${isCollapsed ? "left-[20px]" : "left-[30px]"
-                } top-3 w-[31px] h-[31px] cursor-pointer hover:opacity-80 transition-opacity`}
-              onClick={() => setIsCollapsed(!isCollapsed)}
-            >
+          {/* Hidden on mobile, visible on desktop */}
+          <div
+            className={`absolute ${isCollapsed ? "left-[20px]" : "left-[30px]"
+              } top-3 w-[31px] h-[31px] cursor-pointer hover:opacity-80 transition-opacity hidden lg:block`}
+            onClick={() => setIsCollapsed(!isCollapsed)}
+          >
               <svg
                 width={31}
                 height={31}
@@ -69,19 +69,21 @@ export default function Sidebar({ student }: { student?: boolean }) {
                 </defs>
               </svg>
             </div>
-          )}
 
           <div
-            className={`absolute ${isCollapsed ? "left-[20px]" : "left-[16px]"
-              } top-[60px] ${isCollapsed ? "w-[40px]" : "w-[261.33px]"
-              } flex flex-col justify-center gap-1 transition-all duration-300`}
+            className={`absolute left-[16px] lg:left-[16px] ${
+              isCollapsed ? "lg:left-[20px]" : ""
+            } top-[60px] w-[48px] lg:w-[261.33px] ${
+              isCollapsed ? "lg:w-[40px]" : ""
+            } flex flex-col justify-center gap-1 transition-all duration-300`}
           >
             {student ? (
               <>
                 <Link
                   href={"/student/home"}
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[14px]"
-                    } py-[9px] rounded-lg ${(student ? pathname === "/student/home" : pathname === "/admin" || pathname === "/")
+                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[14px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } py-[9px] rounded-lg ${(student ? pathname === "/student/home" : pathname === "/admin" || pathname === "/")
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
                     } transition-all`}
@@ -110,18 +112,18 @@ export default function Sidebar({ student }: { student?: boolean }) {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  {!isCollapsed && (
-                    <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap ${pathname === "/student/home" ? "text-[#CE2D52]" : "text-white"
-                      }`}>
-                      My Home
-                    </span>
-                  )}
+                  <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap hidden lg:block ${
+                    isCollapsed ? "lg:hidden" : ""
+                  } ${pathname === "/student/home" ? "text-[#CE2D52]" : "text-white"}`}>
+                    My Home
+                  </span>
                 </Link>
 
                 <Link
                   href="/student/company-details"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
-                    } py-[9px] rounded-lg ${pathname === "/student/company-details"
+                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[12px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } py-[9px] rounded-lg ${pathname === "/student/company-details"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
                     } transition-all`}
@@ -184,18 +186,18 @@ export default function Sidebar({ student }: { student?: boolean }) {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  {!isCollapsed && (
-                    <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap overflow-hidden text-ellipsis ${pathname === "/student/company-details" ? "text-[#CE2D52]" : "text-white"
-                      }`}>
-                      Company Profile
-                    </span>
-                  )}
+                  <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap overflow-hidden text-ellipsis hidden lg:block ${
+                    isCollapsed ? "lg:hidden" : ""
+                  } ${pathname === "/student/company-details" ? "text-[#CE2D52]" : "text-white"}`}>
+                    Company Profile
+                  </span>
                 </Link>
 
                 <Link
                   href="/student/settings"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
-                    } py-[9px] rounded-lg ${pathname === "/student/settings"
+                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[12px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } py-[9px] rounded-lg ${pathname === "/student/settings"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
                     } transition-all`}
@@ -205,12 +207,11 @@ export default function Sidebar({ student }: { student?: boolean }) {
                     <path d="M8.71642 24L8.23881 20.16C7.9801 20.06 7.73632 19.94 7.50746 19.8C7.27861 19.66 7.05473 19.51 6.83582 19.35L3.28358 20.85L0 15.15L3.07463 12.81C3.05473 12.67 3.04478 12.535 3.04478 12.405V11.595C3.04478 11.465 3.05473 11.33 3.07463 11.19L0 8.85L3.28358 3.15L6.83582 4.65C7.05473 4.49 7.28358 4.34 7.52239 4.2C7.76119 4.06 8 3.94 8.23881 3.84L8.71642 0H15.2836L15.7612 3.84C16.0199 3.94 16.2637 4.06 16.4925 4.2C16.7214 4.34 16.9453 4.49 17.1642 4.65L20.7164 3.15L24 8.85L20.9254 11.19C20.9453 11.33 20.9552 11.465 20.9552 11.595V12.405C20.9552 12.535 20.9353 12.67 20.8955 12.81L23.9701 15.15L20.6866 20.85L17.1642 19.35C16.9453 19.51 16.7164 19.66 16.4776 19.8C16.2388 19.94 16 20.06 15.7612 20.16L15.2836 24H8.71642ZM10.806 21.6H13.1642L13.5821 18.42C14.199 18.26 14.7711 18.025 15.2985 17.715C15.8259 17.405 16.3085 17.03 16.7463 16.59L19.7015 17.82L20.8657 15.78L18.2985 13.83C18.398 13.55 18.4677 13.255 18.5075 12.945C18.5473 12.635 18.5672 12.32 18.5672 12C18.5672 11.68 18.5473 11.365 18.5075 11.055C18.4677 10.745 18.398 10.45 18.2985 10.17L20.8657 8.22L19.7015 6.18L16.7463 7.44C16.3085 6.98 15.8259 6.595 15.2985 6.285C14.7711 5.975 14.199 5.74 13.5821 5.58L13.194 2.4H10.8358L10.4179 5.58C9.80099 5.74 9.22886 5.975 8.70149 6.285C8.17413 6.595 7.69154 6.97 7.25373 7.41L4.29851 6.18L3.13433 8.22L5.70149 10.14C5.60199 10.44 5.53234 10.74 5.49254 11.04C5.45274 11.34 5.43284 11.66 5.43284 12C5.43284 12.32 5.45274 12.63 5.49254 12.93C5.53234 13.23 5.60199 13.53 5.70149 13.83L3.13433 15.78L4.29851 17.82L7.25373 16.56C7.69154 17.02 8.17413 17.405 8.70149 17.715C9.22886 18.025 9.80099 18.26 10.4179 18.42L10.806 21.6ZM12.0597 16.2C13.2139 16.2 14.199 15.79 15.0149 14.97C15.8308 14.15 16.2388 13.16 16.2388 12C16.2388 10.84 15.8308 9.85 15.0149 9.03C14.199 8.21 13.2139 7.8 12.0597 7.8C10.8856 7.8 9.89552 8.21 9.08955 9.03C8.28358 9.85 7.8806 10.84 7.8806 12C7.8806 13.16 8.28358 14.15 9.08955 14.97C9.89552 15.79 10.8856 16.2 12.0597 16.2Z" fill={pathname === "/student/settings" ? "#CE2D52" : "#9CA3AF"}/>
                   </svg>
 
-                  {!isCollapsed && (
-                    <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap overflow-hidden text-ellipsis ${pathname === "/student/settings" ? "text-[#CE2D52]" : "text-white"
-                      }`}>
-                      Settings
-                    </span>
-                  )}
+                  <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap overflow-hidden text-ellipsis hidden lg:block ${
+                    isCollapsed ? "lg:hidden" : ""
+                  } ${pathname === "/student/settings" ? "text-[#CE2D52]" : "text-white"}`}>
+                    Settings
+                  </span>
                 </Link>
                 {/* <Link
                   href="/admin/master-data"
@@ -338,8 +339,9 @@ export default function Sidebar({ student }: { student?: boolean }) {
               <>
                 <Link
                   href={"/admin"}
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[14px]"
-                    } py-[9px] rounded-lg ${(student ? pathname === "/student" : pathname === "/admin" || pathname === "/")
+                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[14px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } py-[9px] rounded-lg ${(student ? pathname === "/student" : pathname === "/admin" || pathname === "/")
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
                     } transition-all`}
@@ -368,18 +370,18 @@ export default function Sidebar({ student }: { student?: boolean }) {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  {!isCollapsed && (
-                    <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap ${pathname === "/" ? "text-[#CE2D52]" : "text-white"
-                      }`}>
-                      Home
-                    </span>
-                  )}
+                  <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap hidden lg:block ${
+                    isCollapsed ? "lg:hidden" : ""
+                  } ${pathname === "/" ? "text-[#CE2D52]" : "text-white"}`}>
+                    Home
+                  </span>
                 </Link>
 
                 <Link
                   href="/admin/configuration-changes"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
-                    } py-[9px] rounded-lg ${pathname === "/admin/configuration-changes"
+                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[12px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } py-[9px] rounded-lg ${pathname === "/admin/configuration-changes"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
                     } transition-all`}
@@ -400,18 +402,18 @@ export default function Sidebar({ student }: { student?: boolean }) {
                       fill={pathname === "/configuration-changes" ? "#CE2D52" : "#9CA3AF"}
                     />
                   </svg>
-                  {!isCollapsed && (
-                    <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap overflow-hidden text-ellipsis ${pathname === "/admin/configuration-changes" ? "text-[#CE2D52]" : "text-white"
-                      }`}>
-                      Configuration Changes
-                    </span>
-                  )}
+                  <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap overflow-hidden text-ellipsis hidden lg:block ${
+                    isCollapsed ? "lg:hidden" : ""
+                  } ${pathname === "/admin/configuration-changes" ? "text-[#CE2D52]" : "text-white"}`}>
+                    Configuration Changes
+                  </span>
                 </Link>
 
                 <Link
                   href="/admin/master-data"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
-                    } py-[9px] rounded-lg ${pathname === "/admin/master-data"
+                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[12px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } py-[9px] rounded-lg ${pathname === "/admin/master-data"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
                     } transition-all`}
@@ -442,18 +444,18 @@ export default function Sidebar({ student }: { student?: boolean }) {
                       fill={pathname === "/master-data" ? "#CE2D52" : "#9CA3AF"}
                     />
                   </svg>
-                  {!isCollapsed && (
-                    <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap ${pathname === "/admin/master-data" ? "text-[#CE2D52]" : "text-white"
-                      }`}>
-                      Master Data
-                    </span>
-                  )}
+                  <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap hidden lg:block ${
+                    isCollapsed ? "lg:hidden" : ""
+                  } ${pathname === "/admin/master-data" ? "text-[#CE2D52]" : "text-white"}`}>
+                    Master Data
+                  </span>
                 </Link>
 
                 <Link
                   href="/admin/operational-logs"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
-                    } py-[9px] rounded-lg ${pathname === "/admin/operational-logs"
+                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[12px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } py-[9px] rounded-lg ${pathname === "/admin/operational-logs"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
                     } transition-all`}
@@ -472,18 +474,18 @@ export default function Sidebar({ student }: { student?: boolean }) {
                       fill={pathname === "/operational-logs" ? "#CE2D52" : "#9CA3AF"}
                     />
                   </svg>
-                  {!isCollapsed && (
-                    <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap ${pathname === "/admin/operational-logs" ? "text-[#CE2D52]" : "text-white"
-                      }`}>
-                      Operational Logs
-                    </span>
-                  )}
+                  <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap hidden lg:block ${
+                    isCollapsed ? "lg:hidden" : ""
+                  } ${pathname === "/admin/operational-logs" ? "text-[#CE2D52]" : "text-white"}`}>
+                    Operational Logs
+                  </span>
                 </Link>
 
                 <Link
                   href="/admin/user-management"
-                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] ${isCollapsed ? "px-[8px] justify-center" : "px-[12px]"
-                    } py-[9px] rounded-lg ${pathname === "/admin/user-management"
+                  className={`flex cursor-pointer items-center gap-3 w-full h-[43px] px-[8px] lg:px-[12px] ${
+                    isCollapsed ? "lg:px-[8px] lg:justify-center" : ""
+                  } py-[9px] rounded-lg ${pathname === "/admin/user-management"
                       ? "border border-[#CE2D52] bg-gradient-to-l from-[rgba(206,45,82,0.05)] to-[rgba(206,45,82,0.2)]"
                       : "hover:bg-white/5"
                     } transition-all`}
@@ -522,12 +524,11 @@ export default function Sidebar({ student }: { student?: boolean }) {
                       fill={pathname === "/user-management" ? "#CE2D52" : "#9CA3AF"}
                     />
                   </svg>
-                  {!isCollapsed && (
-                    <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap ${pathname === "/admin/user-management" ? "text-[#CE2D52]" : "text-white"
-                      }`}>
-                      User Management
-                    </span>
-                  )}
+                  <span className={`text-[16px] leading-[24px] ${poppins.className} whitespace-nowrap hidden lg:block ${
+                    isCollapsed ? "lg:hidden" : ""
+                  } ${pathname === "/admin/user-management" ? "text-[#CE2D52]" : "text-white"}`}>
+                    User Management
+                  </span>
                 </Link>
               </>
             )}

@@ -10,7 +10,7 @@ interface StudentLayoutProps {
 }
 
 function StudentLayoutContent({ children }: StudentLayoutProps) {
-  const { isCollapsed, isMobile } = useSidebar();
+  const { isCollapsed } = useSidebar();
   const [isAtBottom, setIsAtBottom] = useState(false);
 
   useEffect(() => {
@@ -41,12 +41,8 @@ function StudentLayoutContent({ children }: StudentLayoutProps) {
       <Sidebar student/>
       <div className="pb-[61px]">
         <main 
-          className={`mt-[78px] min-h-[calc(100vh-78px-61px)] transition-all duration-300 ${
-            isMobile 
-              ? "ml-[80px]" 
-              : isCollapsed 
-                ? "ml-[80px]" 
-                : "ml-[294px]"
+          className={`mt-[78px] min-h-[calc(100vh-78px-61px)] transition-all duration-300 ml-[80px] lg:ml-[294px] ${
+            isCollapsed ? "lg:ml-[80px]" : ""
           }`}
         >
           <div className="p-3 sm:p-4 md:p-6 lg:p-8 bg-[#1a202e]">
