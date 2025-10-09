@@ -13,7 +13,7 @@ export default function PageHeader({
   subtitleClassName = "",
   compact = false,
   ariaLabel
-}: PageHeaderProps) {
+}: PageHeaderProps): React.JSX.Element {
   const baseClasses = compact 
     ? "w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6"
     : "w-full px-4 sm:px-6 lg:px-8 md:-mt-9 sm:mt-0 sm:py-8 lg:py-10";

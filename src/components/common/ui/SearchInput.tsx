@@ -2,7 +2,7 @@
 import React from 'react';
 import { SearchInputProps } from './types';
 
-const SearchIcon = () => (
+const SearchIcon = (): React.JSX.Element => (
   <svg
     width="17"
     height="17"
@@ -31,7 +31,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
   required = false,
   icon,
   onSearch,
-}) => {
+}): React.JSX.Element => {
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && onSearch) {
       onSearch();

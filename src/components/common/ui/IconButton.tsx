@@ -11,7 +11,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   className = '',
   tooltip,
   ariaLabel,
-}) => {
+}): React.JSX.Element => {
   const getVariantClasses = () => {
     switch (variant) {
       case 'primary':

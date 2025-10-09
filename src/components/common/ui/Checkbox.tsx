@@ -16,7 +16,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   className = '',
   labelClassName = '',
   disabled = false,
-}) => {
+}): React.JSX.Element => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.checked);
   };

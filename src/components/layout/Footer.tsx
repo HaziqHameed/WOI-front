@@ -1,13 +1,20 @@
 import { Poppins } from "next/font/google";
+import React from "react";
+
 const poppins = Poppins({
     weight: ['400', '500', '600'],
     subsets: ['latin'],
     display: 'swap',
-  });
-export default function Footer() {
+});
+
+interface FooterProps {
+  className?: string;
+}
+
+export default function Footer({ className = "" }: FooterProps): React.JSX.Element {
   
   return (
-    <footer className="relative w-full bg-[#252D3D] px-4 py-5 z-50 sm:px-6 md:px-8 lg:px-10">
+    <footer className={`relative w-full bg-[#252D3D] px-4 py-5 z-50 sm:px-6 md:px-8 lg:px-10 ${className}`}>
       <div className="flex flex-col gap-4 items-center sm:flex-row sm:justify-between sm:items-center">
         <div className="
           font-inter 

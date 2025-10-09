@@ -19,7 +19,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
   descriptionClassName = '',
   disabled = false,
   ariaLabel,
-}) => {
+}): React.JSX.Element => {
   const handleClick = () => {
     if (!disabled) {
       onChange(!checked);

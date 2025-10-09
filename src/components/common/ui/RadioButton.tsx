@@ -18,7 +18,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   className = '',
   labelClassName = '',
   fontWeight = 'medium',
-}) => {
+}): React.JSX.Element => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };

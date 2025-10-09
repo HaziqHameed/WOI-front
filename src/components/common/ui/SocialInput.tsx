@@ -16,7 +16,7 @@ const SocialInput: React.FC<SocialInputProps> = ({
   placeholder = `Enter ${platform} URL`,
   className = '',
   maxWidth = 'max-w-[520px]',
-}) => {
+}): React.JSX.Element => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };

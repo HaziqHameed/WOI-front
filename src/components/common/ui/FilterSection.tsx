@@ -7,7 +7,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
   className = '',
   title,
   description,
-}) => {
+}): React.JSX.Element => {
   return (
     <div className={`w-full ${className}`}>
       <div className="w-full px-2 sm:px-4 py-6">

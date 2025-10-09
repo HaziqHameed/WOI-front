@@ -7,7 +7,7 @@ const OptionsBar: React.FC<OptionsBarProps> = ({
   activeTab,
   onTabChange,
   className = '',
-}) => {
+}): React.JSX.Element => {
   const baseClasses = "w-full px-4 sm:px-9 gap-2 sm:gap-6 md:gap-10 h-[42px] bg-[#111827] rounded-[5px] flex items-center md:-mt-4 overflow-x-auto";
   const combinedClasses = `${baseClasses} ${className}`;
 

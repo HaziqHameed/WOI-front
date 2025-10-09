@@ -1,7 +1,7 @@
 import React from "react";
 import { SkillGapTableProps } from "@/types/dashboard";
 
-export default function SkillGapTable({ title, subtitle, skills, columns, className = "" }: SkillGapTableProps) {
+export default function SkillGapTable({ title, subtitle, skills, columns, className = "" }: SkillGapTableProps): React.JSX.Element {
   const getDemandStyle = (level: string) => {
     switch (level) {
       case "high":

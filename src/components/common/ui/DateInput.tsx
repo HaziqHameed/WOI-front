@@ -2,7 +2,7 @@
 import React from 'react';
 import { DateInputProps } from './types';
 
-const CalendarIcon = () => (
+const CalendarIcon = (): React.JSX.Element => (
   <svg
     width={15}
     height={16}
@@ -33,7 +33,7 @@ const DateInput: React.FC<DateInputProps> = ({
   disabled = false,
   label,
   required = false,
-}) => {
+}): React.JSX.Element => {
   const baseClasses = "relative flex flex-row items-center px-2 py-1 gap-3 w-full sm:w-[143px] h-12 border border-white rounded-lg";
   const disabledClasses = disabled ? "opacity-50 cursor-not-allowed" : "";
   const combinedClasses = `${baseClasses} ${disabledClasses} ${className}`;

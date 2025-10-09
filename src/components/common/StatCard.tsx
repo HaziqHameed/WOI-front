@@ -6,7 +6,7 @@ const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
 });
-export default function StatCard({ stat }: StatCardProps) {
+export default function StatCard({ stat }: StatCardProps): React.JSX.Element {
   return (
     <article
       role="region"

@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { DropdownProps } from './types';
 
-const ChevronDownIcon = ({ isOpen }: { isOpen: boolean }) => (
+const ChevronDownIcon = ({ isOpen }: { isOpen: boolean }): React.JSX.Element => (
   <svg
     width="17"
     height="10"
@@ -31,7 +31,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   label,
   required = false,
   searchable = false,
-}) => {
+}): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);

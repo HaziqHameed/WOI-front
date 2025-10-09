@@ -13,7 +13,7 @@ const FormSection: React.FC<FormSectionProps> = ({
   className = '',
   titleClassName = '',
   containerClassName = '',
-}) => {
+}): React.JSX.Element => {
   return (
     <section className={`w-full mx-auto mt-2 ${className}`}>
       <div className={`bg-[#111827] rounded-sm p-6 md:p-8 ${containerClassName}`}>

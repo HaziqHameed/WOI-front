@@ -21,7 +21,7 @@ const FormInput: React.FC<FormInputProps> = ({
   inputClassName = '',
   labelClassName = '',
   ariaLabel,
-}) => {
+}): React.JSX.Element => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(e.target.value);

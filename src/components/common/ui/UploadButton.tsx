@@ -14,7 +14,7 @@ const UploadButton: React.FC<UploadButtonProps> = ({
   heading,
   className = '',
   ariaLabel = 'Upload new photo',
-}) => {
+}): React.JSX.Element => {
   return (
     <button
       type="button"

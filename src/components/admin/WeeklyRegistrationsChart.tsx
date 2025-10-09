@@ -1,14 +1,18 @@
 import { chartData } from '@/data/admin/DashoardData';
 import React, { useState } from 'react';
 
-export default function WeeklyRegistrationsChart() {
+interface WeeklyRegistrationsChartProps {
+  className?: string;
+}
+
+export default function WeeklyRegistrationsChart({ className = "" }: WeeklyRegistrationsChartProps): React.JSX.Element {
   const [showApplications, setShowApplications] = useState(true);
   const [showShortlisted, setShowShortlisted] = useState(true);
   const [selectedPeriod, setSelectedPeriod] = useState('Month');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <div className="flex w-full">
+    <div className={`flex w-full ${className}`}>
       <div className="relative flex flex-col items-start bg-[#111827] rounded-[8.7px] p-[12px_12px_12px_20px] sm:p-[17.5px_17.5px_17.5px_29.3px] gap-3 sm:gap-5 w-full h-[280px] sm:h-[329px]">
         <div className="flex flex-col items-start w-full gap-4 sm:gap-6">
           <div className="flex flex-row justify-between items-center w-full">

@@ -10,7 +10,12 @@ const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
 });
-export default function Sidebar({ student }: { student?: boolean }) {
+
+interface SidebarProps {
+  student?: boolean;
+}
+
+export default function Sidebar({ student }: SidebarProps): React.JSX.Element {
   const { isCollapsed, setIsCollapsed } = useSidebar();
   const pathname = usePathname();
 

@@ -5,41 +5,46 @@ import { skills, statsData } from "@/data/admin/DashoardData";
 import WeeklyRegistrationsChart from "./WeeklyRegistrationsChart";
 import DailyLoginsChart from "./DailyLoginsChart";
 import SkillGapTable from "./GapTable";
+import { TableColumn } from "@/types/dashboard";
 
-export default function Dashboard() {
+interface DashboardProps {
+  className?: string;
+}
+
+export default function Dashboard({ className = "" }: DashboardProps): React.JSX.Element {
 
   
 
-  const tableColumns = [
+  const tableColumns: TableColumn[] = [
     {
       key: "name",
       label: "SKILL NAME",
       width: "w-[150px] sm:w-[200px] lg:w-[250px]",
-      align: "start" as const
+      align: "start"
     },
     {
       key: "location",
       label: "LOCATION",
       width: "w-[150px] sm:w-[200px] lg:w-[280px]",
-      align: "start" as const
+      align: "start"
     },
     {
       key: "experience",
       label: "EXPERIENCE REQUIRED",
       width: "w-[150px] sm:w-[200px] lg:w-[280px]",
-      align: "start" as const
+      align: "start"
     },
     {
       key: "demand",
       label: "DEMAND LEVEL",
       width: "flex-1",
-      align: "end" as const
+      align: "end"
     }
   ];
 
 
   return (
-    <div className="w-full">
+    <div className={`w-full ${className}`}>
       <div className="p-2 sm:p-4 md:p-6 lg:p-8 xl:p-10">
         <div className="max-w-7xl mx-auto">
           <StatsRow className="grid 

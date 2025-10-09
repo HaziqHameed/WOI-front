@@ -1,12 +1,16 @@
 import { dailyChartData } from '@/data/admin/DashoardData';
 import React from 'react';
 
-export default function DailyLoginsChart() {
+interface DailyLoginsChartProps {
+  className?: string;
+}
+
+export default function DailyLoginsChart({ className = "" }: DailyLoginsChartProps): React.JSX.Element {
  
   const pathD = "M140.28,175.19 L226.57,158.14 L335.62,120.34 L441.05,97.51 L548.19,108.15 L651.61,175.19 L726.33,189.44";
 
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className={`flex items-center justify-center w-full ${className}`}>
       <div className="flex flex-col items-start p-0 gap-1 w-full">
         <div className="w-full h-[280px] sm:h-[329px] max-w-[900px] overflow-x-auto no-scrollbar">
           {/* Chart Container with CSS Grid */}

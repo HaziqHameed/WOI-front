@@ -7,7 +7,7 @@ const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
 });
-const DetailsCard: React.FC<{ item: Details }> = ({ item }) => {
+const DetailsCard: React.FC<{ item: Details }> = ({ item }): React.JSX.Element => {
 
   return (
    <div

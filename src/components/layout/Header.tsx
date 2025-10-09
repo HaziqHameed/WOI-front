@@ -9,11 +9,16 @@ const poppins = Poppins({
   subsets: ['latin'],
   display: 'swap',
 });
-export default function Header() {
+
+interface HeaderProps {
+  className?: string;
+}
+
+export default function Header({ className = "" }: HeaderProps): React.JSX.Element {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <header className="fixed bg-gray-900 top-0 left-0 w-full h-[78px] border-b border-white/22 bg-cover bg-center z-50">
+        <header className={`fixed bg-gray-900 top-0 left-0 w-full h-[78px] border-b border-white/22 bg-cover bg-center z-50 ${className}`}>
             <div className="w-full max-w-none md:max-w-screen-2xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
                 <div className="flex items-center gap-3 sm:gap-6">
                     <div className="w-[80px] sm:w-[105px] h-[40px] sm:h-[50px] flex items-center">
