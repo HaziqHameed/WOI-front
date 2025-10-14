@@ -22,3 +22,24 @@ export interface RoleLineProps {
   className?: string;
   onClick?: () => void;
 };
+
+export interface Experience {
+  id: string;
+  job: string;
+  date: string;
+  description: string;
+}
+
+export interface Education {
+  id: string;
+  degree: string;
+  date: string;
+  university: string;
+}
+
+export interface Certification {
+  id: string;
+  job: string;
+  date: string;
+  tagDescription?: React.ReactNode;
+}

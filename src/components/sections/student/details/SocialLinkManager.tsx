@@ -1,10 +1,8 @@
 'use client';
 
-import { socialLinksData } from '@/data/student/CompanyDetails';
-import { SocialLink } from '@/types/student/companyDetails';
 import { Poppins } from 'next/font/google';
-import React, { useState } from 'react';
-import { aboutContent } from '@/data/student/AboutContent';
+import React, { useEffect, useState } from 'react';
+import { ExperienceSection } from '../home/ExperienceSection';
 
 const poppins = Poppins({
   weight: ['400', '500', '600'],
@@ -12,78 +10,175 @@ const poppins = Poppins({
   display: 'swap',
 });
 
-export default function SocialLinksManager() {
-  const [links, setLinks] = useState<SocialLink[]>(socialLinksData);
+// Generic type for any data structure with required fields
+interface LinkItem {
+  id: string;
+  url?: string;
+  platform?: string;
+  icon?: string;
+  [key: string]: any;
+  job?: string;
+  date?: string;
+  description?: string;
+  degree?: string;
+  university?: string;
+  tagDescription?:React.ReactNode;
+}
+
+interface SocialLinksManagerProps<T extends LinkItem = LinkItem> {
+  initialLinks: T[];
+  title?: string;
+  addButtonText?: string;
+  onLinksChange?: (links: T[]) => void;
+  onSave?: (links: T[]) => Promise<void>;
+  isLoading?: boolean;
+  defaultPlatform?: string;
+  platformOptions?: { value: string; label: string }[];
+  icon?: React.ReactNode;
+  type?: string;
+}
+
+const LinkedInIcon = () => (
+  <div className="relative w-[31px] h-[31px] flex-shrink-0">
+    <div className="absolute inset-0 rounded-full bg-white"></div>
+    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 31 31" fill="none">
+      <circle cx="15.5" cy="15.5" r="15.5" fill="#3B82F6" />
+      <path d="M11.5 13.5H8.5V22.5H11.5V13.5Z" fill="white" />
+      <path d="M10 8.5C8.89543 8.5 8 9.39543 8 10.5C8 11.6046 8.89543 12.5 10 12.5C11.1046 12.5 12 11.6046 12 10.5C12 9.39543 11.1046 8.5 10 8.5Z" fill="white" />
+      <path d="M19.5 13.25C17.7051 13.25 16.5 14.4551 16.5 16.25V22.5H13.5V13.5H16.5V14.75C17.1667 13.9167 18.2949 13.25 19.5 13.25C21.9853 13.25 23.5 14.7647 23.5 17.25V22.5H20.5V17.5C20.5 16.3954 19.6046 15.5 18.5 15.5C17.3954 15.5 16.5 16.3954 16.5 17.5V22.5H19.5V13.25Z" fill="white" />
+    </svg>
+  </div>
+);
+
+const DefaultIcon = () => (
+  <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clipPath="url(#clip0_1264_49813)">
+      <circle cx="15" cy="16" r="13" fill="white" />
+      <path d="M14.5325 0H16.47C16.5464 0.0218667 16.6243 0.0384557 16.7031 0.0496489C19.1165 0.23129 21.3761 0.922735 23.4347 2.18998C27.4356 4.65363 29.8999 8.19623 30.7608 12.8293C30.8656 13.3918 30.9207 13.9633 30.9988 14.5312V16.4688C30.974 16.6673 30.9461 16.8659 30.9249 17.0651C30.5925 20.1306 29.4821 22.8776 27.5252 25.2656C25.0918 28.2324 21.9791 30.0718 18.198 30.7602C17.6258 30.8644 17.0446 30.9213 16.4675 31.0024H14.5325C14.154 30.9558 13.775 30.9152 13.3978 30.862C10.5364 30.4551 7.96979 29.3652 5.73742 27.5276C2.77426 25.0912 0.928789 21.9828 0.242187 18.2034C0.138047 17.63 0.0805273 17.0488 0 16.4712V14.5312C0.0248242 14.3327 0.0514662 14.1347 0.073263 13.9355C0.431701 10.652 1.67352 7.74879 3.8635 5.27363C6.27205 2.54902 9.27154 0.859159 12.8596 0.23371C13.4148 0.137441 13.9754 0.0768945 14.5325 0ZM16.8587 23.4207C16.8587 22.4453 16.8587 21.4984 16.8587 20.5514C16.8635 19.2703 16.8587 17.9891 16.8865 16.7091C16.9023 16.014 17.271 15.4824 17.8347 15.1052C18.9282 14.3738 20.308 14.863 20.6628 16.1242C20.7738 16.5528 20.8279 16.9942 20.8239 17.4369C20.8408 19.3229 20.8312 21.2096 20.8312 23.0962V23.4117H24.5923C24.5972 23.3124 24.6044 23.233 24.6044 23.1531C24.6044 21.0848 24.6087 19.0172 24.6008 16.9489C24.5973 16.5358 24.5704 16.1232 24.5203 15.7131C24.2563 13.4886 22.9255 12.0852 20.7833 11.8381C19.2412 11.6619 17.9376 12.13 17.0155 13.4535C16.9662 13.5127 16.9136 13.5691 16.8581 13.6224C16.8581 13.155 16.8466 12.7542 16.8623 12.3546C16.8714 12.1306 16.8018 12.0591 16.5741 12.0615C15.4945 12.073 14.415 12.0664 13.3361 12.0676C13.2586 12.0712 13.1814 12.0789 13.1048 12.0906V23.4207H16.8587ZM10.9856 23.4207C10.9923 23.3438 11.0002 23.2948 11.0002 23.2464C11.0002 19.6039 11.002 15.9616 11.0056 12.3195C11.0056 12.0846 10.9003 12.0628 10.7126 12.064C9.64269 12.0694 8.57344 12.064 7.50357 12.0676C7.41578 12.0676 7.32799 12.0803 7.23959 12.0876V23.4207L10.9856 23.4207ZM7.00467 8.56436C7.00467 9.71475 7.88623 10.5333 9.11412 10.5273C10.3511 10.5206 11.2496 9.69961 11.2484 8.57586C11.2484 7.42547 10.3668 6.60203 9.14318 6.60022C7.88441 6.59961 7.00406 7.4067 7.00467 8.56436Z" fill="#3B82F6" />
+    </g>
+    <defs>
+      <clipPath id="clip0_1264_49813">
+        <rect width="31" height="31" fill="white" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
+export default function SocialLinksManager<T extends LinkItem = LinkItem>({
+  initialLinks,
+  title = '',
+  addButtonText = '',
+  onLinksChange,
+  onSave,
+  isLoading = false,
+  defaultPlatform = 'LinkedIn',
+  platformOptions = [
+    { value: 'linkedin', label: 'LinkedIn' },
+    { value: 'twitter', label: 'Twitter' },
+    { value: 'github', label: 'GitHub' },
+    { value: 'instagram', label: 'Instagram' },
+    { value: 'portfolio', label: 'Portfolio' },
+  ],
+  icon = '',
+  type = ''
+}: SocialLinksManagerProps<T>) {
+  const [links, setLinks] = useState<T[]>(initialLinks);
   const [isAdding, setIsAdding] = useState(false);
   const [newUrl, setNewUrl] = useState('');
+  const [newPlatform, setNewPlatform] = useState(defaultPlatform);
+  const [error, setError] = useState('');
+  const [lineHeight, setLineHeight] = useState(0);
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
-  const handleAdd = () => {
-    if (newUrl.trim()) {
-      const newLink: SocialLink = {
-        id: Date.now().toString(),
-        platform: 'LinkedIn',
-        url: newUrl,
-        icon: 'linkedin'
-      };
-      setLinks([...links, newLink]);
-      setNewUrl('');
-      setIsAdding(false);
+  const handleAdd = async () => {
+    if (!newUrl.trim()) {
+      setError('URL is required');
+      return;
+    }
+
+    try {
+      new URL(newUrl);
+    } catch {
+      setError('Please enter a valid URL');
+      return;
+    }
+
+    const newLink = {
+      id: Date.now().toString(),
+      platform: newPlatform,
+      url: newUrl,
+      icon: newPlatform.toLowerCase(),
+    } as T;
+
+    const updatedLinks = [...links, newLink];
+    setLinks(updatedLinks);
+    onLinksChange?.(updatedLinks);
+
+    if (onSave) {
+      await onSave(updatedLinks);
+    }
+
+    setNewUrl('');
+    setNewPlatform(defaultPlatform);
+    setIsAdding(false);
+    setError('');
+  };
+
+  const handleDelete = async (id: string) => {
+    const updatedLinks = links.filter((link) => link.id !== id);
+    setLinks(updatedLinks);
+    onLinksChange?.(updatedLinks);
+
+    if (onSave) {
+      await onSave(updatedLinks);
     }
   };
 
-  const handleDelete = (id: string) => {
-    setLinks(links.filter(link => link.id !== id));
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      handleAdd();
+    }
   };
 
-  const LinkedInIcon = () => (
-    <div className="relative w-[31px] h-[31px] flex-shrink-0">
-      <div className="absolute inset-0 rounded-full bg-white"></div>
-      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 31 31" fill="none">
-        <circle cx="15.5" cy="15.5" r="15.5" fill="#3B82F6" />
-        <path d="M11.5 13.5H8.5V22.5H11.5V13.5Z" fill="white" />
-        <path d="M10 8.5C8.89543 8.5 8 9.39543 8 10.5C8 11.6046 8.89543 12.5 10 12.5C11.1046 12.5 12 11.6046 12 10.5C12 9.39543 11.1046 8.5 10 8.5Z" fill="white" />
-        <path d="M19.5 13.25C17.7051 13.25 16.5 14.4551 16.5 16.25V22.5H13.5V13.5H16.5V14.75C17.1667 13.9167 18.2949 13.25 19.5 13.25C21.9853 13.25 23.5 14.7647 23.5 17.25V22.5H20.5V17.5C20.5 16.3954 19.6046 15.5 18.5 15.5C17.3954 15.5 16.5 16.3954 16.5 17.5V22.5H19.5V13.25Z" fill="white" />
-      </svg>
-    </div>
-  );
+  useEffect(() => {
+    setLinks(links);
+  }, [links])
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const height = containerRef.current.offsetHeight;
+      setLineHeight(height);
+    }
+  }, [links, isAdding]);
 
   return (
-    <div className="pb-20 p-8 flex ">
+    <div className="flex mt-5">
       <div className="w-full max-w-6xl">
         <div className="relative">
-          <div className="absolute left-0 top-0 flex flex-col items-center">
-            <svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g clipPath="url(#clip0_1264_49789)">
-                <path d="M37.375 17.875H34.125V14.625C34.125 14.194 33.9538 13.7807 33.6491 13.476C33.3443 13.1712 32.931 13 32.5 13C32.069 13 31.6557 13.1712 31.351 13.476C31.0462 13.7807 30.875 14.194 30.875 14.625V17.875H27.625C27.194 17.875 26.7807 18.0462 26.476 18.351C26.1712 18.6557 26 19.069 26 19.5C26 19.931 26.1712 20.3443 26.476 20.649C26.7807 20.9538 27.194 21.125 27.625 21.125H30.875V24.375C30.875 24.806 31.0462 25.2193 31.351 25.524C31.6557 25.8288 32.069 26 32.5 26C32.931 26 33.3443 25.8288 33.6491 25.524C33.9538 25.2193 34.125 24.806 34.125 24.375V21.125H37.375C37.806 21.125 38.2193 20.9538 38.5241 20.649C38.8288 20.3443 39 19.931 39 19.5C39 19.069 38.8288 18.6557 38.5241 18.351C38.2193 18.0462 37.806 17.875 37.375 17.875Z" fill="#F05921" />
-                <path d="M14.625 19.5C16.5534 19.5 18.4384 18.9282 20.0418 17.8568C21.6452 16.7855 22.8949 15.2627 23.6328 13.4812C24.3708 11.6996 24.5639 9.73919 24.1877 7.84787C23.8114 5.95656 22.8829 4.21927 21.5193 2.85571C20.1557 1.49215 18.4184 0.563554 16.5271 0.187348C14.6358 -0.188858 12.6754 0.00422454 10.8938 0.742179C9.11226 1.48013 7.58951 2.72982 6.51817 4.33319C5.44683 5.93657 4.875 7.82164 4.875 9.75C4.87758 12.3351 5.90564 14.8135 7.73356 16.6414C9.56148 18.4694 12.0399 19.4974 14.625 19.5ZM14.625 3.25C15.9106 3.25 17.1673 3.63122 18.2362 4.34545C19.3051 5.05968 20.1382 6.07484 20.6302 7.26256C21.1222 8.45028 21.2509 9.75721 21.0001 11.0181C20.7493 12.279 20.1302 13.4372 19.2212 14.3462C18.3122 15.2552 17.154 15.8743 15.8931 16.1251C14.6322 16.3759 13.3253 16.2472 12.1376 15.7552C10.9498 15.2633 9.93468 14.4301 9.22045 13.3612C8.50622 12.2923 8.125 11.0356 8.125 9.75C8.125 8.0261 8.80982 6.3728 10.0288 5.15381C11.2478 3.93482 12.9011 3.25 14.625 3.25Z" fill="#F05921" />
-                <path d="M14.625 22.75C10.7475 22.7543 7.0301 24.2965 4.28831 27.0383C1.54653 29.7801 0.00430114 33.4975 0 37.375C0 37.806 0.171205 38.2193 0.475951 38.524C0.780698 38.8288 1.19402 39 1.625 39C2.05598 39 2.4693 38.8288 2.77405 38.524C3.0788 38.2193 3.25 37.806 3.25 37.375C3.25 34.3582 4.44843 31.4649 6.58166 29.3317C8.71489 27.1984 11.6082 26 14.625 26C17.6418 26 20.5351 27.1984 22.6683 29.3317C24.8016 31.4649 26 34.3582 26 37.375C26 37.806 26.1712 38.2193 26.476 38.524C26.7807 38.8288 27.194 39 27.625 39C28.056 39 28.4693 38.8288 28.774 38.524C29.0788 38.2193 29.25 37.806 29.25 37.375C29.2457 33.4975 27.7035 29.7801 24.9617 27.0383C22.2199 24.2965 18.5025 22.7543 14.625 22.75Z" fill="#F05921" />
-              </g>
-              <defs>
-                <clipPath id="clip0_1264_49789">
-                  <rect width="39" height="39" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-
-
-            <div
-              className="w-[1px] bg-[#F05921] transition-all duration-300 ease-in-out mr-3"
-              style={{ height: `${links.length * 66 + (links.length - 1) * 0}px` }}
-            ></div>
-
-            <div className="relative z-10 -mt-14 mr-3">
-              <div className="w-[18.91px] h-[18.91px] rounded-full bg-[#F05921] border border-[#F05921]"></div>
-            </div>
+          <div className={`absolute left-6 ${type !== 'experience' ? 'top-10' : 'top-12'} flex flex-col items-center pointer-events-none`}>
+            {/* Vertical line connecting all dots */}
+            {links.length > 0 && (
+              <div
+                className="w-[2px] bg-[#F05921] transition-all duration-300 ease-in-out"
+                style={type === 'education' ? { height: `${lineHeight - 32}px`, marginLeft: '-1px' }: { height: `${lineHeight - 60}px`, marginLeft: '-1px' }}
+              ></div>
+            )}
           </div>
 
+          <div className="absolute left-0 top-0">
+            {icon}
+          </div>
+
+          {/* Timeline dots and content */}
           <div className="ml-[55px]">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-2">
-              <h2 className={`text-white ${poppins.className} font-bold text-2xl leading-9`}>
-                {aboutContent.social.title}
+              <h2 className={`text-white ${poppins.className} font-bold text-2xl leading-9 ml-16`}>
+                {title}
               </h2>
               <button
                 type="button"
                 onClick={() => setIsAdding(true)}
+                disabled={isLoading}
                 className={`
         inline-flex items-center justify-center gap-[10px]
         px-4 py-2
@@ -94,95 +189,188 @@ export default function SocialLinksManager() {
         text-[16px] leading-[120%] text-white
         transition-transform duration-150
         hover:scale-[1.02] active:scale-[0.99]
+        disabled:opacity-50 disabled:cursor-not-allowed
       `}
               >
-                <span className="flex-none">{aboutContent.social.addButtonText}</span>
+                <span className="flex-none">{addButtonText}</span>
               </button>
             </div>
 
-            <div className="space-y-0">
-              {links.map((link) => (
-                <div
-                  key={link.id}
-                  className="bg-white/10 backdrop-blur-sm px-4 py-3 flex items-center justify-between group hover:bg-white/15 transition-colors"
-                >
-                  <div className="flex items-center gap-4 flex-1 min-w-0">
-                    <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <g clipPath="url(#clip0_1264_49813)">
-                        <circle cx="15" cy="16" r="13" fill="white" />
-                        <path d="M14.5325 0H16.47C16.5464 0.0218667 16.6243 0.0384557 16.7031 0.0496489C19.1165 0.23129 21.3761 0.922735 23.4347 2.18998C27.4356 4.65363 29.8999 8.19623 30.7608 12.8293C30.8656 13.3918 30.9207 13.9633 30.9988 14.5312V16.4688C30.974 16.6673 30.9461 16.8659 30.9249 17.0651C30.5925 20.1306 29.4821 22.8776 27.5252 25.2656C25.0918 28.2324 21.9791 30.0718 18.198 30.7602C17.6258 30.8644 17.0446 30.9213 16.4675 31.0024H14.5325C14.154 30.9558 13.775 30.9152 13.3978 30.862C10.5364 30.4551 7.96979 29.3652 5.73742 27.5276C2.77426 25.0912 0.928789 21.9828 0.242187 18.2034C0.138047 17.63 0.0805273 17.0488 0 16.4712V14.5312C0.0248242 14.3327 0.0514662 14.1347 0.073263 13.9355C0.431701 10.652 1.67352 7.74879 3.8635 5.27363C6.27205 2.54902 9.27154 0.859159 12.8596 0.23371C13.4148 0.137441 13.9754 0.0768945 14.5325 0ZM16.8587 23.4207C16.8587 22.4453 16.8587 21.4984 16.8587 20.5514C16.8635 19.2703 16.8587 17.9891 16.8865 16.7091C16.9023 16.014 17.271 15.4824 17.8347 15.1052C18.9282 14.3738 20.308 14.863 20.6628 16.1242C20.7738 16.5528 20.8279 16.9942 20.8239 17.4369C20.8408 19.3229 20.8312 21.2096 20.8312 23.0962V23.4117H24.5923C24.5972 23.3124 24.6044 23.233 24.6044 23.1531C24.6044 21.0848 24.6087 19.0172 24.6008 16.9489C24.5973 16.5358 24.5704 16.1232 24.5203 15.7131C24.2563 13.4886 22.9255 12.0852 20.7833 11.8381C19.2412 11.6619 17.9376 12.13 17.0155 13.4535C16.9662 13.5127 16.9136 13.5691 16.8581 13.6224C16.8581 13.155 16.8466 12.7542 16.8623 12.3546C16.8714 12.1306 16.8018 12.0591 16.5741 12.0615C15.4945 12.073 14.415 12.0664 13.3361 12.0676C13.2586 12.0712 13.1814 12.0789 13.1048 12.0906V23.4207H16.8587ZM10.9856 23.4207C10.9923 23.3438 11.0002 23.2948 11.0002 23.2464C11.0002 19.6039 11.002 15.9616 11.0056 12.3195C11.0056 12.0846 10.9003 12.0628 10.7126 12.064C9.64269 12.0694 8.57344 12.064 7.50357 12.0676C7.41578 12.0676 7.32799 12.0803 7.23959 12.0876V23.4232L10.9856 23.4207ZM7.00467 8.56436C7.00467 9.71475 7.88623 10.5333 9.11412 10.5273C10.3511 10.5206 11.2496 9.69961 11.2484 8.57586C11.2484 7.42547 10.3668 6.60203 9.14318 6.60022C7.88441 6.59961 7.00406 7.4067 7.00467 8.56436Z" fill="#3B82F6" />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_1264_49813">
-                          <rect width="31" height="31" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
+            <div className={`ml-16 ${type === 'links' ? `space-y-0` : `space-y-5`}`} ref={containerRef}>
+              {links.map((link, index) => (
+                <div key={link.id} className="relative flex">
+                  {/* Dot positioned absolutely */}
+                  <div className={`absolute -left-26 ${type !== 'links' ? 'top-18':'top-3'} w-[18.91px] h-[18.91px] rounded-full bg-[#F05921] border-2 border-[#F05921] flex-shrink-0`}></div>
 
-                    <span className={`text-white ${poppins.className} text-xs leading-[18px] truncate`}>
-                      {link.url}
-                    </span>
-                  </div>
+                  {/* Link content */}
+                  <div className="bg-white/10 backdrop-blur-sm px-4 py-3 flex items-start justify-between group hover:bg-white/15 transition-colors w-full">
+                    <div className="flex items-center gap-4 flex-1 min-w-0">
+                      {type === 'links' && (
+                        <>
+                          <DefaultIcon />
 
-                  <div className="flex items-center gap-2 ml-4">
-                    <button className="w-6 h-6 rounded-full flex items-center justify-center hover:bg-gray-500 transition-colors">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12ZM22.3526 12C22.3526 6.28244 17.7176 1.64744 12 1.64744C6.28244 1.64744 1.64744 6.28244 1.64744 12C1.64744 17.7176 6.28244 22.3526 12 22.3526C17.7176 22.3526 22.3526 17.7176 22.3526 12Z" fill="white" />
-                        <path d="M7.33333 16.6667H8.28333L14.8 10.15L13.85 9.2L7.33333 15.7167V16.6667ZM6 18V15.1667L14.8 6.38333C14.9333 6.26111 15.0806 6.16667 15.2417 6.1C15.4028 6.03333 15.5722 6 15.75 6C15.9278 6 16.1 6.03333 16.2667 6.1C16.4333 6.16667 16.5778 6.26667 16.7 6.4L17.6167 7.33333C17.75 7.45556 17.8472 7.6 17.9083 7.76667C17.9694 7.93333 18 8.1 18 8.26667C18 8.44444 17.9694 8.61389 17.9083 8.775C17.8472 8.93611 17.75 9.08333 17.6167 9.21667L8.83333 18H6ZM14.3167 9.68333L13.85 9.2L14.8 10.15L14.3167 9.68333Z" fill="white" />
-                      </svg>
+                          <div className="flex flex-col flex-1 min-w-0">
+                            <span
+                              className={`text-white ${poppins.className} text-xs leading-[18px] truncate`}
+                              title={link.url}
+                            >
+                              {link.url}
+                            </span>
+                          </div>
+                        </>
+                      )}
+                      {(type !== 'links') && (
+                        <ExperienceSection
+                          job={link.job ?? link.degree}
+                          date={link.date}
+                          description={link.description ?? link.university ?? link?.tagDescription}
+                        />
+                      )}
+                    </div>
 
-                    </button>
+                    <div className="flex items-center gap-2 ml-4 mt-2">
+                      <button className="w-6 h-6 rounded-full flex items-center justify-center hover:bg-gray-500 transition-colors disabled:opacity-50">
+                        <svg
+                          width={27}
+                          height={27}
+                          viewBox="0 0 27 27"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M-0.000221252 13.5702C-0.000221252 6.35161 5.85161 0.499779 13.0702 0.499779C20.2888 0.499779 26.1406 6.35161 26.1406 13.5702C26.1406 20.7888 20.2888 26.6406 13.0702 26.6406C5.85161 26.6406 -0.000221252 20.7888 -0.000221252 13.5702ZM24.3462 13.5702C24.3462 7.34262 19.2978 2.29417 13.0702 2.29417C6.84262 2.29417 1.79417 7.34262 1.79417 13.5702C1.79417 19.7978 6.84262 24.8462 13.0702 24.8462C19.2978 24.8462 24.3462 19.7978 24.3462 13.5702Z"
+                            fill="url(#paint0_linear_1264_71051)"
+                          />
+                          <path
+                            d="M7.92102 18.583H8.95576L16.0537 11.485L15.019 10.4503L7.92102 17.5483V18.583ZM6.46875 20.0353V16.9492L16.0537 7.38237C16.199 7.24925 16.3593 7.14638 16.5348 7.07376C16.7103 7.00115 16.8948 6.96484 17.0885 6.96484C17.2821 6.96484 17.4697 7.00115 17.6512 7.07376C17.8328 7.14638 17.9901 7.2553 18.1232 7.40052L19.1216 8.41711C19.2669 8.55024 19.3728 8.70757 19.4393 8.8891C19.5059 9.07063 19.5392 9.25217 19.5392 9.4337C19.5392 9.62734 19.5059 9.8119 19.4393 9.98738C19.3728 10.1629 19.2669 10.3232 19.1216 10.4684L9.55482 20.0353H6.46875ZM15.5273 10.9767L15.019 10.4503L16.0537 11.485L15.5273 10.9767Z"
+                            fill="url(#paint1_linear_1264_71051)"
+                          />
+                          <defs>
+                            <linearGradient
+                              id="paint0_linear_1264_71051"
+                              x1="-0.000221747"
+                              y1="13.6432"
+                              x2="26.1406"
+                              y2="13.4972"
+                              gradientUnits="userSpaceOnUse"
+                            >
+                              <stop stopColor="#CE2D52" />
+                              <stop offset="1" stopColor="#F05921" />
+                            </linearGradient>
 
-                    <button
-                      onClick={() => handleDelete(link.id)}
-                      className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-red-400 transition-colors"
-                    >
-                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 16C4 9.37258 9.37258 4 16 4C22.6274 4 28 9.37258 28 16C28 22.6274 22.6274 28 16 28C9.37258 28 4 22.6274 4 16ZM26.3526 16C26.3526 10.2824 21.7176 5.64744 16 5.64744C10.2824 5.64744 5.64744 10.2824 5.64744 16C5.64744 21.7176 10.2824 26.3526 16 26.3526C21.7176 26.3526 26.3526 21.7176 26.3526 16Z" fill="#BC0F0F" />
-                        <g clipPath="url(#clip0_1264_49804)">
-                          <path d="M12.7548 22.4829C12.5272 22.3882 12.3629 22.2432 12.3421 21.9811C12.3249 21.7626 12.3096 21.5437 12.2956 21.3249C12.1872 19.716 12.0788 18.1074 11.9704 16.499C11.9206 15.7658 11.8695 15.0325 11.8173 14.2991C11.8121 14.2311 11.8299 14.2103 11.8933 14.2178C11.9136 14.2191 11.9339 14.2191 11.9542 14.2178C14.6481 14.2178 17.342 14.2168 20.0358 14.2148C20.1555 14.2148 20.1815 14.2422 20.1721 14.3602C20.097 15.3238 20.0284 16.2879 19.9581 17.2518C19.9061 17.9646 19.8544 18.6776 19.803 19.3906C19.7393 20.261 19.6742 21.1317 19.6079 22.0026C19.5881 22.2627 19.418 22.3986 19.1917 22.4825L12.7548 22.4829ZM16.8994 18.1542C16.8994 18.9705 16.8994 19.7866 16.8994 20.6026C16.8994 20.8628 17.1033 21.0276 17.34 20.9697C17.5065 20.9291 17.6031 20.7831 17.6031 20.5672C17.6031 18.9629 17.6031 17.3586 17.6031 15.7543C17.604 15.7259 17.6031 15.6974 17.6005 15.6691C17.5917 15.581 17.5499 15.4996 17.4836 15.4409C17.4173 15.3823 17.3313 15.3509 17.2428 15.353C17.0405 15.3559 16.8984 15.5075 16.8981 15.7289C16.8981 16.538 16.8985 17.3464 16.8994 18.1542ZM14.3892 18.1542V19.7012C14.3892 20.0059 14.3866 20.3103 14.3892 20.615C14.3921 20.8634 14.5986 21.026 14.8311 20.9688C14.9937 20.9288 15.0913 20.7844 15.0913 20.5785C15.0913 18.9667 15.0913 17.3547 15.0913 15.7426C15.0921 15.7182 15.0915 15.6938 15.0893 15.6694C15.08 15.5775 15.0348 15.4929 14.9634 15.4342C14.892 15.3754 14.8003 15.3473 14.7082 15.3559C14.5131 15.3712 14.3873 15.5205 14.3869 15.7426C14.3878 16.5467 14.3886 17.3508 14.3892 18.1549V18.1542Z" fill="#FB0005" />
-                          <path d="M17.8031 10C18.0018 10.0751 18.0861 10.2166 18.0766 10.4299C18.0662 10.6575 18.0721 10.8852 18.0766 11.1128C18.0766 11.1778 18.0623 11.2032 17.9905 11.2032C16.663 11.2008 15.3357 11.2008 14.0085 11.2032C13.9363 11.2032 13.9216 11.1778 13.9226 11.1125C13.9259 10.8848 13.9321 10.6572 13.9226 10.4296C13.9129 10.2159 13.9981 10.0751 14.1961 10H17.8031Z" fill="#FB0005" />
-                          <path d="M16.0002 13.5147C14.3831 13.5147 12.7662 13.5127 11.149 13.5182C11.0189 13.5182 10.9946 13.4812 11.0014 13.3634C11.0167 13.1033 10.9789 12.8431 11.0196 12.5853C11.0814 12.1924 11.3971 11.9215 11.7945 11.9062C11.831 11.9062 11.8677 11.9062 11.9041 11.9062H20.0948C20.6664 11.9062 20.9959 12.2344 20.9962 12.8035C20.9962 12.9986 20.9877 13.1937 20.9991 13.3888C21.0059 13.5033 20.9646 13.5189 20.8635 13.5189C19.2419 13.5135 17.6208 13.5121 16.0002 13.5147Z" fill="#FB0106" />
-                        </g>
-                        <defs>
-                          <clipPath id="clip0_1264_49804">
-                            <rect width="10" height="12.4835" fill="white" transform="translate(11 10)" />
-                          </clipPath>
-                        </defs>
-                      </svg>
+                            <linearGradient
+                              id="paint1_linear_1264_71051"
+                              x1="19.5392"
+                              y1="13.4234"
+                              x2="6.46875"
+                              y2="13.5767"
+                              gradientUnits="userSpaceOnUse"
+                            >
+                              <stop stopColor="#CE2D52" />
+                              <stop offset="1" stopColor="#F05921" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                      </button>
 
-                    </button>
+                      <button
+                        onClick={() => handleDelete(link.id)}
+                        disabled={isLoading}
+                        className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-red-400 transition-colors disabled:opacity-50"
+                      >
+                        <svg
+                          width={26}
+                          height={26}
+                          viewBox="0 0 26 27"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M0 13.5C0 6.3203 5.8203 0.5 13 0.5C20.1797 0.5 26 6.3203 26 13.5C26 20.6797 20.1797 26.5 13 26.5C5.8203 26.5 0 20.6797 0 13.5ZM24.05 13.5C24.05 7.39725 19.1027 2.45 13 2.45C6.89725 2.45 1.95 7.39725 1.95 13.5C1.95 19.6027 6.89725 24.55 13 24.55C19.1027 24.55 24.05 19.6027 24.05 13.5Z"
+                            fill="white"
+                          />
+                          <g clipPath="url(#clip0_1264_71050)">
+                            <path
+                              d="M9.48533 20.5234C9.23872 20.4209 9.06081 20.2638 9.03827 19.9798C9.0196 19.7431 9.00304 19.506 8.98789 19.2689C8.87046 17.526 8.75303 15.7833 8.6356 14.0409C8.58158 13.2466 8.52627 12.4522 8.46967 11.6576C8.46403 11.584 8.48341 11.5615 8.55211 11.5696C8.57404 11.571 8.59605 11.571 8.61798 11.5696C11.5364 11.5696 14.4548 11.5685 17.3731 11.5664C17.5028 11.5664 17.531 11.596 17.5208 11.7239C17.4394 12.7677 17.365 13.8123 17.2889 14.8565C17.2326 15.6287 17.1766 16.401 17.1209 17.1735C17.0519 18.1165 16.9814 19.0597 16.9095 20.0031C16.888 20.2849 16.7038 20.4322 16.4586 20.5231L9.48533 20.5234ZM13.9753 15.8341C13.9753 16.7183 13.9753 17.6025 13.9753 18.4865C13.9753 18.7683 14.1962 18.9469 14.4526 18.8842C14.633 18.8402 14.7376 18.682 14.7376 18.4481C14.7376 16.7101 14.7376 14.9721 14.7376 13.2342C14.7387 13.2034 14.7377 13.1725 14.7348 13.1419C14.7253 13.0465 14.68 12.9582 14.6082 12.8947C14.5363 12.8312 14.4432 12.7972 14.3473 12.7994C14.1282 12.8026 13.9742 12.9668 13.9739 13.2067C13.9739 14.0832 13.9743 14.959 13.9753 15.8341ZM11.2559 15.8341V17.5099C11.2559 17.84 11.2531 18.1698 11.2559 18.4999C11.2591 18.769 11.4828 18.9452 11.7347 18.8832C11.9109 18.8398 12.0165 18.6834 12.0165 18.4604C12.0165 16.7142 12.0165 14.9679 12.0165 13.2215C12.0174 13.195 12.0167 13.1686 12.0144 13.1422C12.0044 13.0426 11.9553 12.951 11.878 12.8873C11.8006 12.8237 11.7013 12.7933 11.6015 12.8026C11.3902 12.8192 11.2538 12.9809 11.2535 13.2215C11.2544 14.0926 11.2552 14.9637 11.2559 15.8348V15.8341Z"
+                              fill="white"
+                            />
+                            <path
+                              d="M14.9547 7C15.17 7.08138 15.2612 7.23463 15.251 7.46573C15.2397 7.71233 15.2461 7.95894 15.251 8.20554C15.251 8.276 15.2355 8.30348 15.1576 8.30348C13.7196 8.3009 12.2816 8.3009 10.8438 8.30348C10.7656 8.30348 10.7498 8.276 10.7508 8.20519C10.7543 7.95859 10.761 7.71198 10.7508 7.46538C10.7402 7.23392 10.8325 7.08138 11.0471 7H14.9547Z"
+                              fill="white"
+                            />
+                            <path
+                              d="M12.9951 10.8069C11.2431 10.8069 9.49152 10.8048 7.73957 10.8108C7.59865 10.8108 7.57223 10.7706 7.57963 10.6431C7.59619 10.3612 7.55532 10.0794 7.59936 9.80004C7.66629 9.37447 8.00837 9.08101 8.43887 9.06445C8.47832 9.06445 8.51813 9.06445 8.55759 9.06445H17.4308C18.0501 9.06445 18.407 9.41992 18.4073 10.0364C18.4073 10.2478 18.3982 10.4592 18.4105 10.6706C18.4179 10.7946 18.3732 10.8115 18.2636 10.8115C16.5068 10.8056 14.7507 10.8041 12.9951 10.8069Z"
+                              fill="white"
+                            />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_1264_71050">
+                              <rect width="10.8333" height="13.5238" fill="white" transform="translate(7.57812 7)" />
+                            </clipPath>
+                          </defs>
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
 
               {isAdding && (
-                <div className="bg-white/10 backdrop-blur-sm px-4 py-3 flex items-center gap-4">
-                  <LinkedInIcon />
-                  <input
-                    type="text"
-                    value={newUrl}
-                    onChange={(e) => setNewUrl(e.target.value)}
-                    placeholder="Enter social media URL"
-                    className={`flex-1 bg-white/20 text-white placeholder-white/50 px-3 py-2 rounded border border-white/30 focus:outline-none focus:border-[#F05921] ${poppins.className} text-xs`}
-                    autoFocus
-                  />
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={handleAdd}
-                      className="px-4 py-1.5 bg-gradient-to-r from-[#FFA844] to-[#FF6D68] text-white rounded text-sm font-semibold hover:opacity-90"
-                    >
-                      Save
-                    </button>
-                    <button
-                      onClick={() => {
-                        setIsAdding(false);
-                        setNewUrl('');
+                <div className="relative flex">
+                  {/* Dot for new item being added */}
+                  <div className="absolute left-[-47px] top-3 w-[18.91px] h-[18.91px] rounded-full bg-[#F05921]/50 border-2 border-[#F05921] flex-shrink-0"></div>
+
+                  <div className="bg-white/10 backdrop-blur-sm px-4 py-3 flex flex-col gap-3 w-full">
+                    <div className="flex items-center gap-4">
+                      <LinkedInIcon />
+                      <select
+                        value={newPlatform}
+                        onChange={(e) => setNewPlatform(e.target.value)}
+                        className={`bg-white/20 text-white px-3 py-2 rounded border border-white/30 focus:outline-none focus:border-[#F05921] ${poppins.className} text-xs`}
+                      >
+                        {platformOptions.map((option) => (
+                          <option key={option.value} value={option.value} className="bg-gray-900">
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <input
+                      type="text"
+                      value={newUrl}
+                      onChange={(e) => {
+                        setNewUrl(e.target.value);
+                        setError('');
                       }}
-                      className="px-4 py-1.5 bg-white/20 text-white rounded text-sm font-semibold hover:bg-white/30"
-                    >
-                      Cancel
-                    </button>
+                      onKeyPress={handleKeyPress}
+                      placeholder="Enter social media URL"
+                      className={`w-full bg-white/20 text-white placeholder-white/50 px-3 py-2 rounded border border-white/30 focus:outline-none focus:border-[#F05921] ${poppins.className} text-xs`}
+                      autoFocus
+                    />
+                    {error && (
+                      <p className={`text-red-400 ${poppins.className} text-xs`}>{error}</p>
+                    )}
+                    <div className="flex items-center gap-2 justify-end">
+                      <button
+                        onClick={handleAdd}
+                        disabled={isLoading}
+                        className="px-4 py-1.5 bg-gradient-to-r from-[#FFA844] to-[#FF6D68] text-white rounded text-sm font-semibold hover:opacity-90 disabled:opacity-50"
+                      >
+                        {isLoading ? 'Saving...' : 'Save'}
+                      </button>
+                      <button
+                        onClick={() => {
+                          setIsAdding(false);
+                          setNewUrl('');
+                          setNewPlatform(defaultPlatform);
+                          setError('');
+                        }}
+                        disabled={isLoading}
+                        className="px-4 py-1.5 bg-white/20 text-white rounded text-sm font-semibold hover:bg-white/30 disabled:opacity-50"
+                      >
+                        Cancel
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
