@@ -39,7 +39,6 @@ export default function RoleLine({
               type="text"
               value={editText}
               onChange={handleInputChange}
-              autoFocus
               className="
                 w-full
                 font-poppins text-sm sm:text-base md:text-[16px]
